@@ -2,25 +2,25 @@
   color: var(--camaraCinza300);
 }
 
-.input {
+.smallerInput {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
-  width: 100%;
+  max-width: 58%;
   padding: 1rem;
   border: 0.2rem solid var(--camaraCinza100);
   border-radius: 0.9rem;
   font-size: 2rem;
 }
 
-.input input {
+.smallerInput input {
   width: 100%;
   border: none;
   outline: none;
   color: var(--camaraCinzaTexto);
 }
 
-.input input::placeholder {
+.smallerInput input::placeholder {
   color: var(--camaraCinza300);
 }

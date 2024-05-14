@@ -1,6 +1,8 @@
 import styles from "./PersonalData.module.css";
 
 import { Input } from "../../Input/Input";
+import { SmallerInput } from "../../SmallerInput/SmallerInput";
+
 import {
   MdDriveFileRenameOutline,
   MdOutlineWoman,
@@ -39,18 +41,20 @@ export const PersonalData = () => {
           id="nome"
           placeholder="Nacionalidade"
         />
-        <Input
-          icone={<FaFlag />}
-          type="text"
-          id="nome"
-          placeholder="Estado de nascimento"
-        />
-        <Input
-          icone={<MdLocationCity />}
-          type="text"
-          id="nome"
-          placeholder="Cidade de nascimento"
-        />
+        <div className={styles.inputWrapper}>
+          <SmallerInput
+            icone={<FaFlag />}
+            type="text"
+            id="nome"
+            placeholder="UF de nasc."
+          />
+          <Input
+            icone={<MdLocationCity />}
+            type="text"
+            id="nome"
+            placeholder="Cidade de nascimento"
+          />
+        </div>
       </div>
     </div>
   );
