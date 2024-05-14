@@ -1,5 +1,5 @@
 .icone {
-    color: var(--camaraCinza300);
+  color: var(--camaraCinza300);
 }
 
 .input {
@@ -11,16 +11,16 @@
   padding: 1rem;
   border: 0.2rem solid var(--camaraCinza100);
   border-radius: 0.9rem;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .input input {
-    width: 100%;
-    border: none;
-    outline: none;
-    color: var(--camaraCinzaTexto);
+  width: 100%;
+  border: none;
+  outline: none;
+  color: var(--camaraCinzaTexto);
 }
 
 .input input::placeholder {
-    color: var(--camaraCinza300);
+  color: var(--camaraCinza300);
 }

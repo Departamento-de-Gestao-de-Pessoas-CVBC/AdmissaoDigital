@@ -1,7 +1,12 @@
 import styles from "./PersonalData.module.css";
 
 import { Input } from "../../Input/Input";
-import { MdDriveFileRenameOutline, MdOutlineWoman, MdMan, MdLocationCity } from "react-icons/md";
+import {
+  MdDriveFileRenameOutline,
+  MdOutlineWoman,
+  MdMan,
+  MdLocationCity,
+} from "react-icons/md";
 import { BiWorld } from "react-icons/bi";
 import { FaFlag } from "react-icons/fa6";
 
