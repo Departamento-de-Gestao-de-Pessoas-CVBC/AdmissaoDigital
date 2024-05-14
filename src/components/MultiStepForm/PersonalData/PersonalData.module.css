@@ -1,4 +1,5 @@
 .personalData {
+  /* border: 1px solid yellowgreen; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,11 +20,5 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-}
-
-.form input {
-  width: 100%;
-  padding: 1rem;
-  border: 0.2rem solid var(--camaraCinzaTexto);
-  border-radius: 0.6rem;
+  font-size: 1.6rem;
 }
