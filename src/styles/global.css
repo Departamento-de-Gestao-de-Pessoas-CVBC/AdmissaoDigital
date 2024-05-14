@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/* Global Settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --branco: #ffffff;
+  --camaraAzul: #0051c2;
+  --camaraAmarelo: #f8c600;
+  --camaraCinza100: #e5e5e5;
+  --camaraCinza200: #dddddd;
+  --camaraCinza300: #bdbdbd;
+  --camaraCinzaTexto: #5c5c5c;
+
+  font-size: 62.5%;
+  font-family: "Lato", sans-serif;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+}

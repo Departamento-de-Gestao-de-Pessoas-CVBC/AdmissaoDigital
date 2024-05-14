@@ -1,0 +1,10 @@
+.register {
+    padding-bottom: 3rem;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+}

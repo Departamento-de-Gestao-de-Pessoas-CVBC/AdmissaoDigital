@@ -1,0 +1,54 @@
+/* Access */
+.access {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 10rem;
+  height: 100vh;
+}
+
+/* Wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  width: 30rem;
+}
+
+/* Title */
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title img {
+  width: 30rem;
+}
+
+.title h1 {
+  font-size: 3.5rem;
+  color: var(--camaraAzul);
+}
+
+/* Login */
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Adm */
+.adm p a {
+  font-size: 1.8rem;
+  color: var(--camaraAzul);
+  transition: all 0.2s;
+}
+
+.adm p a:hover {
+  color: var(--camaraAmarelo);
+}
