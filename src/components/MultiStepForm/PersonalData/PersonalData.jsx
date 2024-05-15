@@ -1,8 +1,5 @@
 import styles from "./PersonalData.module.css";
 
-import { Input } from "../../Input/Input";
-import { SmallerInput } from "../../SmallerInput/SmallerInput";
-
 import {
   MdDriveFileRenameOutline,
   MdOutlineWoman,
@@ -11,6 +8,9 @@ import {
 } from "react-icons/md";
 import { BiWorld } from "react-icons/bi";
 import { FaFlag } from "react-icons/fa6";
+
+import { Input } from "../../Input/Input";
+import { SmallerInput } from "../../SmallerInput/SmallerInput";
 
 export const PersonalData = () => {
   return (

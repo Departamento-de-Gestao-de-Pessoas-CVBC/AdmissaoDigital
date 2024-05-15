@@ -1,11 +1,12 @@
 import styles from "./Register.module.css";
 
+import React, { useState } from "react";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
-import React, { useState } from "react";
-import { PersonalData } from "../../components/MultiStepForm/PersonalData/PersonalData";
 import { Header } from "../../components/Header/Header";
 import { Button } from "../../components/Button/Button";
+
+import { PersonalData } from "../../components/MultiStepForm/PersonalData/PersonalData";
 
 export const Register = () => {
   return (

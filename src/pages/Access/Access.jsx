@@ -1,8 +1,9 @@
 import styles from "./Access.module.css";
 import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
 
-import { Button } from "../../components/Button/Button";
 import { MdAppRegistration, MdLogin } from "react-icons/md";
+
+import { Button } from "../../components/Button/Button";
 
 export const Access = () => {
   return (
