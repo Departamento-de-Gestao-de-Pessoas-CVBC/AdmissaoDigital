@@ -1,5 +1,7 @@
 import styles from "./Register.module.css";
 
+import { GoArrowRight, GoArrowLeft } from "react-icons/go";
+
 import React, { useState } from "react";
 import { PersonalData } from "../../components/MultiStepForm/PersonalData/PersonalData";
 import { Header } from "../../components/Header/Header";
@@ -11,14 +13,8 @@ export const Register = () => {
       <Header />
       <PersonalData />
       <div className={styles.buttons}>
-        <Button 
-          // icone={}
-          title="Voltar"
-        />
-        <Button 
-          // icone={}
-          title="Avançar"
-        />
+        <Button icone={<GoArrowLeft />} title="Voltar" />
+        <Button icone={<GoArrowRight />} title="Avançar" />
       </div>
     </div>
   );
