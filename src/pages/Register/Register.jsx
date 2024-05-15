@@ -7,12 +7,13 @@ import { Header } from "../../components/Header/Header";
 import { Button } from "../../components/Button/Button";
 
 import { PersonalData } from "../../components/MultiStepForm/PersonalData/PersonalData";
+import { Documents } from "../../components/MultiStepForm/Documents/Documents";
 
 export const Register = () => {
   return (
     <div className={styles.register}>
       <Header />
-      <PersonalData />
+      <Documents />
       <div className={styles.buttons}>
         <Button icone={<GoArrowLeft />} title="Voltar" />
         <Button icone={<GoArrowRight />} title="Avançar" />

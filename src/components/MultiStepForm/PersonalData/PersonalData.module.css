@@ -1,5 +1,4 @@
 .personalData {
-  /* border: 1px solid yellowgreen; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +13,6 @@
 }
 
 .form {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   align-items: center;
