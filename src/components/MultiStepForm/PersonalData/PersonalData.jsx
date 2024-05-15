@@ -42,17 +42,17 @@ export const PersonalData = () => {
           placeholder="Nacionalidade"
         />
         <div className={styles.inputWrapper}>
-          <SmallerInput
-            icone={<FaFlag />}
-            type="text"
-            id="nome"
-            placeholder="UF de nasc."
-          />
           <Input
             icone={<MdLocationCity />}
             type="text"
             id="nome"
             placeholder="Cidade de nascimento"
+          />
+          <SmallerInput
+            icone={<FaFlag />}
+            type="text"
+            id="nome"
+            placeholder="UF de nasc."
           />
         </div>
       </div>

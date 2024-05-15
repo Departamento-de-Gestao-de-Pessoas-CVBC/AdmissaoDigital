@@ -11,7 +11,7 @@
   padding: 1rem;
   border: 0.2rem solid var(--camaraCinza100);
   border-radius: 0.9rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .input input {
@@ -19,8 +19,29 @@
   border: none;
   outline: none;
   color: var(--camaraCinzaTexto);
+  font-size: 1.5rem;
 }
 
 .input input::placeholder {
   color: var(--camaraCinza300);
+}
+
+@media screen and (min-width: 768px) {
+  .input {
+    font-size: 2.2rem
+  }
+  
+  .input input {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .input {
+    font-size: 2.6rem
+  }
+  
+  .input input {
+    font-size: 2.6rem;
+  }
 }

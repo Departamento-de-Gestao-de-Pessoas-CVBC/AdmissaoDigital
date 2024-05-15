@@ -24,3 +24,23 @@
 .smallerInput input::placeholder {
   color: var(--camaraCinza300);
 }
+
+@media screen and (min-width: 768px) {
+  .smallerInput {
+    font-size: 2.3rem;
+  }
+
+  .smallerInput input {
+    font-size: 2.3rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .smallerInput {
+    font-size: 2.6rem;
+  }
+
+  .smallerInput input {
+    font-size: 2.6rem;
+  }
+}
