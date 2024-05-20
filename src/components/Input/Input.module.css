@@ -26,11 +26,17 @@
   color: var(--camaraCinza300);
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @media screen and (min-width: 768px) {
   .input {
-    font-size: 2.2rem
+    font-size: 2.2rem;
   }
-  
+
   .input input {
     font-size: 2.2rem;
   }
@@ -38,9 +44,9 @@
 
 @media screen and (min-width: 1024px) {
   .input {
-    font-size: 2.6rem
+    font-size: 2.6rem;
   }
-  
+
   .input input {
     font-size: 2.6rem;
   }

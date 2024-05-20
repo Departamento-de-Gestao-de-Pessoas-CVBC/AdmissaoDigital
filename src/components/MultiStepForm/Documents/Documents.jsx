@@ -1,9 +1,9 @@
 import styles from "./Documents.module.css";
 
-import { IoSchool } from "react-icons/io5";
+import { PiIdentificationCard } from "react-icons/pi";
+import { TiDocumentText } from "react-icons/ti";
 
 import { Input } from "../../Input/Input";
-import { SmallerInput } from "../../SmallerInput/SmallerInput";
 
 export const Documents = () => {
   return (
@@ -12,22 +12,59 @@ export const Documents = () => {
       <div className={styles.form}>
         <div className={styles.wrapper}>
           <Input
-            // icone={}
+            icone={<PiIdentificationCard />}
             type="number"
             id="cpf"
             placeholder="CPF"
+            mask={"999.999.999-99"}
           />
           <Input
-            // icone={}
+            icone={<PiIdentificationCard />}
             type="number"
             id="pis"
             placeholder="PIS"
+            mask={"999.99999.99.9"}
           />
           <Input
-            // icone={}
+            icone={<PiIdentificationCard />}
             type="number"
             id="rg"
             placeholder="RG"
+          />
+          <Input
+            icone={<PiIdentificationCard />}
+            type="text"
+            id="rg"
+            placeholder="Expedidor do RG"
+          />
+        </div>
+        <div className={styles.wrapper}>
+          <Input
+            icone={<PiIdentificationCard />}
+            type="text"
+            id="rg"
+            placeholder="UF do RG"
+          />
+          <Input
+            icone={<PiIdentificationCard />}
+            type="number"
+            id="rg"
+            placeholder="Data de Expedição do RG"
+            mask={"99/99/9999"}
+          />
+          <Input
+            icone={<TiDocumentText />}
+            type="number"
+            id="rg"
+            placeholder="Título de Eleitor"
+            mask={"999999999999"}
+          />
+          <Input
+            icone={<TiDocumentText />}
+            type="number"
+            id="rg"
+            placeholder="Nº Reservista"
+            mask={"999999999999"}
           />
         </div>
       </div>

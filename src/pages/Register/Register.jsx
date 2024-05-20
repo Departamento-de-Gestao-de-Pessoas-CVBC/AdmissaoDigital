@@ -14,6 +14,7 @@ export const Register = () => {
     <div className={styles.register}>
       <Header />
       <Documents />
+      {/* <PersonalData /> */}
       <div className={styles.buttons}>
         <Button icone={<GoArrowLeft />} title="Voltar" />
         <Button icone={<GoArrowRight />} title="Avançar" />
