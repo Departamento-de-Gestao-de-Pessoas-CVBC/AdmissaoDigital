@@ -4,7 +4,7 @@ import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
 import { Button } from "../Button/Button";
 
-import { BasicTextFields } from "../BasicTextField/BasicTextFied";
+import { BasicTextFields } from "../Input/Input";
 
 export const PersonalData = ({ formData, setFormData, nextStep }) => {
   const handleChange = (e) => {
