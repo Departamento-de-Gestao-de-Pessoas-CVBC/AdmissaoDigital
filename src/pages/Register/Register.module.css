@@ -4,6 +4,10 @@
     padding-bottom: 3rem;
 }
 
+.multiStepForm {
+    /* border: 1px solid red; */
+}
+
 .buttons {
     display: flex;
     align-items: center;
