@@ -12,45 +12,10 @@ export const MultiStepForm = () => {
     switch (currentStep) {
       case 1:
         return (
-          <Step1
+          <PersonalData
             formData={formData}
             setFormData={setFormData}
             nextStep={nextStep}
-          />
-        );
-      case 2:
-        return (
-          <Step2
-            formData={formData}
-            setFormData={setFormData}
-            nextStep={nextStep}
-            prevStep={prevStep}
-          />
-        );
-      case 3:
-        return (
-          <Step3
-            formData={formData}
-            setFormData={setFormData}
-            nextStep={nextStep}
-            prevStep={prevStep}
-          />
-        );
-      case 4:
-        return (
-          <Step4
-            formData={formData}
-            setFormData={setFormData}
-            nextStep={nextStep}
-            prevStep={prevStep}
-          />
-        );
-      case 5:
-        return (
-          <Step5
-            formData={formData}
-            setFormData={setFormData}
-            prevStep={prevStep}
           />
         );
       default:

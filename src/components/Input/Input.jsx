@@ -21,7 +21,7 @@ const theme = createTheme({
   },
 });
 
-export const BasicTextFields = ({ id, label, type, mask, ...rest }) => {
+export const Input = ({ id, label, type, mask, ...rest }) => {
   return (
     <Box
       component="form"

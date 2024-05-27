@@ -1,12 +1,20 @@
+import * as React from "react";
 import styles from "./PersonalData.module.css";
 
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
 import { Button } from "../Button/Button";
-
-import { BasicTextFields } from "../Input/Input";
+import { Input } from "../Input/Input";
+import { BasicSelect } from "../Select/Select";
 
 export const PersonalData = ({ formData, setFormData, nextStep }) => {
+  const [nationalitySelect, setNationalitySelect] = React.useState("");
+
+  const nationality = [
+    { value: "brasileiro", label: "Brasileiro" },
+    { value: "paraguaio", label: "Paraguaio" },
+  ];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -18,14 +26,15 @@ export const PersonalData = ({ formData, setFormData, nextStep }) => {
         <h1>DADOS PESSOAIS</h1>
       </div>
       <div className={styles.inputs}>
-        <BasicTextFields type="text" id="name" label="Nome Completo" />
-        <BasicTextFields type="text" id="name" label="Nome da mãe" />
-        <BasicTextFields type="text" id="name" label="Nome do pai" />
-        <BasicTextFields
-          type="number"
-          id="cpf"
-          label="CPF"
-          mask="999.999.999-99"
+        <Input type="text" id="name" label="Nome Completo" />
+        <Input type="text" id="name" label="Nome da mãe" />
+        <Input type="text" id="name" label="Nome do pai" />
+        <Input type="number" id="cpf" label="CPF" mask="999.999.999-99" />
+        <BasicSelect
+          label="Nacionalidade"
+          options={nationality}
+          value={nationalitySelect}
+          onChange={(e) => setNationalitySelect(e.target.value)}
         />
       </div>
       <div className={styles.buttons}>

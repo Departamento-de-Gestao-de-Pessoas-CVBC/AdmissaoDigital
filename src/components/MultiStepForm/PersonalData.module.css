@@ -18,40 +18,10 @@
   width: 100%;
 }
 
-.select {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
-  width: 100%;
-  padding: 1rem;
-  border: 0.2rem solid var(--camaraCinza100);
-  border-radius: 0.9rem;
-  font-size: 1.5rem;
-  color: var(--camaraCinza300);
-  outline: none;
-}
-
-.select > option {
-  color: black;
-}
-
 .buttons {
   display: flex;
   justify-content: center;
   gap: 8rem;
   /* border: 1px solid red; */
   width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-  .select {
-    font-size: 2.2rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .select {
-    font-size: 2.6rem;
-  }
 }
