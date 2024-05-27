@@ -47,8 +47,18 @@
   display: flex;
   justify-content: center;
   gap: 8rem;
-  /* border: 1px solid red; */
   width: 100%;
+}
+
+@media screen and (min-width: 745px) {
+  .inputs {
+    flex-direction: row;
+  }
+
+  .alone {
+    margin-top: -2rem;
+    width: 50%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
