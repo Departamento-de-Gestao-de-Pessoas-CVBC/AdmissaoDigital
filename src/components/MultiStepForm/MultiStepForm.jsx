@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { PersonalData } from "./PersonalData";
+import { Documents } from "./Documents";
 
 export const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -13,6 +14,14 @@ export const MultiStepForm = () => {
       case 1:
         return (
           <PersonalData
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+          />
+        );
+      case 2:
+        return (
+          <Documents
             formData={formData}
             setFormData={setFormData}
             nextStep={nextStep}

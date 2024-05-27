@@ -122,7 +122,13 @@ export const PersonalData = ({ formData, setFormData, nextStep }) => {
       </div>
       <div className={styles.buttons}>
         <Button icone={<GoArrowLeft />} title="Voltar" />
-        <Button icone={<GoArrowRight />} title="Avançar" />
+        <Button
+          className={styles.buttons}
+          onClick={nextStep}
+          icone={<GoArrowRight />}
+        >
+          Avançar
+        </Button>
       </div>
     </div>
   );
