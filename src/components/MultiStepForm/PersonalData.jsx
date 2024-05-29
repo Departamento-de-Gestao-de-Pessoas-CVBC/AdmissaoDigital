@@ -1,11 +1,12 @@
 import * as React from "react";
 import styles from "./PersonalData.module.css";
 
-import { GoArrowRight, GoArrowLeft } from "react-icons/go";
+import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
-import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { BasicSelect } from "../Select/Select";
+import { BasicButton } from "../BasicButton/BasicButton";
 
 export const PersonalData = ({ formData, setFormData, nextStep }) => {
   const [nationalitySelect, setNationalitySelect] = React.useState("");
@@ -121,14 +122,8 @@ export const PersonalData = ({ formData, setFormData, nextStep }) => {
         />
       </div>
       <div className={styles.buttons}>
-        <Button icone={<GoArrowLeft />} title="Voltar" />
-        <Button
-          className={styles.buttons}
-          onClick={nextStep}
-          icone={<GoArrowRight />}
-        >
-          Avançar
-        </Button>
+        <BasicButton title="Voltar" startIcon={<ArrowBackOutlinedIcon />} />
+        <BasicButton title="Avançar" startIcon={<ArrowForwardOutlinedIcon />} />
       </div>
     </div>
   );

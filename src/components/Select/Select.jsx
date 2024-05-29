@@ -31,7 +31,7 @@ export const BasicSelect = ({ label, options, value, onChange, ...rest }) => {
         <InputLabel
           id="demo-simple-select-label"
           sx={{
-            color: theme.palette.gray.text,
+            color: theme.palette.gray[200],
             fontSize: "1.6rem",
             "&.Mui-focused": {
               color: theme.palette.primary.main,

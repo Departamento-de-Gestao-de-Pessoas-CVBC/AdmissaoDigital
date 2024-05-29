@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import ReactInputMask from "react-input-mask";
@@ -18,10 +18,20 @@ const theme = createTheme({
       300: "#bdbdbd",
       text: "#5c5c5c",
     },
+    green: {
+      main: "#00be00", // Alterado para verde
+    },
   },
 });
 
 export const Input = ({ id, label, type, mask, ...rest }) => {
+  const [filled, setFilled] = useState(false);
+
+  const handleInputChange = (event) => {
+    const filled = event.target.value !== "";
+    setFilled(filled);
+  };
+
   return (
     <Box
       component="form"
@@ -41,7 +51,9 @@ export const Input = ({ id, label, type, mask, ...rest }) => {
               sx={{
                 width: "100%",
                 "& .MuiInputLabel-root": {
-                  color: theme.palette.gray.text,
+                  color: filled
+                    ? theme.palette.green.main
+                    : theme.palette.gray[200],
                 },
                 "& .MuiInputLabel-root.Mui-focused": {
                   color: theme.palette.primary.main,
@@ -56,6 +68,7 @@ export const Input = ({ id, label, type, mask, ...rest }) => {
                 sx: {
                   fontSize: "1.6rem",
                 },
+                onChange: handleInputChange,
               }}
               InputLabelProps={{
                 sx: {
@@ -74,18 +87,24 @@ export const Input = ({ id, label, type, mask, ...rest }) => {
           sx={{
             width: "100%",
             "& .MuiInputLabel-root": {
-              color: theme.palette.gray.text,
+              color: filled
+                ? theme.palette.green.main
+                : theme.palette.gray[200],
               "& .MuiOutlinedInput-root": {
                 "&.Mui-focused fieldset": {
                   borderColor: theme.palette.primary.main,
                 },
               },
             },
+            "& .MuiInputLabel-root.Mui-focused": {
+              color: theme.palette.primary.main,
+            },
           }}
           InputProps={{
             sx: {
               fontSize: "1.6rem",
             },
+            onChange: handleInputChange,
           }}
           InputLabelProps={{
             sx: {
