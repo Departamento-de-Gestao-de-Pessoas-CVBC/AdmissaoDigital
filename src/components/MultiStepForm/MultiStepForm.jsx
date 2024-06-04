@@ -24,6 +24,7 @@ export const MultiStepForm = () => {
           <Documents
             formData={formData}
             setFormData={setFormData}
+            prevStep={prevStep}
             nextStep={nextStep}
           />
         );

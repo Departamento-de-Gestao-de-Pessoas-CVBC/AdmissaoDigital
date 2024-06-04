@@ -1,13 +1,14 @@
 import * as React from "react";
 import styles from "./Documents.module.css";
 
-import { GoArrowRight, GoArrowLeft } from "react-icons/go";
+import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
-import { Button } from "../Button/Button";
+// import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { BasicSelect } from "../Select/Select";
 
-export const Documents = () => {
+export const Documents = ({ formData, prevStep, nextStep }) => {
   const [UFRGSelect, setUFRGSelect] = React.useState("");
   const [expRg, setExpRg] = React.useState("");
 
@@ -93,10 +94,7 @@ export const Documents = () => {
       <div className={styles.alone}>
         <Input type="text" id="pollingStation" label="Seção Eleitoral" />
       </div>
-      <div className={styles.buttons}>
-        <Button icone={<GoArrowLeft />} title="Voltar" />
-        <Button icone={<GoArrowRight />} title="Avançar" />
-      </div>
+      <div className={styles.buttons}></div>
     </div>
   );
 };

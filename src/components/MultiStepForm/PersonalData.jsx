@@ -4,11 +4,12 @@ import styles from "./PersonalData.module.css";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
+// import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { BasicSelect } from "../Select/Select";
 import { BasicButton } from "../BasicButton/BasicButton";
 
-export const PersonalData = ({ formData, setFormData, nextStep }) => {
+export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
   const [nationalitySelect, setNationalitySelect] = React.useState("");
   const [genderSelect, setGenderSelect] = React.useState("");
   const [maritalStatusSelect, setMaritalStatusSelect] = React.useState("");
@@ -122,8 +123,16 @@ export const PersonalData = ({ formData, setFormData, nextStep }) => {
         />
       </div>
       <div className={styles.buttons}>
-        <BasicButton title="Voltar" startIcon={<ArrowBackOutlinedIcon />} />
-        <BasicButton title="Avançar" startIcon={<ArrowForwardOutlinedIcon />} />
+        <BasicButton
+          title="Voltar"
+          startIcon={<ArrowBackOutlinedIcon />}
+          onClick={prevStep}
+        />
+        <BasicButton
+          title="Avançar"
+          startIcon={<ArrowForwardOutlinedIcon />}
+          onClick={nextStep}
+        />
       </div>
     </div>
   );
