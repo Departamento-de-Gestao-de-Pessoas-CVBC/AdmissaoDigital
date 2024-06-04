@@ -70,8 +70,8 @@ export const PersonalData = ({ formData, setFormData, nextStep }) => {
       <div className={styles.inputs}>
         <div className={styles.leftInputs}>
           <Input type="text" id="name" label="Nome Completo" />
-          <Input type="text" id="mothersName" label="Nome da mãe" />
-          <Input type="text" id="fathersName" label="Nome do pai" />
+          <Input type="text" id="mothersName" label="Nome da Completo da Mãe" />
+          <Input type="text" id="fathersName" label="Nome Completo do Pai" />
           <BasicSelect
             label="Nacionalidade"
             options={nationality}
