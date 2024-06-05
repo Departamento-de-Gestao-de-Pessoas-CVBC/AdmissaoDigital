@@ -147,6 +147,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
           title="Voltar"
           startIcon={<ArrowBackOutlinedIcon />}
           onClick={prevStep}
+          disabled
         />
         <BasicButton
           title="Avançar"
