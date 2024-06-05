@@ -8,12 +8,13 @@ const borderColorHover = "#0051c2";
 const borderColor = "#bdbdbd";
 const bgColor = "#ffffff";
 
-export const BasicButton = ({ title, icone, startIcon, ...rest }) => {
+export const BasicButton = ({ title, icone, startIcon, onClick, ...rest }) => {
   return (
     <Box>
       <Button
         variant="outlined"
         startIcon={startIcon}
+        onClick={onClick}
         sx={{
           color: textColor,
           background: bgColor,

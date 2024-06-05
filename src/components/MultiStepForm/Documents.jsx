@@ -3,12 +3,11 @@ import styles from "./Documents.module.css";
 
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-
-// import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { BasicSelect } from "../Select/Select";
+import { BasicButton } from "../BasicButton/BasicButton";
 
-export const Documents = ({ formData, prevStep, nextStep }) => {
+export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
   const [UFRGSelect, setUFRGSelect] = React.useState("");
   const [expRg, setExpRg] = React.useState("");
 
@@ -58,9 +57,21 @@ export const Documents = ({ formData, prevStep, nextStep }) => {
       </div>
       <div className={styles.inputs}>
         <div className={styles.leftInputs}>
-          <Input type="number" id="cpf" label="CPF" mask="999.999.999-99" />
-          <Input type="number" id="pis" label="PIS" mask="999.99999.99.9" />
-          <Input type="number" id="rg" label="RG" />
+          <Input
+            type="number"
+            id="cpf"
+            label="CPF"
+            mask="999.999.999-99"
+            onChange={handleChange}
+          />
+          <Input
+            type="number"
+            id="pis"
+            label="PIS"
+            mask="999.99999.99.9"
+            onChange={handleChange}
+          />
+          <Input type="number" id="rg" label="RG" onChange={handleChange} />
           <Input
             type="text"
             id="expRg"
@@ -81,20 +92,43 @@ export const Documents = ({ formData, prevStep, nextStep }) => {
             id="reservist"
             label="Nº Reservista"
             mask="999999999999"
+            onChange={handleChange}
           />
           <Input
             type="number"
             id="voterRegistration"
             label="Título de Eleitor"
             mask="999999999999"
+            onChange={handleChange}
           />
-          <Input type="text" id="electoralZone" label="Zona Eleitoral" />
+          <Input
+            type="text"
+            id="electoralZone"
+            label="Zona Eleitoral"
+            onChange={handleChange}
+          />
         </div>
       </div>
       <div className={styles.alone}>
-        <Input type="text" id="pollingStation" label="Seção Eleitoral" />
+        <Input
+          type="text"
+          id="pollingStation"
+          label="Seção Eleitoral"
+          onChange={handleChange}
+        />
       </div>
-      <div className={styles.buttons}></div>
+      <div className={styles.buttons}>
+        <BasicButton
+          title="Voltar"
+          startIcon={<ArrowBackOutlinedIcon />}
+          onClick={prevStep}
+        />
+        <BasicButton
+          title="Avançar"
+          startIcon={<ArrowForwardOutlinedIcon />}
+          onClick={nextStep}
+        />
+      </div>
     </div>
   );
 };

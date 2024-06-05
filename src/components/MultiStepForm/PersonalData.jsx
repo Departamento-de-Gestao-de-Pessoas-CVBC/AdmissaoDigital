@@ -3,8 +3,6 @@ import styles from "./PersonalData.module.css";
 
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-
-// import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { BasicSelect } from "../Select/Select";
 import { BasicButton } from "../BasicButton/BasicButton";
@@ -70,9 +68,24 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
       </div>
       <div className={styles.inputs}>
         <div className={styles.leftInputs}>
-          <Input type="text" id="name" label="Nome Completo" />
-          <Input type="text" id="mothersName" label="Nome da Completo da Mãe" />
-          <Input type="text" id="fathersName" label="Nome Completo do Pai" />
+          <Input
+            type="text"
+            id="name"
+            label="Nome Completo"
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            id="mothersName"
+            label="Nome da Completo da Mãe"
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            id="fathersName"
+            label="Nome Completo do Pai"
+            onChange={handleChange}
+          />
           <BasicSelect
             label="Nacionalidade"
             options={nationality}
@@ -94,17 +107,24 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
             onChange={(e) => setMaritalStatusSelect(e.target.value)}
           />
           <Input
-            type="number"
+            type="text"
             id="dateOfBirth"
             label="Data de Nascimento"
             mask="99/99/9999"
+            onChange={handleChange}
           />
-          <Input type="text" id="cityOfBirth" label="Cidade de Nascimento" />
+          <Input
+            type="text"
+            id="cityOfBirth"
+            label="Cidade de Nascimento"
+            onChange={handleChange}
+          />
           <Input
             type="text"
             id="stateOfBirth"
             label="Estado de Nascimento"
             disabled
+            onChange={handleChange}
           />
           <BasicSelect
             label="Grau de Instrução"
