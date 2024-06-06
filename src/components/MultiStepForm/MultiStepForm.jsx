@@ -3,6 +3,7 @@ import { PersonalData } from "./PersonalData";
 import { Documents } from "./Documents";
 import { Address } from "./Address";
 import { JobInformation } from "./JobInformation";
+import { Contact } from "./Contact";
 
 export const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -42,6 +43,15 @@ export const MultiStepForm = () => {
       case 4:
         return (
           <JobInformation
+            formData={formData}
+            setFormData={setFormData}
+            prevStep={prevStep}
+            nextStep={nextStep}
+          />
+        );
+      case 5:
+        return (
+          <Contact
             formData={formData}
             setFormData={setFormData}
             prevStep={prevStep}

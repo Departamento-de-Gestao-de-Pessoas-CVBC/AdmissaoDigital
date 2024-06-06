@@ -1,0 +1,67 @@
+import styles from "./Contact.module.css";
+import * as React from "react";
+
+import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+
+import { Input } from "../Input/Input";
+import { BasicButton } from "../BasicButton/BasicButton";
+
+export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  return (
+    <div className={styles.contact}>
+      <div className={styles.title}>
+        <h1>CONTATO</h1>
+      </div>
+      <div className={styles.inputs}>
+        <div className={styles.leftInputs}>
+          <Input
+            type="number"
+            id="phoneNumber1"
+            label="Celular 1"
+            mask="(99) 9 9999-9999"
+            onChange={handleChange}
+          />
+          <Input
+            type="number"
+            id="phoneNumber2"
+            label="Celular 2"
+            mask="(99) 9 9999-9999"
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.rightInputs}>
+          <Input
+            type="email"
+            id="email1"
+            label="Email 1"
+            onChange={handleChange}
+          />
+          <Input
+            type="email"
+            id="email2"
+            label="Email 2"
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+      <div className={styles.buttons}>
+        <BasicButton
+          title="Voltar"
+          startIcon={<ArrowBackOutlinedIcon />}
+          onClick={prevStep}
+        />
+        <BasicButton
+          title="Avançar"
+          startIcon={<ArrowForwardOutlinedIcon />}
+          onClick={nextStep}
+        />
+      </div>
+    </div>
+  );
+};
