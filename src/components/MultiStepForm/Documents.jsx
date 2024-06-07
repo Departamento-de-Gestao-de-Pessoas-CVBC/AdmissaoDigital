@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import styles from "./Documents.module.css";
 
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
@@ -60,52 +60,64 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
         <div className={styles.leftInputs}>
           <Input
             type="number"
-            id="cpf"
+            name="cpf"
             label="CPF"
             mask="999.999.999-99"
+            value={formData.cpf}
             onChange={handleChange}
           />
           <Input
             type="number"
-            id="pis"
+            name="pis"
             label="PIS"
             mask="999.99999.99.9"
+            value={formData.pis}
             onChange={handleChange}
           />
-          <Input type="number" id="rg" label="RG" onChange={handleChange} />
+          <Input
+            type="number"
+            name="rg"
+            label="RG"
+            value={formData.rg}
+            onChange={handleChange}
+          />
           <Input
             type="text"
-            id="expRg"
+            name="expRg"
             label="Expedidor do RG"
-            value={expRg}
+            value={formData.expRg}
             onChange={handleChange}
           />
         </div>
         <div className={styles.rightInputs}>
           <BasicSelect
             label="UF RG"
+            name="ufRg"
             options={UFRG}
-            value={UFRGSelect}
-            onChange={(e) => setUFRGSelect(e.target.value)}
-          />
-          <Input
-            type="number"
-            id="reservist"
-            label="Nº Reservista"
-            mask="999999999999"
+            value={formData.ufRg}
             onChange={handleChange}
           />
           <Input
             type="number"
-            id="voterRegistration"
+            name="reservist"
+            label="Nº Reservista"
+            mask="999999999999"
+            value={formData.reservist}
+            onChange={handleChange}
+          />
+          <Input
+            type="number"
+            name="voterRegistration"
             label="Título de Eleitor"
             mask="999999999999"
+            value={formData.voterRegistration}
             onChange={handleChange}
           />
           <Input
             type="text"
-            id="electoralZone"
+            name="electoralZone"
             label="Zona Eleitoral"
+            value={formData.electoralZone}
             onChange={handleChange}
           />
         </div>
@@ -113,8 +125,9 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
       <div className={styles.alone}>
         <Input
           type="text"
-          id="pollingStation"
+          name="pollingStation"
           label="Seção Eleitoral"
+          value={formData.pollingStation}
           onChange={handleChange}
         />
       </div>

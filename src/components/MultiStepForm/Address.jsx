@@ -32,6 +32,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             type="number"
             id="cep"
             label="CEP"
+            value={formData.cep}
             mask="99999-999"
             onChange={handleChange}
           />
@@ -40,13 +41,14 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             type="text"
             id="neighborhood"
             label="Bairro"
+            value={formData.neighborhood}
             onChange={handleChange}
           />
           <BasicSelect
             label="Logradouro"
             options={logradouro}
-            value={logradouroSelect}
-            onChange={(e) => setLogradouroSelect(e.target.value)}
+            value={formData.logradouroSelect}
+            onChange={handleChange}
           />
         </div>
         <div className={styles.rightInputs}>
@@ -54,24 +56,28 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             type="text"
             id="address"
             label="Endereço"
+            value={formData.address}
             onChange={handleChange}
           />
           <Input
             type="text"
             id="stateOfResidence"
             label="Estado de Residência"
+            value={formData.stateOfResidence}
             onChange={handleChange}
           />
           <Input
             type="text"
             id="residenceNumber"
             label="Número da Residência"
+            value={formData.residenceNumber}
             onChange={handleChange}
           />
           <Input
             type="text"
             id="complement"
             label="Complemento"
+            value={formData.complement}
             onChange={handleChange}
           />
         </div>

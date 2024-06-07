@@ -114,16 +114,16 @@ export const JobInformation = ({
           <BasicSelect
             label="Cargo"
             options={responsibility}
-            value={responsibilitySelect}
-            onChange={(e) => setResponsibilitySelect(e.target.value)}
+            value={formData.responsibilitySelect}
+            onChange={handleChange}
           />
         </div>
         <div className={styles.rightInputs}>
           <BasicSelect
             label="Dependentes"
             options={dependentsOptions}
-            value={dependentsSelect}
-            onChange={(e) => setDependentsSelect(e.target.value)}
+            value={formData.dependentsSelect}
+            onChange={handleChange}
           />
         </div>
       </div>

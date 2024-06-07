@@ -24,6 +24,7 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
             type="number"
             id="phoneNumber1"
             label="Celular 1"
+            value={formData.phoneNumber1}
             mask="(99) 9 9999-9999"
             onChange={handleChange}
           />
@@ -31,6 +32,7 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
             type="number"
             id="phoneNumber2"
             label="Celular 2"
+            value={formData.phoneNumber2}
             mask="(99) 9 9999-9999"
             onChange={handleChange}
           />
@@ -40,12 +42,14 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
             type="email"
             id="email1"
             label="Email 1"
+            value={formData.email1}
             onChange={handleChange}
           />
           <Input
             type="email"
             id="email2"
             label="Email 2"
+            value={formData.email2}
             onChange={handleChange}
           />
         </div>

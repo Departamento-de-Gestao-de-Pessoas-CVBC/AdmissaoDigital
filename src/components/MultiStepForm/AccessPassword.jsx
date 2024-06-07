@@ -27,6 +27,7 @@ export const AccessPassword = ({
           type="password"
           id="password"
           label="Crie uma Senha"
+          value={formData.password}
           onChange={handleChange}
         />
       </div>

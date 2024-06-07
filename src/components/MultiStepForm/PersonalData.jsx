@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import styles from "./PersonalData.module.css";
 
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
@@ -71,76 +71,87 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
         <div className={styles.leftInputs}>
           <Input
             type="text"
-            id="name"
+            name="name"
             label="Nome Completo"
+            value={formData.name}
             onChange={handleChange}
           />
           <Input
             type="text"
-            id="mothersName"
-            label="Nome da Completo da Mãe"
+            name="mothersName"
+            label="Nome Completo da Mãe"
+            value={formData.mothersName}
             onChange={handleChange}
           />
           <Input
             type="text"
-            id="fathersName"
+            name="fathersName"
             label="Nome Completo do Pai"
+            value={formData.fathersName}
             onChange={handleChange}
           />
           <BasicSelect
             label="Nacionalidade"
+            name="nationality"
             options={nationality}
-            value={nationalitySelect}
-            onChange={(e) => setNationalitySelect(e.target.value)}
+            value={formData.nationality}
+            onChange={handleChange}
           />
           <BasicSelect
             label="Gênero"
+            name="gender"
             options={gender}
-            value={genderSelect}
-            onChange={(e) => setGenderSelect(e.target.value)}
+            value={formData.gender}
+            onChange={handleChange}
           />
         </div>
         <div className={styles.rightInputs}>
           <BasicSelect
             label="Estado Civil"
+            name="maritalStatus"
             options={maritalStatus}
-            value={maritalStatusSelect}
-            onChange={(e) => setMaritalStatusSelect(e.target.value)}
+            value={formData.maritalStatus}
+            onChange={handleChange}
           />
           <Input
             type="text"
-            id="dateOfBirth"
+            name="dateOfBirth"
             label="Data de Nascimento"
             mask="99/99/9999"
+            value={formData.dateOfBirth}
             onChange={handleChange}
           />
           <Input
             type="text"
-            id="cityOfBirth"
+            name="cityOfBirth"
             label="Cidade de Nascimento"
+            value={formData.cityOfBirth}
             onChange={handleChange}
           />
           <Input
             type="text"
-            id="stateOfBirth"
+            name="stateOfBirth"
             label="Estado de Nascimento"
-            disabled
+            value={formData.stateOfBirth}
             onChange={handleChange}
+            disabled
           />
           <BasicSelect
             label="Grau de Instrução"
+            name="levelOfEducation"
             options={levelOfEducation}
-            value={levelOfEducationSelect}
-            onChange={(e) => setLevelOfEducationSelect(e.target.value)}
+            value={formData.levelOfEducation}
+            onChange={handleChange}
           />
         </div>
       </div>
       <div className={styles.alone}>
         <BasicSelect
           label="Raça/Cor"
+          name="breed"
           options={breed}
-          value={breedSelect}
-          onChange={(e) => setBreedSelect(e.target.value)}
+          value={formData.breed}
+          onChange={handleChange}
         />
       </div>
       <div className={styles.buttons}>
