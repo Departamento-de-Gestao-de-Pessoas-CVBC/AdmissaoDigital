@@ -36,7 +36,6 @@ export const AccessPassword = ({
           title="Voltar"
           startIcon={<ArrowBackOutlinedIcon />}
           onClick={prevStep}
-          disabled
         />
         <BasicButton
           title="Finalizar"
