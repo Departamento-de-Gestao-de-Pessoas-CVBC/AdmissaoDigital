@@ -17,7 +17,7 @@ export const MultiStepForm = () => {
     switch (currentStep) {
       case 1:
         return (
-          <AccessPassword
+          <PersonalData
             formData={formData}
             setFormData={setFormData}
             nextStep={nextStep}
@@ -53,6 +53,15 @@ export const MultiStepForm = () => {
       case 5:
         return (
           <Contact
+            formData={formData}
+            setFormData={setFormData}
+            prevStep={prevStep}
+            nextStep={nextStep}
+          />
+        );
+      case 6:
+        return (
+          <AccessPassword
             formData={formData}
             setFormData={setFormData}
             prevStep={prevStep}
