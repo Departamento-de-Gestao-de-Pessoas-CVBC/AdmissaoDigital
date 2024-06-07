@@ -1,0 +1,29 @@
+DEMANDAS
+
+Expedidor RG não está ficando automaticamente maiúsculo
+
+CEP está digitando em branco
+
+Cidade não está salvando
+
+Bairro não está dando para digitar
+
+Logradouro não está salvando
+
+Endereço não está dando para digitar
+
+Estado de Residência não está dando para digitar
+
+Número da Residência não está dando para digitar
+
+Complemento não está dando para digitar
+
+Cargo não está salvando
+
+Dependentes não está salvando e quando é escolhida a opção "sim", não carrega a aba para preenchimento.
+
+Celular está digitando em branco
+
+Email não está dando para digitar
+
+Senha não está dando para digitar
