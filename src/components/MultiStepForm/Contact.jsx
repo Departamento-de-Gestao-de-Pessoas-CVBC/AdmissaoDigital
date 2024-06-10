@@ -21,16 +21,18 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
       <div className={styles.inputs}>
         <div className={styles.leftInputs}>
           <Input
-            type="number"
+            type="text"
             id="phoneNumber1"
+            name="phoneNumber1"
             label="Celular 1"
             value={formData.phoneNumber1}
             mask="(99) 9 9999-9999"
             onChange={handleChange}
           />
           <Input
-            type="number"
+            type="text"
             id="phoneNumber2"
+            name="phoneNumber2"
             label="Celular 2"
             value={formData.phoneNumber2}
             mask="(99) 9 9999-9999"
@@ -41,6 +43,7 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
           <Input
             type="email"
             id="email1"
+            name="email1"
             label="Email 1"
             value={formData.email1}
             onChange={handleChange}
@@ -48,6 +51,7 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
           <Input
             type="email"
             id="email2"
+            name="email2"
             label="Email 2"
             value={formData.email2}
             onChange={handleChange}

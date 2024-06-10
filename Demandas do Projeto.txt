@@ -22,8 +22,8 @@ Cargo não está salvando - RESOLVIDO
 
 Dependentes não está salvando e quando é escolhida a opção "sim", não carrega a aba para preenchimento. - RESOLVIDO
 
-Celular está digitando em branco
+Celular está digitando em branco - RESOLVIDO
 
-Email não está dando para digitar
+Email não está dando para digitar - RESOLVIDO
 
 Senha não está dando para digitar
