@@ -26,8 +26,17 @@ export const AccessPassword = ({
         <Input
           type="password"
           id="password"
+          name="password"
           label="Crie uma Senha"
           value={formData.password}
+          onChange={handleChange}
+        />
+        <Input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          label="Confirme Senha"
+          value={formData.confirmPassword}
           onChange={handleChange}
         />
       </div>
