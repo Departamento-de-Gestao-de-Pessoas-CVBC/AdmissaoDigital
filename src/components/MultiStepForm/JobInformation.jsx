@@ -14,9 +14,13 @@ export const JobInformation = ({
   prevStep,
   nextStep,
 }) => {
-  const [responsibilitySelect, setResponsibilitySelect] = React.useState("");
-  const [dependentsSelect, setDependentsSelect] = React.useState("");
-  const [dependents, setDependents] = React.useState([]);
+  const [responsibilitySelect, setResponsibilitySelect] = React.useState(
+    formData.responsibilitySelect || ""
+  );
+  const [dependentsSelect, setDependentsSelect] = React.useState(
+    formData.dependentsSelect || ""
+  );
+  const [dependents, setDependents] = React.useState(formData.dependents || []);
 
   const responsibility = [
     { value: "analistaTI", label: "Analista de Tecnologia da Informação" },
@@ -75,6 +79,8 @@ export const JobInformation = ({
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "responsibilitySelect") setResponsibilitySelect(value);
+    if (name === "dependentsSelect") setDependentsSelect(value);
   };
 
   const addDependent = () => {
@@ -114,7 +120,8 @@ export const JobInformation = ({
           <BasicSelect
             label="Cargo"
             options={responsibility}
-            value={formData.responsibilitySelect}
+            value={responsibilitySelect}
+            name="responsibilitySelect"
             onChange={handleChange}
           />
         </div>
@@ -122,7 +129,8 @@ export const JobInformation = ({
           <BasicSelect
             label="Dependentes"
             options={dependentsOptions}
-            value={formData.dependentsSelect}
+            value={dependentsSelect}
+            name="dependentsSelect"
             onChange={handleChange}
           />
         </div>
@@ -161,15 +169,6 @@ export const JobInformation = ({
             </div>
           ))}
           <div className={styles.dependentButtons}>
-            {dependents.length < 5 && (
-              <BasicButton
-                title="Adicionar Dependente"
-                onClick={addDependent}
-                className={styles.addDependentButton}
-              >
-                Adicionar Dependente
-              </BasicButton>
-            )}
             {dependents.length > 1 && (
               <BasicButton
                 title="Remover Dependente"
@@ -177,6 +176,15 @@ export const JobInformation = ({
                 className={styles.removeDependentButton}
               >
                 Remover Dependente
+              </BasicButton>
+            )}
+            {dependents.length < 5 && (
+              <BasicButton
+                title="Adicionar Dependente"
+                onClick={addDependent}
+                className={styles.addDependentButton}
+              >
+                Adicionar Dependente
               </BasicButton>
             )}
           </div>

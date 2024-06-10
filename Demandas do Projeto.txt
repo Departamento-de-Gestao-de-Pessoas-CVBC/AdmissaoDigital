@@ -18,9 +18,9 @@ Número da Residência não está dando para digitar - RESOLVIDO
 
 Complemento não está dando para digitar - RESOLVIDO
 
-Cargo não está salvando
+Cargo não está salvando - RESOLVIDO
 
-Dependentes não está salvando e quando é escolhida a opção "sim", não carrega a aba para preenchimento.
+Dependentes não está salvando e quando é escolhida a opção "sim", não carrega a aba para preenchimento. - RESOLVIDO
 
 Celular está digitando em branco
 
