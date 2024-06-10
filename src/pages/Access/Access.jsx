@@ -1,9 +1,10 @@
 import styles from "./Access.module.css";
 import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
 
-import { MdAppRegistration, MdLogin } from "react-icons/md";
+import LoginIcon from "@mui/icons-material/Login";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 
-import { Button } from "../../components/Button/Button";
+import { BasicButton } from "../../components/BasicButton/BasicButton";
 
 export const Access = () => {
   return (
@@ -17,8 +18,8 @@ export const Access = () => {
           <h1>Admissão Digital</h1>
         </div>
         <div className={styles.login}>
-          <Button title="Cadastrar" icone={<MdAppRegistration />} />
-          <Button title="Login" icone={<MdLogin />} />
+          <BasicButton title="Cadastrar" startIcon={<AppRegistrationIcon />} />
+          <BasicButton title="Login" startIcon={<LoginIcon />} />
         </div>
       </div>
       <div className={styles.adm}>
