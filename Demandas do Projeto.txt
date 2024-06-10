@@ -2,21 +2,21 @@ DEMANDAS
 
 Expedidor RG não está ficando automaticamente maiúsculo - RESOLVIDO
 
-CEP está digitando em branco
+CEP está digitando em branco - RESOLVIDO
 
-Cidade não está salvando
+Cidade não está salvando - RESOLVIDO
 
-Bairro não está dando para digitar
+Bairro não está dando para digitar - RESOLVIDO
 
-Logradouro não está salvando
+Logradouro não está salvando - RESOLVIDO
 
-Endereço não está dando para digitar
+Endereço não está dando para digitar - RESOLVIDO
 
-Estado de Residência não está dando para digitar
+Estado de Residência não está dando para digitar - RESOLVIDO
 
-Número da Residência não está dando para digitar
+Número da Residência não está dando para digitar - RESOLVIDO
 
-Complemento não está dando para digitar
+Complemento não está dando para digitar - RESOLVIDO
 
 Cargo não está salvando
 

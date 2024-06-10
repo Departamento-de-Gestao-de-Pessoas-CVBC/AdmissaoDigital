@@ -29,18 +29,26 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
       <div className={styles.inputs}>
         <div className={styles.leftInputs}>
           <Input
-            type="number"
+            mask="99999-999"
+            value={formData.cep}
+            onChange={handleChange}
             id="cep"
             label="CEP"
-            value={formData.cep}
-            mask="99999-999"
+            name="cep"
+          />
+          <Input
+            type="text"
+            id="city"
+            label="Cidade"
+            name="city"
+            value={formData.city}
             onChange={handleChange}
           />
-          <Input type="text" id="city" label="Cidade" onChange={handleChange} />
           <Input
             type="text"
             id="neighborhood"
             label="Bairro"
+            name="neighborhood"
             value={formData.neighborhood}
             onChange={handleChange}
           />
@@ -48,6 +56,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             label="Logradouro"
             options={logradouro}
             value={formData.logradouroSelect}
+            name="logradouroSelect"
             onChange={handleChange}
           />
         </div>
@@ -56,6 +65,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             type="text"
             id="address"
             label="Endereço"
+            name="address"
             value={formData.address}
             onChange={handleChange}
           />
@@ -63,13 +73,15 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             type="text"
             id="stateOfResidence"
             label="Estado de Residência"
+            name="stateOfResidence"
             value={formData.stateOfResidence}
             onChange={handleChange}
           />
           <Input
-            type="text"
+            type="number"
             id="residenceNumber"
             label="Número da Residência"
+            name="residenceNumber"
             value={formData.residenceNumber}
             onChange={handleChange}
           />
@@ -77,6 +89,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             type="text"
             id="complement"
             label="Complemento"
+            name="complement"
             value={formData.complement}
             onChange={handleChange}
           />
