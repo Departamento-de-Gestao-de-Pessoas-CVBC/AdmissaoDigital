@@ -1,6 +1,6 @@
 DEMANDAS
 
-Expedidor RG não está ficando automaticamente maiúsculo
+Expedidor RG não está ficando automaticamente maiúsculo - RESOLVIDO
 
 CEP está digitando em branco
 

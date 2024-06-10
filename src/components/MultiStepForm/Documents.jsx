@@ -44,8 +44,8 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
 
   const handleChange = (e) => {
     const { name, value, id } = e.target;
-    if (id === "expRg") {
-      setExpRg(value.toUpperCase());
+    if (name === "expRg") {
+      setFormData((prev) => ({ ...prev, [name]: value.toUpperCase() }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -114,7 +114,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             onChange={handleChange}
           />
           <Input
-            type="text"
+            type="number"
             name="electoralZone"
             label="Zona Eleitoral"
             value={formData.electoralZone}
@@ -124,7 +124,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
       </div>
       <div className={styles.alone}>
         <Input
-          type="text"
+          type="number"
           name="pollingStation"
           label="Seção Eleitoral"
           value={formData.pollingStation}

@@ -15,11 +15,12 @@ export const MultiStepForm = () => {
     nationality: "",
     gender: "",
     maritalStatus: "",
-    levelOfEducation: "",
-    breed: "",
     dateOfBirth: "",
     cityOfBirth: "",
     stateOfBirth: "",
+    levelOfEducation: "",
+    breed: "",
+
     cpf: "",
     pis: "",
     rg: "",
@@ -29,6 +30,7 @@ export const MultiStepForm = () => {
     voterRegistration: "",
     electoralZone: "",
     pollingStation: "",
+
     cep: "",
     city: "",
     neighborhood: "",
@@ -37,12 +39,15 @@ export const MultiStepForm = () => {
     stateOfResidence: "",
     residenceNumber: "",
     complement: "",
+
     responsibility: "",
     dependents: [],
+
     phoneNumber1: "",
     phoneNumber2: "",
     email1: "",
     email2: "",
+    
     password: "",
     confirmPassword: "",
   });
