@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/global.css";
+import { BrowserRouter } from "react-router-dom";
 
-import { Access } from "./pages/Access/Access";
-// import { Register } from "./pages/Register/Register";
+//import { Access } from "./pages/Access/Access";
+import { Register } from "./pages/Register/Register";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Access />
+    <BrowserRouter>
+    <Register />
+    </BrowserRouter>
+   
   </React.StrictMode>
 );
