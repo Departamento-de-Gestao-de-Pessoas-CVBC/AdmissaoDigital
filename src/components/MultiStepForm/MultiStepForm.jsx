@@ -47,7 +47,7 @@ export const MultiStepForm = () => {
     phoneNumber2: "",
     email1: "",
     email2: "",
-    
+
     password: "",
     confirmPassword: "",
   });

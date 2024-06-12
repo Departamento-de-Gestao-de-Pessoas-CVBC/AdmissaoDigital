@@ -9,8 +9,7 @@ import { Register } from "./pages/Register/Register";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-    <Register />
+      <Register />
     </BrowserRouter>
-   
   </React.StrictMode>
 );
