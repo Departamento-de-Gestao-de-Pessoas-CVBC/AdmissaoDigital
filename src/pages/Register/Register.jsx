@@ -1,5 +1,5 @@
 import styles from "./Register.module.css";
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
 import React, { useState } from "react";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
@@ -14,7 +14,14 @@ export const Register = () => {
     <div className={styles.register}>
       <Header />
       <Routes>
-        <Route path="/" element={<div className={styles.multiStepForm}><MultiStepForm /></div>} />
+        <Route
+          path="/"
+          element={
+            <div className={styles.multiStepForm}>
+              <MultiStepForm />
+            </div>
+          }
+        />
       </Routes>
     </div>
   );
