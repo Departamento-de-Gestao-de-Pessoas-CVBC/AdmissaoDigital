@@ -58,10 +58,33 @@
   .wrapper {
     width: 35rem;
   }
+
+  .title img {
+    width: 40rem;
+  }
+
+  .title h1 {
+    font-size: 4rem;
+  }
+
+  .adm p a {
+    font-size: 2rem;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   .wrapper {
     width: 38rem;
+  }
+  .title img {
+    width: 45rem;
+  }
+
+  .title h1 {
+    font-size: 4.5rem;
+  }
+
+  .adm p a {
+    font-size: 2.2rem;
   }
 }
