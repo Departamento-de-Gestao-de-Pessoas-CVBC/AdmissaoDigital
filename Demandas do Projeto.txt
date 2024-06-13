@@ -1,29 +1,2 @@
 DEMANDAS
 
-Expedidor RG não está ficando automaticamente maiúsculo - RESOLVIDO
-
-CEP está digitando em branco - RESOLVIDO
-
-Cidade não está salvando - RESOLVIDO
-
-Bairro não está dando para digitar - RESOLVIDO
-
-Logradouro não está salvando - RESOLVIDO
-
-Endereço não está dando para digitar - RESOLVIDO
-
-Estado de Residência não está dando para digitar - RESOLVIDO
-
-Número da Residência não está dando para digitar - RESOLVIDO
-
-Complemento não está dando para digitar - RESOLVIDO
-
-Cargo não está salvando - RESOLVIDO
-
-Dependentes não está salvando e quando é escolhida a opção "sim", não carrega a aba para preenchimento. - RESOLVIDO
-
-Celular está digitando em branco - RESOLVIDO
-
-Email não está dando para digitar - RESOLVIDO
-
-Senha não está dando para digitar - RESOLVIDO
