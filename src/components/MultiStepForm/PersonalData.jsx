@@ -59,6 +59,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+<<<<<<< HEAD
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -152,6 +153,39 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
           </div>
         </div>
         <div className={styles.alone}>
+=======
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  return (
+    <div className={styles.personalData}>
+      <div className={styles.title}>
+        <h1>DADOS PESSOAIS</h1>
+      </div>
+      <div className={styles.inputs}>
+        <div className={styles.leftInputs}>
+          <Input
+            type="text"
+            name="name"
+            label="Nome Completo"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            name="mothersName"
+            label="Nome Completo da Mãe"
+            value={formData.mothersName}
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            name="fathersName"
+            label="Nome Completo do Pai"
+            value={formData.fathersName}
+            onChange={handleChange}
+          />
+>>>>>>> parent of da475b1 (Get e Post php usando o user_adm)
           <BasicSelect
             label="Raça/Cor"
             name="breed"
@@ -174,6 +208,32 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
           />
         </div>
       </div>
+<<<<<<< HEAD
     </form>
+=======
+      <div className={styles.alone}>
+        <BasicSelect
+          label="Raça/Cor"
+          name="breed"
+          options={breed}
+          value={formData.breed}
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.buttons}>
+        <BasicButton
+          title="Voltar"
+          startIcon={<ArrowBackOutlinedIcon />}
+          onClick={prevStep}
+          disabled
+        />
+        <BasicButton
+          title="Avançar"
+          startIcon={<ArrowForwardOutlinedIcon />}
+          onClick={nextStep}
+        />
+      </div>
+    </div>
+>>>>>>> parent of da475b1 (Get e Post php usando o user_adm)
   );
 };
