@@ -59,109 +59,21 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-<<<<<<< HEAD
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({...formData, [e.target.name]:e.target.value});
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =async(e)=>{
     e.preventDefault();
-  };
+
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className={styles.personalData}>
-        <div className={styles.title}>
-          <h1>DADOS PESSOAIS</h1>
-        </div>
-
-        <div className={styles.inputs}>
-          <div className={styles.leftInputs}>
-            <Input
-              type="text"
-              name="name"
-              label="Nome Completo"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            <Input
-              type="text"
-              name="mothersName"
-              label="Nome Completo da Mãe"
-              value={formData.mothersName}
-              onChange={handleChange}
-            />
-            <Input
-              type="text"
-              name="fathersName"
-              label="Nome Completo do Pai"
-              value={formData.fathersName}
-              onChange={handleChange}
-            />
-            <BasicSelect
-              label="Nacionalidade"
-              name="nationality"
-              options={nationality}
-              value={formData.nationality}
-              onChange={handleChange}
-            />
-            <BasicSelect
-              label="Gênero"
-              name="gender"
-              options={gender}
-              value={formData.gender}
-              onChange={handleChange}
-            />
-          </div>
-          <div className={styles.rightInputs}>
-            <BasicSelect
-              label="Estado Civil"
-              name="maritalStatus"
-              options={maritalStatus}
-              value={formData.maritalStatus}
-              onChange={handleChange}
-            />
-            <Input
-              type="text"
-              name="dateOfBirth"
-              label="Data de Nascimento"
-              mask="99/99/9999"
-              value={formData.dateOfBirth}
-              onChange={handleChange}
-            />
-            <Input
-              type="text"
-              name="cityOfBirth"
-              label="Cidade de Nascimento"
-              value={formData.cityOfBirth}
-              onChange={handleChange}
-            />
-            <Input
-              type="text"
-              name="stateOfBirth"
-              label="Estado de Nascimento"
-              value={formData.stateOfBirth}
-              onChange={handleChange}
-              disabled
-            />
-            <BasicSelect
-              label="Grau de Instrução"
-              name="levelOfEducation"
-              options={levelOfEducation}
-              value={formData.levelOfEducation}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className={styles.alone}>
-=======
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  return (
+    <form onSubmit={ handleSubmit}>
     <div className={styles.personalData}>
       <div className={styles.title}>
         <h1>DADOS PESSOAIS</h1>
       </div>
+      
       <div className={styles.inputs}>
         <div className={styles.leftInputs}>
           <Input
@@ -185,32 +97,61 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
             value={formData.fathersName}
             onChange={handleChange}
           />
->>>>>>> parent of da475b1 (Get e Post php usando o user_adm)
           <BasicSelect
-            label="Raça/Cor"
-            name="breed"
-            options={breed}
-            value={formData.breed}
+            label="Nacionalidade"
+            name="nationality"
+            options={nationality}
+            value={formData.nationality}
+            onChange={handleChange}
+          />
+          <BasicSelect
+            label="Gênero"
+            name="gender"
+            options={gender}
+            value={formData.gender}
             onChange={handleChange}
           />
         </div>
-        <div className={styles.buttons}>
-          <BasicButton
-            title="Voltar"
-            startIcon={<ArrowBackOutlinedIcon />}
-            onClick={prevStep}
+        <div className={styles.rightInputs}>
+          <BasicSelect
+            label="Estado Civil"
+            name="maritalStatus"
+            options={maritalStatus}
+            value={formData.maritalStatus}
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            name="dateOfBirth"
+            label="Data de Nascimento"
+            mask="99/99/9999"
+            value={formData.dateOfBirth}
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            name="cityOfBirth"
+            label="Cidade de Nascimento"
+            value={formData.cityOfBirth}
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
+            name="stateOfBirth"
+            label="Estado de Nascimento"
+            value={formData.stateOfBirth}
+            onChange={handleChange}
             disabled
           />
-          <BasicButton
-            title="Avançar"
-            startIcon={<ArrowForwardOutlinedIcon />}
-            onClick={nextStep}
+          <BasicSelect
+            label="Grau de Instrução"
+            name="levelOfEducation"
+            options={levelOfEducation}
+            value={formData.levelOfEducation}
+            onChange={handleChange}
           />
         </div>
       </div>
-<<<<<<< HEAD
-    </form>
-=======
       <div className={styles.alone}>
         <BasicSelect
           label="Raça/Cor"
@@ -234,6 +175,6 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
         />
       </div>
     </div>
->>>>>>> parent of da475b1 (Get e Post php usando o user_adm)
+    </form>
   );
 };
