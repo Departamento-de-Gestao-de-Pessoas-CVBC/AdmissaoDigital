@@ -1,4 +1,8 @@
+import React, { useState } from "react";
 import styles from "./AccessPassword.module.css";
+
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import DoneIcon from "@mui/icons-material/Done";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
@@ -6,16 +10,7 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import { BasicButton } from "../BasicButton/BasicButton";
 import { Input } from "../Input/Input";
 
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
-export const AccessPassword = ({
-  formData,
-  setFormData,
-  nextStep,
-  prevStep,
-}) => {
+export const AccessPassword = ({ formData, setFormData, prevStep }) => {
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +29,7 @@ export const AccessPassword = ({
     if (res.data.success) {
       setTimeout(() => {
         setMessage(res.data.success); /// crie um alerta que apareça depois do clique, mostrando message
-        navigate(""); ////// MUDA AQUI LUIZ PRAIR PRA ALGUMA PAGINA DEPOIS DO CADASTRO
+        // navigate("/");
       }, 2000);
     }
   };
@@ -71,7 +66,7 @@ export const AccessPassword = ({
           <BasicButton
             title="Finalizar"
             startIcon={<DoneIcon />}
-            onClick={handleSubmit}
+            onClick={(handleSubmit) => navigate("/")}
           />
         </div>
       </div>

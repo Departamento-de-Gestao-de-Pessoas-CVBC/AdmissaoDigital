@@ -3,10 +3,13 @@ import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
 
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import { useNavigate } from "react-router-dom";
 
 import { BasicButton } from "../../components/BasicButton/BasicButton";
 
 export const Access = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.access}>
       <div className={styles.wrapper}>
@@ -18,7 +21,11 @@ export const Access = () => {
           <h1>Admissão Digital</h1>
         </div>
         <div className={styles.login}>
-          <BasicButton title="Cadastrar" startIcon={<AppRegistrationIcon />} />
+          <BasicButton
+            title="Cadastrar-se"
+            startIcon={<AppRegistrationIcon />}
+            onClick={() => navigate("/register")}
+          />
           <BasicButton title="Login" startIcon={<LoginIcon />} />
         </div>
       </div>

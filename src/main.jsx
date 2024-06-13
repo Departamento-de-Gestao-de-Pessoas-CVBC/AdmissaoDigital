@@ -1,15 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/global.css";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-//import { Access } from "./pages/Access/Access";
+import { Access } from "./pages/Access/Access";
 import { Register } from "./pages/Register/Register";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Access />,
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Register />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
