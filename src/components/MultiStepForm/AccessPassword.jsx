@@ -17,6 +17,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
   const handleSubmit = async (e) => {
+    navigate("/");
     e.preventDefault();
     // console.log(formData);
     const formValue = { usuario: formData.name, senha: formData.password };
@@ -29,7 +30,6 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
     if (res.data.success) {
       setTimeout(() => {
         setMessage(res.data.success); /// crie um alerta que apareça depois do clique, mostrando message
-        // navigate("/");
       }, 2000);
     }
   };
@@ -66,7 +66,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
           <BasicButton
             title="Finalizar"
             startIcon={<DoneIcon />}
-            onClick={(handleSubmit) => navigate("/")}
+            onClick={handleSubmit}
           />
         </div>
       </div>
