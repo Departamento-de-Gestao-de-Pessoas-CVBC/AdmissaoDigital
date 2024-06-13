@@ -12,6 +12,10 @@
   width: 30rem;
 }
 
+.header img:hover {
+  cursor: pointer;
+}
+
 .header h1 {
   font-size: 2.8rem;
 }
