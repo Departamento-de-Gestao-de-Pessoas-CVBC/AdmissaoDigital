@@ -26,7 +26,11 @@ export const Access = () => {
             startIcon={<AppRegistrationIcon />}
             onClick={() => navigate("/register")}
           />
-          <BasicButton title="Login" startIcon={<LoginIcon />} />
+          <BasicButton
+            title="Login"
+            startIcon={<LoginIcon />}
+            onClick={() => navigate("/login")}
+          />
         </div>
       </div>
       <div className={styles.adm}>

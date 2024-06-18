@@ -1,0 +1,9 @@
+.imgLogin {
+  width: 100%;
+}
+
+.imgLogin img {
+  flex: 1;
+  background: no-repeat center center;
+  background-size: cover;
+}
