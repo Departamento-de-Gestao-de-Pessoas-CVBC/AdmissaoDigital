@@ -11,21 +11,26 @@ export const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.login}>
+    <div className={styles.container}>
+      <div className={styles.imgLogin}>
+        <ImgLogin />
+      </div>
       <div className={styles.wrapper}>
-        <div className={styles.title}>
-          <img src={LogoCamaraAzul} alt="Logo Câmara Azul" />
-          <h1>LOGIN</h1>
+        <div className={styles.logoEtitle}>
+          <img src={LogoCamaraAzul} />
+          <h1>Login</h1>
+        </div>
+        <div className={styles.login}>
+          <Input type="number" id="login" label="Login (CPF)" />
+          <Input type="password" id="password" label="Senha" />
+          <BasicButton title="Teste" onClick={() => navigate("/teste")} />
+        </div>
+        <div className={styles.esqueceuSenha}>
+          <p>
+            <a href="#">Esqueci minha senha</a>
+          </p>
         </div>
       </div>
-      <div className={styles.info}>
-        <Input type="text" id="login" label="Login (CPF)" />
-        <Input type="password" id="password" label="Senha" />
-      </div>
-      <BasicButton 
-        title="Teste"
-        onClick={() => navigate("/teste")}
-      />
     </div>
   );
 };

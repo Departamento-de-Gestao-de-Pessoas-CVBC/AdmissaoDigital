@@ -22,7 +22,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost/ADMISSAODIGITAL/API/user.php",
+        "http://localhost/ADMISSAODIGITAL/API/user.php", // LUIZ PATH
         formValue
       );
 

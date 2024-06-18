@@ -1,19 +1,96 @@
-.login {
+/* Container */
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
-  gap: 10rem;
   height: 100vh;
+  gap: 3rem;
 }
 
-.title img {
-    width: 30rem;
+/* Imagem Login */
+.imgLogin {
+  display: none;
 }
 
-.info {
+/* Wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo da Câmara */
+.logoEtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoEtitle img {
+  width: 30rem;
+}
+
+.logoEtitle h1 {
+  font-size: 3.5rem;
+  color: var(--camaraAzul);
+}
+
+/* Login */
+.login {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  padding: 3rem;
+  width: 100%;
+}
+
+/* Esqueceu Senha */
+.esqueceuSenha p a {
+  font-size: 1.8rem;
+  color: var(--camaraAzul);
+  transition: all 0.2s;
+}
+
+.esqueceuSenha p a:hover {
+  color: var(--camaraAmarelo);
+}
+
+/* Estilos para Tablets */
+@media screen and (min-width: 745px) {
+  .logoEtitle img {
+    width: 40rem;
+  }
+
+  .logoEtitle h1 {
+    font-size: 4rem;
+  }
+
+  .esqueceuSenha p a {
+    font-size: 2rem;
+  }
+}
+
+/* Estilos para Computadores */
+@media screen and (min-width: 1525px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+  }
+
+  .imgLogin {
+    display: block;
+  }
+
+  .logoEtitle img {
+    display: none;
+  }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
 }
