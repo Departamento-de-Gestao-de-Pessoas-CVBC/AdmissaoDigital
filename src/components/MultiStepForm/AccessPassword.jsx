@@ -6,16 +6,10 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import { BasicButton } from "../BasicButton/BasicButton";
 import { Input } from "../Input/Input";
 
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const AccessPassword = ({
-  formData,
-  setFormData,
-  nextStep,
-  prevStep,
-}) => {
+export const AccessPassword = ({ formData, setFormData, prevStep }) => {
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +21,7 @@ export const AccessPassword = ({
     const formValue = { usuario: formData.name, senha: formData.password };
     //const [message, setMessage]= useState(''); TEM QUE CONFIGURAR AINDA
     const res = await axios.post(
-      "http://localhost/teste/ADMISSAODIGITAL/api/user.php",
+      "http://localhost/ADMISSAODIGITAL/API/user.php",
       formValue
     );
 
