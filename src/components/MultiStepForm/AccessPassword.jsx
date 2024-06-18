@@ -15,21 +15,25 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(formData);
     const formValue = { usuario: formData.name, senha: formData.password };
-    //const [message, setMessage]= useState(''); TEM QUE CONFIGURAR AINDA
-    const res = await axios.post(
-      "http://localhost/ADMISSAODIGITAL/API/user.php",
-      formValue
-    );
 
-    if (res.data.success) {
-      setTimeout(() => {
-        setMessage(res.data.success); /// crie um alerta que apareça depois do clique, mostrando message
-        navigate("/"); ////// MUDA AQUI LUIZ PRAIR PRA ALGUMA PAGINA DEPOIS DO CADASTRO
-      }, 2000);
+    try {
+      const res = await axios.post(
+        "http://localhost/ADMISSAODIGITAL/API/user.php",
+        formValue
+      );
+
+      if (res.data.success) {
+        navigate("/");
+      } else {
+        setMessage("Falha ao criar usuário. Tente novamente.");
+      }
+    } catch (error) {
+      console.error("There was an error submitting the form!", error);
+      setMessage("Erro ao enviar o formulário. Tente novamente.");
     }
   };
   return (
