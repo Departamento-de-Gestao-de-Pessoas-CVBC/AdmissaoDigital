@@ -1,9 +1,10 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-const textColor = "#0051c2";
-const borderColor = "#0051c2";
-const bgColor = "#ffffff";
+const textColor = "#ffffff";
+const borderColor = "#ffffff";
+const bgColor = "#0051c2";
+const disabledColor = "grey";
 
 export const BasicButton = ({ title, startIcon, onClick, disabled }) => {
   return (
@@ -13,9 +14,9 @@ export const BasicButton = ({ title, startIcon, onClick, disabled }) => {
       onClick={onClick}
       disabled={disabled}
       sx={{
-        color: disabled ? "grey" : textColor,
-        background: bgColor,
-        borderColor: disabled ? "grey" : borderColor,
+        color: disabled ? disabledColor : textColor,
+        background: disabled ? "lightgrey" : bgColor,
+        borderColor: disabled ? disabledColor : borderColor,
         fontSize: "1.2rem",
         padding: "1rem 2rem",
         "@media (min-width: 745px)": {
@@ -27,16 +28,16 @@ export const BasicButton = ({ title, startIcon, onClick, disabled }) => {
           padding: "1.4rem 2.4rem",
         },
         "&:hover": {
-          color: disabled ? "grey" : textColor,
-          background: bgColor,
-          borderColor: disabled ? "grey" : borderColor,
+          color: disabled ? disabledColor : textColor,
+          background: disabled ? "lightgrey" : bgColor,
+          borderColor: disabled ? disabledColor : borderColor,
           boxShadow: disabled ? "none" : "0px 0px 3px rgba(0, 0, 0, 0.677)",
           "& .MuiButton-startIcon": {
-            color: disabled ? "grey" : textColor,
+            color: disabled ? disabledColor : textColor,
           },
         },
         "& .MuiButton-startIcon": {
-          color: disabled ? "grey" : textColor,
+          color: disabled ? disabledColor : textColor,
         },
       }}
     >

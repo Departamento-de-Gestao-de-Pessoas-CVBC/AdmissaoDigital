@@ -9,12 +9,12 @@ import { BasicSelect } from "../Select/Select";
 import { BasicButton } from "../BasicButton/BasicButton";
 
 export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
-  const [nationalitySelect, setNationalitySelect] = React.useState("");
-  const [genderSelect, setGenderSelect] = React.useState("");
-  const [maritalStatusSelect, setMaritalStatusSelect] = React.useState("");
-  const [levelOfEducationSelect, setLevelOfEducationSelect] =
-    React.useState("");
-  const [breedSelect, setBreedSelect] = React.useState("");
+  // const [nationalitySelect, setNationalitySelect] = React.useState("");
+  // const [genderSelect, setGenderSelect] = React.useState("");
+  // const [maritalStatusSelect, setMaritalStatusSelect] = React.useState("");
+  // const [levelOfEducationSelect, setLevelOfEducationSelect] =
+  //   React.useState("");
+  // const [breedSelect, setBreedSelect] = React.useState("");
 
   const nationality = [
     { value: 10, label: "Brasileiro" },
@@ -72,7 +72,6 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
         <div className={styles.title}>
           <h1>DADOS PESSOAIS</h1>
         </div>
-
         <div className={styles.inputs}>
           <div className={styles.leftInputs}>
             <Input

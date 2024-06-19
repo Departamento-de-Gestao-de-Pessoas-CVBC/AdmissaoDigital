@@ -42,7 +42,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
       numero_pis: formData.pis,
       numero_rg: formData.rg,
       expedidor_rg: formData.expRg,
-      data_expedicao_rg: formData.ufRg, ///// alterar aqui quando o luiz crar o campo
+      data_expedicao_rg: formData.dateExpRg,
       uf_expedicao_rg: formData.ufRg,
       titulo_eleitor: formData.voterRegistration,
       titulo_eleitor_zona: formData.electoralZone,

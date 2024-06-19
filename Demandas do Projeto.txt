@@ -2,7 +2,9 @@ DEMANDAS
 
 Criar página de login
 
-Adicionar DATA DE EXPEDIÇÃO DO RG
+Resolver problema do "enter" durante o preenchimento do form
+
+Diminuir tamanho do botão no login
 
 meu tutorial nao apaga nao
 

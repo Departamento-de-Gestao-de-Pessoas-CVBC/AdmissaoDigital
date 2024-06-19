@@ -25,6 +25,7 @@ export const MultiStepForm = () => {
     pis: "",
     rg: "",
     expRg: "",
+    dateExpRg: "",
     ufRg: "",
     reservist: "",
     voterRegistration: "",
