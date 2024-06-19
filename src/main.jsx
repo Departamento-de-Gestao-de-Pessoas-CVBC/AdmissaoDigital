@@ -7,6 +7,7 @@ import { Access } from "./pages/Access/Access";
 import { Register } from "./pages/Register/Register";
 import { Login } from "./pages/Login/Login";
 import { PaginaEmBranco } from "./pages/PaginaEmBranco/PaginaEmBranco";
+import { Protected } from "./pages/Protected/Protected";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: "teste",
-    element: <PaginaEmBranco />,
+    element: <Protected Component={PaginaEmBranco}/>,
   },
 ]);
 
