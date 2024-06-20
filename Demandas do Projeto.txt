@@ -5,6 +5,8 @@ Criar página de login
 Resolver problema do "enter" durante o preenchimento do form
 
 Diminuir tamanho do botão no login
+ 
+ - Autocomplete para as cidades no cadastro
 
 meu tutorial nao apaga nao
 

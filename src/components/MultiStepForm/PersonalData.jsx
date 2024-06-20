@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./PersonalData.module.css";
+import citiesData from "../../../Cidades.json";
 
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
@@ -7,6 +8,8 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import { Input } from "../Input/Input";
 import { BasicSelect } from "../Select/Select";
 import { BasicButton } from "../BasicButton/BasicButton";
+import Autosuggest from "react-autosuggest";
+
 
 export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
   // const [nationalitySelect, setNationalitySelect] = React.useState("");
@@ -15,46 +18,54 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
   // const [levelOfEducationSelect, setLevelOfEducationSelect] =
   //   React.useState("");
   // const [breedSelect, setBreedSelect] = React.useState("");
+  
+
 
   const nationality = [
     { value: 10, label: "Brasileiro" },
-    { value: "paraguaio", label: "Paraguaio" },
+    { value: 20, label: "Brasileiro Naturalizado" },
+    { value: 50, label: "Outros" },
   ];
 
   const gender = [
-    { value: "masculino", label: "Masculino" },
-    { value: "feminino", label: "Feminino" },
+    { value: "M", label: "Masculino" },
+    { value: "F", label: "Feminino" },
   ];
 
   const maritalStatus = [
-    { value: "solteiro", label: "Solteiro(a)" },
-    { value: "casado", label: "Casado(a)" },
-    { value: "separado", label: "Separado(a)" },
-    { value: "divorciado", label: "Divorciado(a)" },
-    { value: "viuvo", label: "Viúvo(a)" },
-    { value: "uniaoEstavel", label: "União Estável" },
+    { value: "1", label: "Solteiro(a)" },
+    { value: "2", label: "Casado(a)" },
+    { value: "6", label: "Separado(a)" },
+    { value: "3", label: "Divorciado(a)" },
+    { value: "4", label: "Viúvo(a)" },
+    { value: "7", label: "União Estável" },
+    { value: "5", label: "Concubinato" },
+    { value: "9", label: "Outros" },
   ];
 
   const levelOfEducation = [
-    { value: "analfabeto", label: "Analfabeto(a)" },
-    { value: "incompleto1", label: "1º Grau Incompleto" },
-    { value: "completo1", label: "1º Grau Completo" },
-    { value: "incompleto2", label: "2º Grau Incompleto" },
-    { value: "completo2", label: "2º Grau Completo" },
-    { value: "supIncompleto", label: "Superior Incompleto" },
-    { value: "supCompleto", label: "Superior Completo" },
-    { value: "posGraduacao", label: "Pós-graduação" },
+    { value: "01", label: "Analfabeto(a)" },
+    { value: "02", label: "4ª Série Incompleto" },
+    { value: "03", label: "4ª Série Completa" },
+    { value: "04", label: "5ª a 8ª Série Completa" },
+    { value: "06", label: "1º Grau Incompleto" },
+    { value: "05", label: "1º Grau Completo" },
+    { value: "06", label: "2º Grau Incompleto" },
+    { value: "07", label: "2º Grau Completo" },
+    { value: "08", label: "Superior Incompleto" },
+    { value: "09", label: "Superior Completo" },
+    { value: "10", label: "Pós-graduação" },
   ];
 
   const breed = [
-    { value: "branca", label: "Branca" },
-    { value: "preta", label: "Preta" },
-    { value: "amarela", label: "Amarela" },
-    { value: "parda", label: "Parda" },
-    { value: "indigena", label: "Indígena" },
-    { value: "mameluco", label: "Mameluco" },
-    { value: "mulato", label: "Mulato" },
-    { value: "cafuzo", label: "Cafuzo" },
+    { value: "01", label: "Branca" },
+    { value: "02", label: "Preta" },
+    { value: "03", label: "Amarela" },
+    { value: "04", label: "Parda" },
+    { value: "05", label: "Indígena" },
+    { value: "06", label: "Mameluco" },
+    { value: "07", label: "Mulato" },
+    { value: "08", label: "Cafuzo" },
   ];
 
   const handleChange = (e) => {
@@ -64,6 +75,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
   };
 
   return (

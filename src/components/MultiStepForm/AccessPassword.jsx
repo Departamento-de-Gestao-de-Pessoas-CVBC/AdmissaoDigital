@@ -5,12 +5,16 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 
 import { BasicButton } from "../BasicButton/BasicButton";
 import { Input } from "../Input/Input";
+import { useState } from "react"; // Importe useState
+
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 export const AccessPassword = ({ formData, setFormData, prevStep }) => {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(null); // Estado para mensagem de erro
+  const [successMessage, setSuccessMessage] = useState(null); // Estado para mensagem de sucesso
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -53,37 +57,43 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
       ddd_telefone_2: formData.phoneNumber2,
       telefone_2: formData.phoneNumber2,
       email_1: formData.email1,
-      email_2: formData.email1,
+      email_2: formData.email2,
       cargo: formData.responsibility,
       senha: formData.password,
       csenha: formData.confirmPassword,
+      dependents: formData.dependents,
     };
 
     try {
       const res = await axios.post(
-       // "http://localhost/ADMISSAODIGITAL/API/user.php", // Luiz Path
-
+        // "http://localhost/ADMISSAODIGITAL/API/user.php", // Luiz Path
         "http://localhost/teste/ADMISSAODIGITAL/api/user.php", // Gus Path
         formValue
       );
 
       if (res.data.success) {
-        console.log(formData); // *** USO PRA TESTAR
+        setSuccessMessage("Usuário criado com sucesso.");
+        setErrorMessage(null);
         navigate("/");
       } else {
-        setMessage("Falha ao criar usuário. Tente novamente.");
+        setErrorMessage("CPF invalido ou já cadastrado. Tente novamente.");
+        setSuccessMessage(null);
       }
     } catch (error) {
       console.error("There was an error submitting the form!", error);
-      setMessage("Erro ao enviar o formulário. Tente novamente.");
+      setErrorMessage("Erro ao enviar o formulário. Tente novamente.");
+      setSuccessMessage(null);
     }
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.accessPassword}>
         <div className={styles.title}>
           <h1>SENHA DE ACESSO</h1>
         </div>
+        {errorMessage && <div className={styles.error}>{errorMessage}</div>}
+        {successMessage && <div className={styles.msg}>{successMessage}</div>}
         <div className={styles.inputs}>
           <Input
             type="password"

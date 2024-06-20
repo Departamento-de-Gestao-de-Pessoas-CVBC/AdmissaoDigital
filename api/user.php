@@ -12,9 +12,29 @@ if ($db_conn === false) {
 
 $method = $_SERVER['REQUEST_METHOD'];
 
+function validaCPF($cpf) {
+    $cpf = preg_replace('/[^0-9]/is', '', $cpf);
+    if (strlen($cpf) != 11) {
+        return false;
+    }
+    if (preg_match('/(\d)\1{10}/', $cpf)) {
+        return false;
+    }
+    for ($t = 9; $t < 11; $t++) {
+        for ($d = 0, $c = 0; $c < $t; $c++) {
+            $d += $cpf[$c] * (($t + 1) - $c);
+        }
+        $d = ((10 * $d) % 11) % 10;
+        if ($cpf[$c] != $d) {
+            return false;
+        }
+    }
+    return true;
+}
+
 switch ($method) {
     case "GET":
-        $alluser = mysqli_query($db_conn, "SELECT * FROM usuario");
+        $alluser = mysqli_query($db_conn, "SELECT * FROM usuarios");
         if (mysqli_num_rows($alluser) > 0) {
             $json_array = array(); // Inicializa o array fora do loop
             while ($row = mysqli_fetch_assoc($alluser)) {
@@ -30,10 +50,8 @@ switch ($method) {
         break;
 
     case "POST":
-        // Recebe e decodifica os dados JSON
         $userpostdata = json_decode(file_get_contents("php://input"));
 
-        // Extrai os dados do objeto JSON
         $nome = $userpostdata->nome;
         $sexo = $userpostdata->sexo;
         $estado_civil = isset($userpostdata->estado_civil) ? $userpostdata->estado_civil : '';
@@ -72,8 +90,7 @@ switch ($method) {
         $cargo = $userpostdata->cargo;
         $senha = $userpostdata->senha;
         $csenha = $userpostdata->csenha;
-
-        // Query de inserção
+        $dependentes = isset($userpostdata->dependents) ? $userpostdata->dependents : [];
 
         // Verificar se as senhas são iguais
         if ($senha !== $csenha) {
@@ -82,14 +99,46 @@ switch ($method) {
             return;
         }
 
-        $query = "INSERT INTO usuarios(nome, sexo, estado_civil, cpf, data_nascimento, cidade_nascimento, estado_nascimento, nacionalidade, grau_instrucao, raca_cor, nome_pai, nome_mae, cep, cidade_residencia, estado_residencia, bairro, tipo_logradouro, logradouro_residencia, numero_residencia, complemento_residencia, numero_pis, numero_rg, expedidor_rg, data_expedicao_rg, uf_expedicao_rg, titulo_eleitor, titulo_eleitor_zona, titulo_eleitor_secao, reservista, ddd_telefone_1, telefone_1, ddd_telefone_2, telefone_2, cargo, senha)
-                  VALUES ('$nome', '$sexo', '$estado_civil', '$cpf', '$data_nascimento', '$cidade_nascimento', '$estado_nascimento', '$nacionalidade', '$grau_instrucao', '$raca_cor', '$nome_pai', '$nome_mae', '$cep', '$cidade_residencia', '$estado_residencia', '$bairro', '$tipo_logradouro', '$logradouro_residencia', '$numero_residencia', '$complemento_residencia', '$numero_pis', '$numero_rg', '$expedidor_rg', '$data_expedicao_rg', '$uf_expedicao_rg', '$titulo_eleitor', '$titulo_eleitor_zona', '$titulo_eleitor_secao', '$reservista', '$ddd_telefone_1', '$telefone_1', '$ddd_telefone_2', '$telefone_2', '$cargo', '$senha')";
+        // Verificar se o CPF é válido
+        if (!validaCPF($cpf)) {
+            $response = ["success" => false, "message" => "CPF inválido."];
+            echo json_encode($response);
+            return;
+        }
+        $hashed_password = password_hash($senha, PASSWORD_DEFAULT);
 
-        // Executar a query
+        $query = "INSERT INTO usuarios(nome, sexo, estado_civil, cpf, data_nascimento, cidade_nascimento, estado_nascimento, nacionalidade, grau_instrucao, raca_cor, nome_pai, nome_mae, cep, cidade_residencia, estado_residencia, bairro, tipo_logradouro, logradouro_residencia, numero_residencia, complemento_residencia, numero_pis, numero_rg, expedidor_rg, data_expedicao_rg, uf_expedicao_rg, titulo_eleitor, titulo_eleitor_zona, titulo_eleitor_secao, reservista, ddd_telefone_1, telefone_1, ddd_telefone_2, telefone_2, email_1,email_2, cargo, senha)
+                  VALUES ('$nome', '$sexo', '$estado_civil', '$cpf', '$data_nascimento', '$cidade_nascimento', '$estado_nascimento', '$nacionalidade', '$grau_instrucao', '$raca_cor', '$nome_pai', '$nome_mae', '$cep', '$cidade_residencia', '$estado_residencia', '$bairro', '$tipo_logradouro', '$logradouro_residencia', '$numero_residencia', '$complemento_residencia', '$numero_pis', '$numero_rg', '$expedidor_rg', '$data_expedicao_rg', '$uf_expedicao_rg', '$titulo_eleitor', '$titulo_eleitor_zona', '$titulo_eleitor_secao', '$reservista', '$ddd_telefone_1', '$telefone_1', '$ddd_telefone_2', '$telefone_2','$email_1','$email_2', '$cargo', '$hashed_password')";
+
         $result = mysqli_query($db_conn, $query);
 
-        // Verificar se a inserção foi bem-sucedida
         if ($result) {
+            $user_id = mysqli_insert_id($db_conn);
+
+            foreach ($dependentes as $dependente) {
+                $dependentName = $dependente->dependentName;
+                $dependentCpf = $dependente->dependentCpf;
+                $dependentDob = $dependente->dependentDob;
+
+                // Verificar se o CPF do dependente é válido
+                if (!validaCPF($dependentCpf)) {
+                    $response = ["success" => false, "message" => "CPF de dependente inválido."];
+                    echo json_encode($response);
+                    return;
+                }
+
+                $query_dependent = "INSERT INTO usuario_dependentes(nome, cpf, data_nasc, id_usuario)
+                                    VALUES ('$dependentName', '$dependentCpf', '$dependentDob', '$user_id')";
+
+                $result_dependent = mysqli_query($db_conn, $query_dependent);
+
+                if (!$result_dependent) {
+                    $response = ["success" => false, "message" => "Erro ao inserir dependente: " . mysqli_error($db_conn)];
+                    echo json_encode($response);
+                    return;
+                }
+            }
+
             $response = ["success" => true, "message" => "Inserção realizada com sucesso."];
             echo json_encode($response);
         } else {
@@ -99,4 +148,3 @@ switch ($method) {
         break;
 }
 ?>
-
