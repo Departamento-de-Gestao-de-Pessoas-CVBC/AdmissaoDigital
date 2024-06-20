@@ -35,7 +35,7 @@ export const Login = () => {
     setTimeout(function(){
         setMsg("");
 
-    }, 5000)
+    }, 5000);
   }, [msg]);
 
   const handleInputChange = (e, type) =>{
@@ -122,10 +122,18 @@ export const Login = () => {
             mask="999.999.999-99"
             value={user} onChange={(e) => handleInputChange(e, "user")}
           />
-          <Input type="password" id="password" value={pass} onChange={(e) => handleInputChange(e, "pass")} label="Senha" />
+          <Input
+          type="password"
+          id="password"
+          value={pass}
+          onChange={(e) => handleInputChange(e, "pass")}
+          label="Senha"
+        />
           <BasicButton title="Teste" onClick={loginSubmit} />
          
         </div>
+        {error && <div className={styles.error}>{error}</div>}
+        {msg && <div className={styles.msg}>{msg}</div>}
         <div className={styles.esqueceuSenha}>
           <p>
             <a href="#">Esqueci minha senha</a>
