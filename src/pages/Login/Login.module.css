@@ -64,11 +64,14 @@
 .esqueceuSenha p a:hover {
   color: var(--camaraAmarelo);
 }
+
+/* Error */
 .error {
   color: red;
   margin-top: 10px;
 }
 
+/* Msg */
 .msg {
   color: green;
   margin-top: 10px;
@@ -91,7 +94,7 @@
     color: red;
     margin-top: 10px;
   }
-  
+
   .msg {
     color: green;
     margin-top: 10px;
@@ -127,10 +130,9 @@
     color: red;
     margin-top: 10px;
   }
-  
+
   .msg {
     color: green;
     margin-top: 10px;
   }
-  
 }
