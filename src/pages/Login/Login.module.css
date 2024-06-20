@@ -65,15 +65,15 @@
   color: var(--camaraAmarelo);
 }
 
-/* Error */
-.error {
-  color: red;
+/* Error Msg */
+.errorMsg {
+  color: var(--vermelhoDeAlerta);
   margin-top: 10px;
 }
 
-/* Msg */
-.msg {
-  color: green;
+/* Aprove Msg */
+.aproveMsg {
+  color: var(--verdeDeAlerta);
   margin-top: 10px;
 }
 
@@ -90,13 +90,13 @@
   .esqueceuSenha p a {
     font-size: 2rem;
   }
-  .error {
-    color: red;
+  .errorMsg {
+    color: var(--vermelhoDeAlerta);
     margin-top: 10px;
   }
 
-  .msg {
-    color: green;
+  .aproveMsg {
+    color: var(--verdeDeAlerta);
     margin-top: 10px;
   }
 }
@@ -126,13 +126,13 @@
     flex-direction: column;
     width: 80%;
   }
-  .error {
-    color: red;
+  .errorMsg {
+    color: var(--vermelhoDeAlerta);
     margin-top: 10px;
   }
 
-  .msg {
-    color: green;
+  .aproveMsg {
+    color: var(--verdeDeAlerta);
     margin-top: 10px;
   }
 }

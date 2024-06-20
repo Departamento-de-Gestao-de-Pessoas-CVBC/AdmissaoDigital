@@ -30,7 +30,7 @@ if($user != "" and  $pass != ""){
 
 
     }else{
-        $result =  "Cpf incorreto!";
+        $result =  "CPF incorreto!";
     }
 }else{
     $result = "";

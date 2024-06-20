@@ -15,8 +15,8 @@ export const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
-  const [error, setError] = useState("");
-  const [msg, setMsg] = useState("");
+  const [errorMsg, setError] = useState("");
+  const [aproveMsg, setMsg] = useState("");
 
   useEffect(() => {
     let login = localStorage.getItem("login");
@@ -34,7 +34,7 @@ export const Login = () => {
     setTimeout(function () {
       setMsg("");
     }, 5000);
-  }, [msg]);
+  }, [aproveMsg]);
 
   const handleInputChange = (e, type) => {
     switch (type) {
@@ -42,14 +42,14 @@ export const Login = () => {
         setError("");
         setUser(e.target.value);
         if (e.target.value == "") {
-          setError("Usuario não pode ser em branco");
+          setError("O campo de login não pode estar vazio.");
         }
         break;
       case "pass":
         setError("");
         setPass(e.target.value);
         if (e.target.value == "") {
-          setError("Senha não pode ser em branco");
+          setError("O campo de senha não pode estar vazio.");
         }
         break;
       default:
@@ -58,7 +58,8 @@ export const Login = () => {
 
   function loginSubmit() {
     if (user !== "" && pass !== "") {
-      var url = "http://localhost/teste/ADMISSAODIGITAL/api/login.php"; //gustavo
+      // var url = "http://localhost/teste/ADMISSAODIGITAL/api/login.php"; //gustavo
+      var url = "http://localhost/ADMISSAODIGITAL/api/login.php"; //Luiz
       var headers = {
         Accept: "application/json",
         "Content-type": "aplication/json",
@@ -75,7 +76,7 @@ export const Login = () => {
         .then((response) => response.json())
         .then((response) => {
           if (
-            response[0].result === "Cpf incorreto!" ||
+            response[0].result === "CPF incorreto!" ||
             response[0].result === "Senha incorreta!"
           ) {
             setError(response[0].result);
@@ -129,10 +130,14 @@ export const Login = () => {
             onChange={(e) => handleInputChange(e, "pass")}
             label="Senha"
           />
-          <BasicButton title="Teste" onClick={loginSubmit} />
+          <BasicButton
+            title="Entrar"
+            onClick={loginSubmit}
+            startIcon={<LoginIcon />}
+          />
         </div>
-        {error && <div className={styles.error}>{error}</div>}
-        {msg && <div className={styles.msg}>{msg}</div>}
+        {errorMsg && <div className={styles.errorMsg}>{errorMsg}</div>}
+        {aproveMsg && <div className={styles.aproveMsg}>{aproveMsg}</div>}
         <div className={styles.esqueceuSenha}>
           <p>
             <a href="#">Esqueci minha senha</a>
