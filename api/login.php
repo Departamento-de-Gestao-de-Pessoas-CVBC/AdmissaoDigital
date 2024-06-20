@@ -31,7 +31,7 @@ if (mysqli_connect_error()) {
             $result = "CPF incorreto!";
         }
     } else {
-        $result = "";
+        $result =  "CPF incorreto!";
     }
 
     $conn->close();
