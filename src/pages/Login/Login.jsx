@@ -141,7 +141,7 @@ export const Login = () => {
           </div>
         )}
         {aproveMsg && (
-          <div className={styles.aproveMsg}>
+          <div className={styles.approveMsg}>
             <FaCheckCircle />
             {aproveMsg}
           </div>

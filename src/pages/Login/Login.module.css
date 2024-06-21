@@ -78,7 +78,7 @@
 }
 
 /* Aprove Msg */
-.aproveMsg {
+.approveMsg {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,7 +106,7 @@
     font-size: 2.4rem;
   }
 
-  .aproveMsg {
+  .approveMsg {
     font-size: 2.4rem;
   }
 }
@@ -141,7 +141,7 @@
     font-size: 2.6rem;
   }
 
-  .aproveMsg {
+  .approveMsg {
     font-size: 2.6rem;
   }
 }
