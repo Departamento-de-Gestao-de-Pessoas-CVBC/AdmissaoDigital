@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Access } from "./pages/Access/Access";
 import { Register } from "./pages/Register/Register";
 import { Login } from "./pages/Login/Login";
-import { PaginaEmBranco } from "./pages/PaginaEmBranco/PaginaEmBranco";
+import { UserInformation } from "./pages/UserInformation/UserInformation";
 import { Protected } from "./pages/Protected/Protected";
 
 const router = createBrowserRouter([
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: "teste",
-    element: <Protected Component={PaginaEmBranco}/>,
+    element: <Protected Component={UserInformation} />,
   },
 ]);
 
