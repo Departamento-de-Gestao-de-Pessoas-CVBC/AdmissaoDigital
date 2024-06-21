@@ -2,18 +2,19 @@ import styles from "./AccessPassword.module.css";
 
 import DoneIcon from "@mui/icons-material/Done";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+import { MdError } from "react-icons/md";
+import { FaCheckCircle } from "react-icons/fa";
 
 import { BasicButton } from "../BasicButton/BasicButton";
 import { Input } from "../Input/Input";
-import { useState } from "react"; // Importe useState
-
+import { useState } from "react";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export const AccessPassword = ({ formData, setFormData, prevStep }) => {
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState(null); // Estado para mensagem de erro
-  const [successMessage, setSuccessMessage] = useState(null); // Estado para mensagem de sucesso
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [approveMessage, setSuccessMessage] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,7 +67,6 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
 
     try {
       const res = await axios.post(
-
         "http://localhost/ADMISSAODIGITAL/API/user.php", // Luiz Path
         // "http://localhost/teste/ADMISSAODIGITAL/api/user.php", // Gus Path
 
@@ -94,8 +94,18 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
         <div className={styles.title}>
           <h1>SENHA DE ACESSO</h1>
         </div>
-        {errorMessage && <div className={styles.error}>{errorMessage}</div>}
-        {successMessage && <div className={styles.msg}>{successMessage}</div>}
+        {errorMessage && (
+          <div className={styles.errorMsg}>
+            <MdError />
+            {errorMessage}
+          </div>
+        )}
+        {approveMessage && (
+          <div className={styles.approveMsg}>
+            <FaCheckCircle />
+            {approveMessage}
+          </div>
+        )}
         <div className={styles.inputs}>
           <Input
             type="password"
