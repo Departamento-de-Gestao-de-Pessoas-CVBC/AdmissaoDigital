@@ -3,13 +3,13 @@ import styles from "./Login.module.css";
 import LogoCamaraAzul from "../../assets/CamaraSemFundoAzul.png";
 
 import LoginIcon from "@mui/icons-material/Login";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import { useNavigate } from "react-router-dom";
 
 import { ImgLogin } from "../../components/ImgLogin/ImgLogin";
 import { Input } from "../../components/Input/Input";
 import { BasicButton } from "../../components/BasicButton/BasicButton";
+import { ReturnButton } from "../../components/ReturnButton/ReturnButton";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -99,12 +99,8 @@ export const Login = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.returnButton}>
-        <BasicButton
-          title="Voltar"
-          startIcon={<ArrowBackIcon />}
-          onClick={() => navigate("/")}
-        />
+      <div className={styles.returnButton} onClick={() => navigate("/")}>
+        <ReturnButton />
       </div>
       <div className={styles.imgLogin}>
         <ImgLogin />
