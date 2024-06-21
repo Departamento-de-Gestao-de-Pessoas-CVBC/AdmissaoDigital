@@ -3,6 +3,8 @@ import styles from "./Login.module.css";
 import LogoCamaraAzul from "../../assets/CamaraSemFundoAzul.png";
 
 import LoginIcon from "@mui/icons-material/Login";
+import { MdError } from "react-icons/md";
+import { FaCheckCircle } from "react-icons/fa";
 
 import { useNavigate } from "react-router-dom";
 
@@ -132,8 +134,18 @@ export const Login = () => {
             startIcon={<LoginIcon />}
           />
         </div>
-        {errorMsg && <div className={styles.errorMsg}>{errorMsg}</div>}
-        {aproveMsg && <div className={styles.aproveMsg}>{aproveMsg}</div>}
+        {errorMsg && (
+          <div className={styles.errorMsg}>
+            <MdError />
+            {errorMsg}
+          </div>
+        )}
+        {aproveMsg && (
+          <div className={styles.aproveMsg}>
+            <FaCheckCircle />
+            {aproveMsg}
+          </div>
+        )}
         <div className={styles.esqueceuSenha}>
           <p>
             <a href="#">Esqueci minha senha</a>

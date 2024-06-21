@@ -67,8 +67,8 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
     try {
       const res = await axios.post(
 
-        // "http://localhost/ADMISSAODIGITAL/API/user.php", // Luiz Path
-        "http://localhost/teste/ADMISSAODIGITAL/api/user.php", // Gus Path
+        "http://localhost/ADMISSAODIGITAL/API/user.php", // Luiz Path
+        // "http://localhost/teste/ADMISSAODIGITAL/api/user.php", // Gus Path
 
         formValue
       );
