@@ -10,7 +10,6 @@ import { BasicSelect } from "../Select/Select";
 import { BasicButton } from "../BasicButton/BasicButton";
 import Autosuggest from "react-autosuggest";
 
-
 export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
   // const [nationalitySelect, setNationalitySelect] = React.useState("");
   // const [genderSelect, setGenderSelect] = React.useState("");
@@ -18,8 +17,6 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
   // const [levelOfEducationSelect, setLevelOfEducationSelect] =
   //   React.useState("");
   // const [breedSelect, setBreedSelect] = React.useState("");
-  
-
 
   const nationality = [
     { value: 10, label: "Brasileiro" },
@@ -75,7 +72,6 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
   };
 
   return (
