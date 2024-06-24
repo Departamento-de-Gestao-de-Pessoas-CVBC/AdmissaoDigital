@@ -58,46 +58,47 @@ export const Login = () => {
     }
   };
 
-  function loginSubmit() {
-    if (user !== "" && pass !== "") {
-      // var url = "http://localhost/teste/ADMISSAODIGITAL/api/login.php"; //gustavo
-      var url = "http://localhost/ADMISSAODIGITAL/api/login.php"; //Luiz
-      var headers = {
-        Accept: "application/json",
-        "Content-type": "aplication/json",
-      };
-      var Data = {
-        user: user,
-        pass: pass,
-      };
-      fetch(url, {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(Data),
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          if (
-            response[0].result === "CPF incorreto!" ||
-            response[0].result === "Senha incorreta!"
-          ) {
-            setError(response[0].result);
-          } else {
-            setMsg(response[0].result);
-            setTimeout(function () {
-              localStorage.setItem("login", true);
-              navigate("/Teste");
-            }, 5000);
-          }
-        })
-        .catch((err) => {
-          setError(err);
-          console.log(err);
-        });
-    } else {
-      setError("Preencha todos os campos!");
+
+
+      function loginSubmit() {
+        if (user !== "" && pass !== "") {
+            var url = "http://localhost/teste/ADMISSAODIGITAL/api/login.php";
+                  //var url = "http://localhost/ADMISSAODIGITAL/api/login.php"; //Luiz
+            var headers = {
+                Accept: "application/json",
+                "Content-type": "application/json",
+            };
+            var Data = {
+                user: user,
+                pass: pass,
+            };
+            fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify(Data),
+            })
+            .then((response) => response.json())
+            .then((response) => {
+                if (response.message === "CPF incorreto!" || response.message === "Senha incorreta!") {
+                    setError(response.message);
+                } else {
+                    setMsg(response.message);
+                    localStorage.setItem("userId", response.userId); // Salva o ID do usuário
+                    setTimeout(function () {
+                        localStorage.setItem("login", true);
+                        navigate("/Teste");
+                    }, 5000);
+                }
+            })
+            .catch((err) => {
+                setError(err.toString());
+                console.log(err);
+            });
+        } else {
+            setError("Preencha todos os campos!");
+        }
     }
-  }
+    
 
   return (
     <div className={styles.container}>

@@ -23,19 +23,21 @@ if (mysqli_connect_error()) {
             $hashed_password_from_db = $row['senha'];
 
             if (password_verify($pass, $hashed_password_from_db)) {
-                $result = "Logado com sucesso! Redirecionando...";
+                $result = array(
+                    "message" => "Logado com sucesso! Redirecionando...",
+                    "userId" => $row['id']
+                );
             } else {
-                $result = "Senha incorreta!";
+                $result = array("message" => "Senha incorreta!");
             }
         } else {
-            $result = "CPF incorreto!";
+            $result = array("message" => "CPF incorreto!");
         }
     } else {
-        $result =  "CPF incorreto!";
+        $result = array("message" => "CPF incorreto!");
     }
 
     $conn->close();
-    $response[] = array("result" => $result);
-    echo json_encode($response);
+    echo json_encode($result);
 }
 ?>
