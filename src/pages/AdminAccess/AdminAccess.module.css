@@ -1,0 +1,47 @@
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Login Card */
+.loginCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.342);
+  border-radius: 0.8rem;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.342);
+  padding: 2rem;
+}
+
+/* Image & Title */
+.imgTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgTitle img {
+  width: 30rem;
+}
+
+.imgTitle h1 {
+  color: var(--camaraAzul);
+  font-size: 3.5rem;
+}
+
+/* Inputs */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
