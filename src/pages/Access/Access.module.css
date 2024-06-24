@@ -47,11 +47,13 @@
 .adm p a {
   font-size: 1.8rem;
   color: var(--camaraAzul);
+  text-decoration: underline;
   transition: all 0.2s;
 }
 
 .adm p a:hover {
   color: var(--camaraAmarelo);
+  cursor: pointer;
 }
 
 @media screen and (min-width: 745px) {

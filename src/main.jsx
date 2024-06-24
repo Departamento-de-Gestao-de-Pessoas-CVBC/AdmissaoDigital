@@ -8,6 +8,7 @@ import { Register } from "./pages/Register/Register";
 import { Login } from "./pages/Login/Login";
 import { UserInformation } from "./pages/UserInformation/UserInformation";
 import { Protected } from "./pages/Protected/Protected";
+import { AdminAccess } from "./pages/AdminAccess/AdminAccess";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "teste",
     element: <Protected Component={UserInformation} />,
+  },
+  {
+    path: "adminAccess",
+    element: <AdminAccess />,
   },
 ]);
 

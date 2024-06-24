@@ -35,7 +35,7 @@ export const Access = () => {
       </div>
       <div className={styles.adm}>
         <p>
-          <a href="#">Acesso Administrador</a>
+          <a onClick={() => navigate("/adminAccess")}>Acesso Administrador</a>
         </p>
       </div>
     </div>
