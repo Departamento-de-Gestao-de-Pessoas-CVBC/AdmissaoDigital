@@ -1,3 +1,137 @@
+/* Container */
 .container {
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: var(--camaraAzul);
+  padding: 2rem;
+}
+
+/* User Summary */
+.userSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.summaryTitle {
+  color: var(--branco);
+  font-size: 2rem;
+}
+
+.summaryCard {
+  display: flex;
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.342);
+  font-size: 1.6rem;
+}
+
+.summaryInfos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.fullName {
+  text-align: center;
+  font-size: 1.9rem;
+}
+
+/* Documents */
+.documents {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.documentsTitle {
+  color: var(--branco);
+  font-size: 2rem;
+}
+
+.documentsCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.342);
+  font-size: 1.5rem;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.option {
+  display: flex;
+  justify-content: start;
+  gap: 1.5rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.8rem;
+  background: var(--camaraCinza100);
+  transition: all 0.2s ease;
+  font-size: 1.6rem;
+}
+
+.option:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.342);
+}
+
+/* Additional Options */
+.additionalOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.additionalTitle {
+  color: var(--branco);
+  font-size: 2rem;
+}
+
+.additionalSelections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.leftSelections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.rightSelections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.selection {
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.8rem;
+  width: 100%;
+  transition: all 0.2s ease;
+  font-size: 1.6rem;
+}
+
+.selection:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.342);
 }
