@@ -13,7 +13,8 @@ if (mysqli_connect_error()) {
         
         $sql = "SELECT nome, data_nascimento, cpf, numero_pis, cargo, CONCAT(ddd_telefone_1, telefone_1) as telefone, email_1 FROM usuarios WHERE id='$userId';";
         $res = mysqli_query($conn, $sql);
-        
+
+       
         if (mysqli_num_rows($res) != 0) {
             $row = mysqli_fetch_array($res);
 

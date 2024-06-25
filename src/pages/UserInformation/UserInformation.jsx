@@ -62,6 +62,82 @@ export const UserInformation = () => {
         // Handle error as needed
       });
   };
+  const handleAptidaoClick = () => {
+    fetch(`http://localhost/teste/ADMISSAODIGITAL/api/aptidao_legal.php?id=${userId}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Retorna o JSON da resposta
+      })
+      .then(data => {
+        // Verifica se há um erro na resposta
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        // Abre uma nova janela para imprimir o HTML retornado
+        const newWindow = window.open('', '_blank');
+        newWindow.document.open();
+        newWindow.document.write(data.html); // Escreve o HTML na nova janela
+        newWindow.document.close();
+        newWindow.print();
+      })
+      .catch(error => {
+        console.error('Error fetching or printing document:', error);
+        // Handle error as needed
+      });
+  };
+  const handleInexistenciaClick = () => {
+    fetch(`http://localhost/teste/ADMISSAODIGITAL/api/inexistencia.php?id=${userId}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Retorna o JSON da resposta
+      })
+      .then(data => {
+        // Verifica se há um erro na resposta
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        // Abre uma nova janela para imprimir o HTML retornado
+        const newWindow = window.open('', '_blank');
+        newWindow.document.open();
+        newWindow.document.write(data.html); // Escreve o HTML na nova janela
+        newWindow.document.close();
+        newWindow.print();
+      })
+      .catch(error => {
+        console.error('Error fetching or printing document:', error);
+        // Handle error as needed
+      });
+  };
+  const handleLomClick = () => {
+    fetch(`http://localhost/teste/ADMISSAODIGITAL/api/Lom.php?id=${userId}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Retorna o JSON da resposta
+      })
+      .then(data => {
+        // Verifica se há um erro na resposta
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        // Abre uma nova janela para imprimir o HTML retornado
+        const newWindow = window.open('', '_blank');
+        newWindow.document.open();
+        newWindow.document.write(data.html); // Escreve o HTML na nova janela
+        newWindow.document.close();
+        newWindow.print();
+      })
+      .catch(error => {
+        console.error('Error fetching or printing document:', error);
+        // Handle error as needed
+      });
+  };
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -118,17 +194,17 @@ export const UserInformation = () => {
               <IoPrintOutline />
               Declaração de Bens e Renda
             </button>
-            <button className={styles.option}>
+            <button className={styles.option}  onClick={handleAptidaoClick}>
               <IoPrintOutline />
               Aptidão Legal
             </button>
-            <button className={styles.option}>
+            <button className={styles.option}  onClick={handleInexistenciaClick}>
               <IoPrintOutline />
               Inexistência de Parentesco
             </button>
-            <button className={styles.option}>
+            <button className={styles.option} onClick={handleLomClick}>
               <IoPrintOutline />
-              Declaração LOM
+              Declaração LOM (Apenas vereadores)
             </button>
             <button className={styles.option}>
               <IoPrintOutline />
