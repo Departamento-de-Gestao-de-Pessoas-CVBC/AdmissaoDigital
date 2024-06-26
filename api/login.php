@@ -4,7 +4,7 @@ header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: *");
 
 try {
-    $db = new PDO("mysql:host=localhost;dbname=clementina_tcc", 'root', '');
+    $db = new PDO("mysql:host=localhost;dbname=dgp", 'root', '');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
