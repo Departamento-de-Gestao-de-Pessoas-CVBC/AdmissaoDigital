@@ -8,6 +8,11 @@ Resolver problema do "enter" durante o preenchimento do form
  - Lista de Documentação (TODAS)
  - Tela de editar os dados e senha
 
+Limite de caracteres campo zona/sessão do título de eleitor (zona - 3, sessão - 4)
+
+Na guia "endereço", alterar posição do "estado de residência" no desktop
+
+Na ficha cadastral, colocar data e assinatura na mesma linha para diminuir o tamanho e caber em uma folha A4. Diminuir fonte se necessário
 meu tutorial nao apaga nao
 
 // https://www.youtube.com/watch?v=0vnyzs4MxSU&list=PLnMNkinxnpptsM937EGCzEgmq_5wsAnVc&index=5

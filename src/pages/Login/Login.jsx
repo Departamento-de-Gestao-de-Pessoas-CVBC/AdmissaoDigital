@@ -61,7 +61,6 @@ export const Login = () => {
   function loginSubmit() {
     if (user !== "" && pass !== "") {
       var url = "http://localhost/teste/ADMISSAODIGITAL/api/login.php";
-      //var url = "http://localhost/ADMISSAODIGITAL/api/login.php"; //Luiz
       var headers = {
         Accept: "application/json",
         "Content-type": "application/json",
