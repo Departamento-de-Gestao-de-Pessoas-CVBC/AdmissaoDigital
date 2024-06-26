@@ -13,6 +13,8 @@ import { Input } from "../../components/Input/Input";
 import { BasicButton } from "../../components/BasicButton/BasicButton";
 import { ReturnButton } from "../../components/ReturnButton/ReturnButton";
 
+import { API_DIRECTORY } from "../../../config.js";
+
 export const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
@@ -60,8 +62,8 @@ export const Login = () => {
 
   function loginSubmit() {
     if (user !== "" && pass !== "") {
-      var url = "http://localhost/teste/ADMISSAODIGITAL/api/login.php";
-      //var url = "http://localhost/ADMISSAODIGITAL/api/login.php"; //Luiz
+      var url = `${API_DIRECTORY}login.php`;
+
       var headers = {
         Accept: "application/json",
         "Content-type": "application/json",

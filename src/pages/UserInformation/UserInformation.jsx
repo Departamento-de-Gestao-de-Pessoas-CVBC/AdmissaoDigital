@@ -11,6 +11,8 @@ import { MdPassword } from "react-icons/md";
 
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
+import { API_DIRECTORY } from "../../../config.js";
+
 export const UserInformation = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
@@ -26,9 +28,7 @@ export const UserInformation = () => {
   }, [userId]);
 
   const fetchUserData = (userId) => {
-    fetch(
-      `http://localhost/teste/ADMISSAODIGITAL/api/getUserData.php?userId=${userId}`
-    )
+    fetch(`${API_DIRECTORY}getUserData.php?userId=${userId}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -53,9 +53,7 @@ export const UserInformation = () => {
   }
 
   const handleFichaCadastralClick = () => {
-    fetch(
-      `http://localhost/teste/ADMISSAODIGITAL/api/FichaCadastral.php?id=${userId}`
-    )
+    fetch(`${API_DIRECTORY}FichaCadastral.php?id=${userId}`)
       .then((response) => response.json())
       .then((data) => {
         // Open a new window to print the returned HTML
@@ -72,9 +70,7 @@ export const UserInformation = () => {
   };
 
   const handleAptidaoClick = () => {
-    fetch(
-      `http://localhost/teste/ADMISSAODIGITAL/api/aptidao_legal.php?id=${userId}`
-    )
+    fetch(`${API_DIRECTORY}aptidao_legal.php?id=${userId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -100,9 +96,7 @@ export const UserInformation = () => {
   };
 
   const handleInexistenciaClick = () => {
-    fetch(
-      `http://localhost/teste/ADMISSAODIGITAL/api/inexistencia.php?id=${userId}`
-    )
+    fetch(`${API_DIRECTORY}inexistencia.php?id=${userId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -128,7 +122,7 @@ export const UserInformation = () => {
   };
 
   const handleLomClick = () => {
-    fetch(`http://localhost/teste/ADMISSAODIGITAL/api/Lom.php?id=${userId}`)
+    fetch(`${API_DIRECTORY}Lom.php?id=${userId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

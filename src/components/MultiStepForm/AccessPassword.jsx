@@ -9,6 +9,8 @@ import { BasicButton } from "../BasicButton/BasicButton";
 import { Input } from "../Input/Input";
 import { useState } from "react";
 
+import { API_DIRECTORY } from "../../../config.js";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export const AccessPassword = ({ formData, setFormData, prevStep }) => {
@@ -67,8 +69,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
 
     try {
       const res = await axios.post(
-        //"http://localhost/ADMISSAODIGITAL/API/user.php", // Luiz Path
-         "http://localhost/teste/ADMISSAODIGITAL/api/user.php", // Gus Path
+        `${API_DIRECTORY}user.php`,
 
         formValue
       );

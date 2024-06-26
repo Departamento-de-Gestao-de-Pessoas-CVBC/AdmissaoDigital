@@ -11,13 +11,6 @@ import { BasicButton } from "../BasicButton/BasicButton";
 import Autosuggest from "react-autosuggest";
 
 export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
-  // const [nationalitySelect, setNationalitySelect] = React.useState("");
-  // const [genderSelect, setGenderSelect] = React.useState("");
-  // const [maritalStatusSelect, setMaritalStatusSelect] = React.useState("");
-  // const [levelOfEducationSelect, setLevelOfEducationSelect] =
-  //   React.useState("");
-  // const [breedSelect, setBreedSelect] = React.useState("");
-
   const nationality = [
     { value: 10, label: "Brasileiro" },
     { value: 20, label: "Brasileiro Naturalizado" },
