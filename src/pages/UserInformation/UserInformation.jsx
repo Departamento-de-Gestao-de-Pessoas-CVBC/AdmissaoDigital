@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import styles from "./UserInformation.module.css";
+
 import { useNavigate } from "react-router-dom";
+import { BasicButton } from "../../components/BasicButton/BasicButton";
+
 import { IoPrintOutline } from "react-icons/io5";
 import { IoMdPerson } from "react-icons/io";
 import { FaFile, FaHouse, FaSuitcase, FaPhoneFlip } from "react-icons/fa6";
 import { MdPassword } from "react-icons/md";
+
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 export const UserInformation = () => {
@@ -22,11 +26,13 @@ export const UserInformation = () => {
   }, [userId]);
 
   const fetchUserData = (userId) => {
-    fetch(`http://localhost/teste/ADMISSAODIGITAL/api/getUserData.php?userId=${userId}`)
-      .then(response => response.json())
-      .then(data => {
+    fetch(
+      `http://localhost/teste/ADMISSAODIGITAL/api/getUserData.php?userId=${userId}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
         if (data.error) {
-          console.error('Error fetching user data:', data.error);
+          console.error("Error fetching user data:", data.error);
           setLoading(false);
           // Handle error appropriately, e.g., redirect to an error page or show a message
         } else {
@@ -34,8 +40,8 @@ export const UserInformation = () => {
           setLoading(false);
         }
       })
-      .catch(error => {
-        console.error('Error fetching user data:', error);
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
         setLoading(false);
       });
   };
@@ -47,97 +53,105 @@ export const UserInformation = () => {
   }
 
   const handleFichaCadastralClick = () => {
-    fetch(`http://localhost/teste/ADMISSAODIGITAL/api/FichaCadastral.php?id=${userId}`)
-      .then(response => response.json())
-      .then(data => {
+    fetch(
+      `http://localhost/teste/ADMISSAODIGITAL/api/FichaCadastral.php?id=${userId}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
         // Open a new window to print the returned HTML
-        const newWindow = window.open('', '_blank');
+        const newWindow = window.open("", "_blank");
         newWindow.document.open();
         newWindow.document.write(data.html);
         newWindow.document.close();
         newWindow.print();
       })
-      .catch(error => {
-        console.error('Error fetching or printing document:', error);
+      .catch((error) => {
+        console.error("Error fetching or printing document:", error);
         // Handle error as needed
       });
   };
+
   const handleAptidaoClick = () => {
-    fetch(`http://localhost/teste/ADMISSAODIGITAL/api/aptidao_legal.php?id=${userId}`)
-      .then(response => {
+    fetch(
+      `http://localhost/teste/ADMISSAODIGITAL/api/aptidao_legal.php?id=${userId}`
+    )
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json(); // Retorna o JSON da resposta
       })
-      .then(data => {
+      .then((data) => {
         // Verifica se há um erro na resposta
         if (data.error) {
           throw new Error(data.error);
         }
         // Abre uma nova janela para imprimir o HTML retornado
-        const newWindow = window.open('', '_blank');
+        const newWindow = window.open("", "_blank");
         newWindow.document.open();
         newWindow.document.write(data.html); // Escreve o HTML na nova janela
         newWindow.document.close();
         newWindow.print();
       })
-      .catch(error => {
-        console.error('Error fetching or printing document:', error);
+      .catch((error) => {
+        console.error("Error fetching or printing document:", error);
         // Handle error as needed
       });
   };
+
   const handleInexistenciaClick = () => {
-    fetch(`http://localhost/teste/ADMISSAODIGITAL/api/inexistencia.php?id=${userId}`)
-      .then(response => {
+    fetch(
+      `http://localhost/teste/ADMISSAODIGITAL/api/inexistencia.php?id=${userId}`
+    )
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json(); // Retorna o JSON da resposta
       })
-      .then(data => {
+      .then((data) => {
         // Verifica se há um erro na resposta
         if (data.error) {
           throw new Error(data.error);
         }
         // Abre uma nova janela para imprimir o HTML retornado
-        const newWindow = window.open('', '_blank');
+        const newWindow = window.open("", "_blank");
         newWindow.document.open();
         newWindow.document.write(data.html); // Escreve o HTML na nova janela
         newWindow.document.close();
         newWindow.print();
       })
-      .catch(error => {
-        console.error('Error fetching or printing document:', error);
+      .catch((error) => {
+        console.error("Error fetching or printing document:", error);
         // Handle error as needed
       });
   };
+
   const handleLomClick = () => {
     fetch(`http://localhost/teste/ADMISSAODIGITAL/api/Lom.php?id=${userId}`)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json(); // Retorna o JSON da resposta
       })
-      .then(data => {
+      .then((data) => {
         // Verifica se há um erro na resposta
         if (data.error) {
           throw new Error(data.error);
         }
         // Abre uma nova janela para imprimir o HTML retornado
-        const newWindow = window.open('', '_blank');
+        const newWindow = window.open("", "_blank");
         newWindow.document.open();
         newWindow.document.write(data.html); // Escreve o HTML na nova janela
         newWindow.document.close();
         newWindow.print();
       })
-      .catch(error => {
-        console.error('Error fetching or printing document:', error);
+      .catch((error) => {
+        console.error("Error fetching or printing document:", error);
         // Handle error as needed
       });
   };
-  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -186,7 +200,10 @@ export const UserInformation = () => {
         </div>
         <div className={styles.documentsCard}>
           <div className={styles.forms}>
-            <button className={styles.option} onClick={handleFichaCadastralClick}>
+            <button
+              className={styles.option}
+              onClick={handleFichaCadastralClick}
+            >
               <IoPrintOutline />
               Ficha Cadastral
             </button>
@@ -194,11 +211,11 @@ export const UserInformation = () => {
               <IoPrintOutline />
               Declaração de Bens e Renda
             </button>
-            <button className={styles.option}  onClick={handleAptidaoClick}>
+            <button className={styles.option} onClick={handleAptidaoClick}>
               <IoPrintOutline />
               Aptidão Legal
             </button>
-            <button className={styles.option}  onClick={handleInexistenciaClick}>
+            <button className={styles.option} onClick={handleInexistenciaClick}>
               <IoPrintOutline />
               Inexistência de Parentesco
             </button>
@@ -225,39 +242,42 @@ export const UserInformation = () => {
         <div className={styles.additionalTitle}>
           <p>Opções Adicionais</p>
         </div>
-        <div className={styles.additionalCard}>
-          <div className={styles.forms}>
-            <button className={styles.option}>
+        <div className={styles.additionalSelections}>
+          <div className={styles.leftSelections}>
+            <button className={styles.selection}>
               <IoMdPerson />
-              Dados Pessoais
+              Editar Dados Pessoais
             </button>
-            <button className={styles.option}>
+            <button className={styles.selection}>
               <FaFile />
-              Documentos
+              Editar Documentos
             </button>
-            <button className={styles.option}>
+            <button className={styles.selection}>
               <FaHouse />
-              Endereço
+              Editar Endereço
             </button>
-            <button className={styles.option}>
+          </div>
+          <div className={styles.rightSelections}>
+            <button className={styles.selection}>
               <FaSuitcase />
-              Profissional
+              Editar Informações de Trabalho
             </button>
-            <button className={styles.option}>
+            <button className={styles.selection}>
               <FaPhoneFlip />
-              Contatos
+              Editar Contato
             </button>
-            <button className={styles.option}>
+            <button className={styles.selection}>
               <MdPassword />
-              Senha
-            </button>
-            <button className={styles.option} onClick={logoutSubmit}>
-              <ExitToAppIcon />
-              Sair
+              Editar Senha de Acesso
             </button>
           </div>
         </div>
       </div>
+      <BasicButton
+        title="Sair"
+        onClick={logoutSubmit}
+        startIcon={<ExitToAppIcon />}
+      />
     </div>
   );
 };
