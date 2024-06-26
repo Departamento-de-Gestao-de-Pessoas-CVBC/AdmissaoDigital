@@ -44,7 +44,7 @@ export const JobInformation = ({
     { value: "diretorPJ", label: "Diretor(a) de Projetos" },
     { value: "diretorTO", label: "Diretor(a) de Transparência e Ouvidoria" },
     { value: "estagiarioES", label: "Estagiário(a) - Educação Especial" },
-    { value: "estagiarioNS", label: "Estagiário(a) - Nível Superior" },
+    { value: "0036", label: "Estagiário(a) - Nível Superior" },
     { value: "guardaPM", label: "Guarda Patrimonial" },
     { value: "jornalista", label: "Jornalista" },
     { value: "motorista", label: "Motorista" },

@@ -9,8 +9,8 @@ import { BasicSelect } from "../Select/Select";
 import { BasicButton } from "../BasicButton/BasicButton";
 
 export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
-  const [UFRGSelect, setUFRGSelect] = React.useState("");
-  const [expRg, setExpRg] = React.useState("");
+  // const [UFRGSelect, setUFRGSelect] = React.useState("");
+  // const [expRg, setExpRg] = React.useState("");
 
   const UFRG = [
     { value: "acre", label: "AC" },
@@ -88,6 +88,14 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             value={formData.expRg}
             onChange={handleChange}
           />
+          <Input
+            type="text"
+            name="dateExpRg"
+            label="Data de Expedição do RG"
+            mask="99/99/9999"
+            value={formData.dateExpRg}
+            onChange={handleChange}
+          />
         </div>
         <div className={styles.rightInputs}>
           <BasicSelect
@@ -120,16 +128,14 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             value={formData.electoralZone}
             onChange={handleChange}
           />
+          <Input
+            type="number"
+            name="pollingStation"
+            label="Seção Eleitoral"
+            value={formData.pollingStation}
+            onChange={handleChange}
+          />
         </div>
-      </div>
-      <div className={styles.alone}>
-        <Input
-          type="number"
-          name="pollingStation"
-          label="Seção Eleitoral"
-          value={formData.pollingStation}
-          onChange={handleChange}
-        />
       </div>
       <div className={styles.buttons}>
         <BasicButton

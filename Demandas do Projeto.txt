@@ -1,3 +1,13 @@
 DEMANDAS
 
-Criar página de login
+Resolver problema do "enter" durante o preenchimento do form
+ 
+ - Autocomplete para as cidades no cadastro
+
+ - HTML dECLARAÇÃO DE BENS E RENDA
+ - Lista de Documentação (TODAS)
+ - Tela de editar os dados e senha
+
+meu tutorial nao apaga nao
+
+// https://www.youtube.com/watch?v=0vnyzs4MxSU&list=PLnMNkinxnpptsM937EGCzEgmq_5wsAnVc&index=5

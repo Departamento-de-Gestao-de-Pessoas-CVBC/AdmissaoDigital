@@ -1,0 +1,146 @@
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 3rem;
+  position: relative;
+}
+
+/* Return Button */
+.returnButton {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+/* Imagem Login */
+.imgLogin {
+  display: none;
+}
+
+/* Wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo da Câmara */
+.logoEtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoEtitle img {
+  width: 30rem;
+}
+
+.logoEtitle h1 {
+  font-size: 3.5rem;
+  color: var(--camaraAzul);
+}
+
+/* Login */
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 3rem;
+  width: 100%;
+}
+
+/* Esqueceu Senha */
+.esqueceuSenha p a {
+  font-size: 1.8rem;
+  color: var(--camaraAzul);
+  transition: all 0.2s;
+}
+
+.esqueceuSenha p a:hover {
+  color: var(--camaraAmarelo);
+}
+
+/* Error Msg */
+.errorMsg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  color: var(--vermelhoDeAlerta);
+  font-size: 2rem;
+}
+
+/* Aprove Msg */
+.approveMsg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  color: var(--verdeDeAlerta);
+  font-size: 2rem;
+}
+
+/* Estilos para Tablets */
+@media screen and (min-width: 745px) {
+  .logoEtitle img {
+    width: 40rem;
+  }
+
+  .logoEtitle h1 {
+    font-size: 4rem;
+  }
+
+  .esqueceuSenha p a {
+    font-size: 2rem;
+  }
+
+  .errorMsg {
+    font-size: 2.4rem;
+  }
+
+  .approveMsg {
+    font-size: 2.4rem;
+  }
+}
+
+/* Estilos para Computadores */
+@media screen and (min-width: 1525px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+  }
+
+  .returnButton {
+    left: 2rem;
+  }
+
+  .imgLogin {
+    display: block;
+  }
+
+  .logoEtitle img {
+    display: none;
+  }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .errorMsg {
+    font-size: 2.6rem;
+  }
+
+  .approveMsg {
+    font-size: 2.6rem;
+  }
+}
