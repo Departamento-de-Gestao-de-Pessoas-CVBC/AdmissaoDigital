@@ -38,13 +38,13 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
     { value: "02", label: "4ª Série Incompleto" },
     { value: "03", label: "4ª Série Completa" },
     { value: "04", label: "5ª a 8ª Série Completa" },
-    { value: "06", label: "1º Grau Incompleto" },
-    { value: "05", label: "1º Grau Completo" },
-    { value: "06", label: "2º Grau Incompleto" },
-    { value: "07", label: "2º Grau Completo" },
-    { value: "08", label: "Superior Incompleto" },
-    { value: "09", label: "Superior Completo" },
-    { value: "10", label: "Pós-graduação" },
+    { value: "05", label: "1º Grau Incompleto" },
+    { value: "06", label: "1º Grau Completo" },
+    { value: "07", label: "2º Grau Incompleto" },
+    { value: "08", label: "2º Grau Completo" },
+    { value: "09", label: "Superior Incompleto" },
+    { value: "10", label: "Superior Completo" },
+    { value: "11", label: "Pós-graduação" },
   ];
 
   const breed = [
