@@ -1,14 +1,22 @@
 DEMANDAS
 
- 
  - Autocomplete para as cidades no cadastro
 
- - HTML dECLARAÇÃO DE BENS E RENDA
+ - HTML DECLARAÇÃO DE BENS E RENDA
+
  - Lista de Documentação (TODAS)
- - Tela de editar os dados e senha
 
-Na Ficha Cadastral, colocar data e assinatura na mesma linha para diminuir o tamanho e caber em uma folha A4. Diminuir fonte se necessário.
+ - Desenvolver tela de Editar os Dados (para cada um)
 
-meu tutorial nao apaga nao
+ - Desenvolver tela de Esqueci minha senha
 
-// https://www.youtube.com/watch?v=0vnyzs4MxSU&list=PLnMNkinxnpptsM937EGCzEgmq_5wsAnVc&index=5
+ - Resolver a adaptação da tela de Acesso Administrador no mobile
+
+ - Ao clicar em "Avançar" no Multi Step Form, na troca das telas, deve voltar a primeira opção.
+ 
+- Na Ficha Cadastral, colocar data e assinatura na mesma linha para diminuir o tamanho e caber em uma folha A4. Diminuir fonte se necessário.
+
+---------------------------------------------------------------------
+Tutorial - Little Gus {
+    // https://www.youtube.com/watch?v=0vnyzs4MxSU&list=PLnMNkinxnpptsM937EGCzEgmq_5wsAnVc&index=5
+}
