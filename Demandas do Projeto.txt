@@ -13,8 +13,16 @@ DEMANDAS
  - Resolver a adaptação da tela de Acesso Administrador no mobile
 
  - Ao clicar em "Avançar" no Multi Step Form, na troca das telas, deve voltar a primeira opção.
- 
+
 - Na Ficha Cadastral, colocar data e assinatura na mesma linha para diminuir o tamanho e caber em uma folha A4. Diminuir fonte se necessário.
+
+- Cargo não está aparecendo na tela de Informações do Usuário
+
+- DDD está vindo duplciado na tela de Informações do Usuário
+
+- Data de nascimento está vindo zerada na tela de Informações do Usuário
+
+- Botar as Opções Adicionais lado a lado na tela de Informações do Usuário
 
 ---------------------------------------------------------------------
 Tutorial - Little Gus {
