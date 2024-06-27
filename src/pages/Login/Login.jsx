@@ -102,6 +102,15 @@ export const Login = () => {
     }
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.returnButton} onClick={() => navigate("/")}>
@@ -123,12 +132,14 @@ export const Login = () => {
             mask="999.999.999-99"
             value={user}
             onChange={(e) => handleInputChange(e, "user")}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="password"
             id="password"
             value={pass}
             onChange={(e) => handleInputChange(e, "pass")}
+            onKeyDown={handleKeyDown}
             label="Senha"
           />
           <BasicButton

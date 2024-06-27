@@ -12,6 +12,15 @@ import { BasicButton } from "../../components/BasicButton/BasicButton";
 export const AdminAccess = () => {
   const navigate = useNavigate();
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.loginCard}>
@@ -28,8 +37,14 @@ export const AdminAccess = () => {
             id="login"
             label="Login (CPF)"
             mask="999.999.999-99"
+            onKeyDown={handleKeyDown}
           />
-          <Input type="password" id="password" label="Senha" />
+          <Input
+            type="password"
+            id="password"
+            label="Senha"
+            onKeyDown={handleKeyDown}
+          />
           <BasicButton title="Entrar" startIcon={<LoginIcon />} />
           <BasicButton
             title="Sair"
