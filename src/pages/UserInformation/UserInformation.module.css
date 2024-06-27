@@ -147,6 +147,7 @@
       "summary documents"
       "additionalOptions additionalOptions";
     grid-template-columns: 1fr 1fr;
+    height: 100vh;
   }
 
   .userSummary,
@@ -158,9 +159,17 @@
   .additionalOptions {
     grid-area: additionalOptions;
   }
+
+  .additionalSelections {
+    flex-direction: row;
+  }
 }
 
 @media screen and (min-width: 1870px) {
+  .container {
+    height: 103vh;
+  }
+
   .summaryTitle,
   .documentsTitle,
   .additionalTitle {

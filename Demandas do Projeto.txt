@@ -22,8 +22,6 @@ DEMANDAS
 
 - Data de nascimento está vindo zerada na tela de Informações do Usuário
 
-- Botar as Opções Adicionais lado a lado na tela de Informações do Usuário
-
 - Ao tentar retornar da página de Informações do Usuário através da seta do navegador, temos um 404 not found (Acredito que seja por conta da URL: http://localhost:5173/login/teste)
 
 ---------------------------------------------------------------------
