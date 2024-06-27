@@ -89,6 +89,15 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.accessPassword}>
@@ -115,6 +124,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
             label="Crie uma Senha"
             value={formData.password}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="password"
@@ -123,6 +133,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
             label="Confirme Senha"
             value={formData.confirmPassword}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className={styles.buttons}>

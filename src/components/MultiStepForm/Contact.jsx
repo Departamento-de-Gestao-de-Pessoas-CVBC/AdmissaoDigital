@@ -13,6 +13,15 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
   return (
     <div className={styles.contact}>
       <div className={styles.title}>
@@ -28,6 +37,7 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
             value={formData.phoneNumber1}
             mask="(99) 9 9999-9999"
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="text"
@@ -37,6 +47,7 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
             value={formData.phoneNumber2}
             mask="(99) 9 9999-9999"
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className={styles.rightInputs}>
@@ -47,6 +58,7 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
             label="Email 1"
             value={formData.email1}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="email"
@@ -55,6 +67,7 @@ export const Contact = ({ formData, setFormData, prevStep, nextStep }) => {
             label="Email 2"
             value={formData.email2}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>

@@ -21,7 +21,7 @@ const theme = createTheme({
   },
 });
 
-export const Input = ({ id, label, type, mask, ...rest }) => {
+export const Input = ({ id, label, type, mask, onKeyDown, ...rest }) => {
   return (
     <Box
       component="form"
@@ -36,6 +36,7 @@ export const Input = ({ id, label, type, mask, ...rest }) => {
               {...inputProps}
               id={id}
               label={label}
+              onKeyDown={onKeyDown}
               variant="outlined"
               type="text"
               sx={{
@@ -70,6 +71,7 @@ export const Input = ({ id, label, type, mask, ...rest }) => {
           type={type}
           id={id}
           label={label}
+          onKeyDown={onKeyDown}
           variant="outlined"
           sx={{
             width: "100%",

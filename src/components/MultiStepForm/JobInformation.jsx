@@ -110,6 +110,15 @@ export const JobInformation = ({
     }));
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
   return (
     <div className={styles.jobInformation}>
       <div className={styles.title}>
@@ -123,6 +132,7 @@ export const JobInformation = ({
             value={responsibilitySelect}
             name="responsibilitySelect"
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className={styles.rightInputs}>
@@ -132,6 +142,7 @@ export const JobInformation = ({
             value={dependentsSelect}
             name="dependentsSelect"
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
@@ -147,6 +158,7 @@ export const JobInformation = ({
                 label="Nome Completo"
                 value={dependent.dependentName}
                 onChange={(e) => handleDependentChange(index, e)}
+                onKeyDown={handleKeyDown}
               />
               <Input
                 type="text"
@@ -156,6 +168,7 @@ export const JobInformation = ({
                 value={dependent.dependentCpf}
                 mask="999.999.999-99"
                 onChange={(e) => handleDependentChange(index, e)}
+                onKeyDown={handleKeyDown}
               />
               <Input
                 type="text"
@@ -165,6 +178,7 @@ export const JobInformation = ({
                 value={dependent.dependentDob}
                 mask="99/99/9999"
                 onChange={(e) => handleDependentChange(index, e)}
+                onKeyDown={handleKeyDown}
               />
             </div>
           ))}

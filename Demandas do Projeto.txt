@@ -1,6 +1,5 @@
 DEMANDAS
 
-Resolver problema do "enter" durante o preenchimento do form
  
  - Autocomplete para as cidades no cadastro
 

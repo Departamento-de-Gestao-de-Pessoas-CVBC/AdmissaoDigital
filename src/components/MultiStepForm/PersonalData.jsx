@@ -67,6 +67,15 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
     e.preventDefault();
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.personalData}>
@@ -81,6 +90,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               label="Nome Completo"
               value={formData.name}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
             <Input
               type="text"
@@ -88,6 +98,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               label="Nome Completo da Mãe"
               value={formData.mothersName}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
             <Input
               type="text"
@@ -95,6 +106,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               label="Nome Completo do Pai"
               value={formData.fathersName}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
             <BasicSelect
               label="Nacionalidade"
@@ -102,6 +114,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               options={nationality}
               value={formData.nationality}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
             <BasicSelect
               label="Gênero"
@@ -109,6 +122,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               options={gender}
               value={formData.gender}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
           </div>
           <div className={styles.rightInputs}>
@@ -118,6 +132,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               options={maritalStatus}
               value={formData.maritalStatus}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
             <Input
               type="text"
@@ -126,6 +141,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               mask="99/99/9999"
               value={formData.dateOfBirth}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
             <Input
               type="text"
@@ -133,6 +149,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               label="Cidade de Nascimento"
               value={formData.cityOfBirth}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
             <Input
               type="text"
@@ -140,6 +157,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               label="Estado de Nascimento"
               value={formData.stateOfBirth}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               disabled
             />
             <BasicSelect
@@ -148,6 +166,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               options={levelOfEducation}
               value={formData.levelOfEducation}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </div>
@@ -158,6 +177,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
             options={breed}
             value={formData.breed}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className={styles.buttons}>

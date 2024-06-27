@@ -21,6 +21,15 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
   return (
     <div className={styles.address}>
       <div className={styles.title}>
@@ -32,6 +41,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             mask="99999-999"
             value={formData.cep}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
             id="cep"
             label="CEP"
             name="cep"
@@ -43,6 +53,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             name="stateOfResidence"
             value={formData.stateOfResidence}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="text"
@@ -51,6 +62,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             name="city"
             value={formData.city}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="text"
@@ -59,6 +71,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             name="neighborhood"
             value={formData.neighborhood}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className={styles.rightInputs}>
@@ -68,6 +81,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             value={formData.logradouroSelect}
             name="logradouroSelect"
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="text"
@@ -76,6 +90,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             name="address"
             value={formData.address}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="number"
@@ -84,6 +99,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             name="residenceNumber"
             value={formData.residenceNumber}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="text"
@@ -92,6 +108,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             name="complement"
             value={formData.complement}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>

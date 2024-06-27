@@ -51,6 +51,15 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
   return (
     <div className={styles.documents}>
       <div className={styles.title}>
@@ -65,6 +74,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             mask="999.999.999-99"
             value={formData.cpf}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="number"
@@ -73,6 +83,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             mask="999.99999.99.9"
             value={formData.pis}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="number"
@@ -80,6 +91,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             label="RG"
             value={formData.rg}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="text"
@@ -87,6 +99,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             label="Expedidor do RG"
             value={formData.expRg}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="text"
@@ -95,6 +108,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             mask="99/99/9999"
             value={formData.dateExpRg}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className={styles.rightInputs}>
@@ -104,6 +118,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             options={UFRG}
             value={formData.ufRg}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="number"
@@ -112,6 +127,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             mask="999999999999"
             value={formData.reservist}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="number"
@@ -120,6 +136,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             mask="999999999999"
             value={formData.voterRegistration}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="number"
@@ -128,6 +145,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             mask="999"
             value={formData.electoralZone}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="number"
@@ -136,6 +154,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             mask="9999"
             value={formData.pollingStation}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
