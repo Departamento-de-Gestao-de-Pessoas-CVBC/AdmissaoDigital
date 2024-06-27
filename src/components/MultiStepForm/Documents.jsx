@@ -125,6 +125,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             type="number"
             name="electoralZone"
             label="Zona Eleitoral"
+            mask="999"
             value={formData.electoralZone}
             onChange={handleChange}
           />
@@ -132,6 +133,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             type="number"
             name="pollingStation"
             label="Seção Eleitoral"
+            mask="9999"
             value={formData.pollingStation}
             onChange={handleChange}
           />

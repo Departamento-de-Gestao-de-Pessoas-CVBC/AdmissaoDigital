@@ -38,6 +38,14 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
           />
           <Input
             type="text"
+            id="stateOfResidence"
+            label="Estado de Residência"
+            name="stateOfResidence"
+            value={formData.stateOfResidence}
+            onChange={handleChange}
+          />
+          <Input
+            type="text"
             id="city"
             label="Cidade"
             name="city"
@@ -52,6 +60,8 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             value={formData.neighborhood}
             onChange={handleChange}
           />
+        </div>
+        <div className={styles.rightInputs}>
           <BasicSelect
             label="Logradouro"
             options={logradouro}
@@ -59,22 +69,12 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             name="logradouroSelect"
             onChange={handleChange}
           />
-        </div>
-        <div className={styles.rightInputs}>
           <Input
             type="text"
             id="address"
             label="Endereço"
             name="address"
             value={formData.address}
-            onChange={handleChange}
-          />
-          <Input
-            type="text"
-            id="stateOfResidence"
-            label="Estado de Residência"
-            name="stateOfResidence"
-            value={formData.stateOfResidence}
             onChange={handleChange}
           />
           <Input
