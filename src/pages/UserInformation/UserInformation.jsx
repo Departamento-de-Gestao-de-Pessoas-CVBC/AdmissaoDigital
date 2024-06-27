@@ -193,6 +193,9 @@ export const UserInformation = () => {
           <p>Documentação</p>
         </div>
         <div className={styles.documentsCard}>
+          <div className={styles.documentsWarning}>
+            <p>Faça o download e imprima sua documentação por aqui!</p>
+          </div>
           <div className={styles.forms}>
             <button
               className={styles.option}

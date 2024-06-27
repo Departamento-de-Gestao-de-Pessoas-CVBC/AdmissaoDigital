@@ -56,6 +56,7 @@
 
 .documentsCard {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--branco);
@@ -63,6 +64,13 @@
   border-radius: 0.8rem;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.342);
   font-size: 1.5rem;
+}
+
+.documentsWarning {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 .forms {
@@ -166,10 +174,6 @@
 }
 
 @media screen and (min-width: 1870px) {
-  .container {
-    height: 103vh;
-  }
-
   .summaryTitle,
   .documentsTitle,
   .additionalTitle {
@@ -178,6 +182,10 @@
 
   .summaryCard {
     font-size: 2rem;
+  }
+
+  .documentsWarning {
+    font-size: 2.5rem;
   }
 
   .fullName {
