@@ -23,15 +23,12 @@ export const AdminAccess = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.loginCard}>
-        <div className={styles.imgTitle}>
-          <img
-            src={LogoCamara}
-            alt="Logo Câmara de Vereadores de Balneário Camboriú"
-          />
+      <div className={styles.wrapper}>
+        <div className={styles.logoEtitle}>
+          <img src={LogoCamara} />
           <h1>Acesso Administrador</h1>
         </div>
-        <div className={styles.inputs}>
+        <div className={styles.login}>
           <Input
             type="number"
             id="login"
@@ -42,15 +39,17 @@ export const AdminAccess = () => {
           <Input
             type="password"
             id="password"
-            label="Senha"
             onKeyDown={handleKeyDown}
+            label="Senha"
           />
-          <BasicButton title="Entrar" startIcon={<LoginIcon />} />
-          <BasicButton
-            title="Sair"
-            startIcon={<LogoutIcon />}
-            onClick={() => navigate("/")}
-          />
+          <div className={styles.buttons}>
+            <BasicButton title="Entrar" startIcon={<LoginIcon />} />
+            <BasicButton
+              title="Sair"
+              startIcon={<LogoutIcon />}
+              onClick={() => navigate("/")}
+            />
+          </div>
         </div>
       </div>
     </div>
