@@ -76,6 +76,11 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
     }
   };
 
+  const handleNextStep = () => {
+    nextStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.personalData}>
@@ -190,7 +195,7 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
           <BasicButton
             title="Avançar"
             startIcon={<ArrowForwardOutlinedIcon />}
-            onClick={nextStep}
+            onClick={handleNextStep}
           />
         </div>
       </div>

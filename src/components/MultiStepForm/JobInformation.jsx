@@ -119,6 +119,16 @@ export const JobInformation = ({
     }
   };
 
+  const handlePrevStep = () => {
+    prevStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleNextStep = () => {
+    nextStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className={styles.jobInformation}>
       <div className={styles.title}>
@@ -208,12 +218,12 @@ export const JobInformation = ({
         <BasicButton
           title="Voltar"
           startIcon={<ArrowBackOutlinedIcon />}
-          onClick={prevStep}
+          onClick={handlePrevStep}
         />
         <BasicButton
           title="Avançar"
           startIcon={<ArrowForwardOutlinedIcon />}
-          onClick={nextStep}
+          onClick={handleNextStep}
         />
       </div>
     </div>

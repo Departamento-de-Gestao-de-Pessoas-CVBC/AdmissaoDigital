@@ -60,6 +60,16 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
     }
   };
 
+  const handlePrevStep = () => {
+    prevStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleNextStep = () => {
+    nextStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className={styles.documents}>
       <div className={styles.title}>
@@ -162,12 +172,12 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
         <BasicButton
           title="Voltar"
           startIcon={<ArrowBackOutlinedIcon />}
-          onClick={prevStep}
+          onClick={handlePrevStep}
         />
         <BasicButton
           title="Avançar"
           startIcon={<ArrowForwardOutlinedIcon />}
-          onClick={nextStep}
+          onClick={handleNextStep}
         />
       </div>
     </div>

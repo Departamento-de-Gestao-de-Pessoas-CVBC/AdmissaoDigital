@@ -98,6 +98,11 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
     }
   };
 
+  const handlePrevStep = () => {
+    prevStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.accessPassword}>
@@ -140,7 +145,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
           <BasicButton
             title="Voltar"
             startIcon={<ArrowBackOutlinedIcon />}
-            onClick={prevStep}
+            onClick={handlePrevStep}
           />
           <BasicButton
             title="Finalizar"
