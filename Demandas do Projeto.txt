@@ -10,8 +10,6 @@ DEMANDAS
 
  - Desenvolver tela de Esqueci minha senha
 
- - Resolver a adaptação da tela de Acesso Administrador no mobile
-
 - Na Ficha Cadastral, colocar data e assinatura na mesma linha para diminuir o tamanho e caber em uma folha A4. Diminuir fonte se necessário.
 
 - Cargo não está aparecendo na tela de Informações do Usuário
