@@ -9,6 +9,7 @@ import { Login } from "./pages/Login/Login";
 import { UserInformation } from "./pages/UserInformation/UserInformation";
 import { Protected } from "./pages/Protected/Protected";
 import { AdminAccess } from "./pages/AdminAccess/AdminAccess";
+import { EditPersonalData } from "./pages/PagesToEdit/EditPersonalData";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "adminAccess",
     element: <AdminAccess />,
+  },
+  {
+    path: "editPersonalData",
+    element: <EditPersonalData />,
   },
 ]);
 

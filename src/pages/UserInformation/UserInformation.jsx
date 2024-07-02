@@ -241,7 +241,10 @@ export const UserInformation = () => {
         </div>
         <div className={styles.additionalSelections}>
           <div className={styles.leftSelections}>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editPersonalData")}
+            >
               <IoMdPerson />
               Editar Dados Pessoais
             </button>

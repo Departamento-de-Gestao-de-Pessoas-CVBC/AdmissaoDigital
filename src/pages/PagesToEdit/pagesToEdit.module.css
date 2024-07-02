@@ -1,0 +1,97 @@
+/* Container */
+.container {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Logo e Title */
+.logoTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoTitle img {
+  cursor: pointer;
+  width: 35rem;
+}
+
+.logoTitle h1 {
+  font-size: 3rem;
+  color: var(--camaraAzul);
+}
+
+/* Informative Text */
+.informativeText p {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* Inputs */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Left Inputs */
+.leftInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Right Inputs */
+.rightInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Alone */
+.alone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Button */
+.button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media screen and (min-width: 745px) {
+  .logoTitle img {
+    width: 40rem;
+  }
+
+  .logoTitle h1 {
+    font-size: 4rem;
+  }
+
+  .informativeText p {
+    font-size: 2.2rem;
+  }
+
+  .inputs {
+    flex-direction: row;
+  }
+
+  .alone {
+    width: 50%;
+  }
+}
