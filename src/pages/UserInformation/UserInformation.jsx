@@ -248,25 +248,40 @@ export const UserInformation = () => {
               <IoMdPerson />
               Editar Dados Pessoais
             </button>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editDocuments")}
+            >
               <FaFile />
               Editar Documentos
             </button>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editAddress")}
+            >
               <FaHouse />
               Editar Endereço
             </button>
           </div>
           <div className={styles.rightSelections}>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editJobInformation")}
+            >
               <FaSuitcase />
               Editar Informações de Trabalho
             </button>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editContact")}
+            >
               <FaPhoneFlip />
               Editar Contato
             </button>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editAccessPassword")}
+            >
               <MdPassword />
               Editar Senha de Acesso
             </button>

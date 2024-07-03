@@ -21,6 +21,7 @@
 }
 
 .logoTitle h1 {
+  text-align: center;
   font-size: 3rem;
   color: var(--camaraAzul);
 }
@@ -51,6 +52,14 @@
 
 /* Right Inputs */
 .rightInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.inputsEditAccessPassword {
   display: flex;
   flex-direction: column;
   align-items: center;

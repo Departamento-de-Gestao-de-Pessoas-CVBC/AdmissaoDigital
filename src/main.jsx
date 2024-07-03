@@ -10,6 +10,11 @@ import { UserInformation } from "./pages/UserInformation/UserInformation";
 import { Protected } from "./pages/Protected/Protected";
 import { AdminAccess } from "./pages/AdminAccess/AdminAccess";
 import { EditPersonalData } from "./pages/PagesToEdit/EditPersonalData";
+import { EditDocuments } from "./pages/PagesToEdit/EditDocuments";
+import { EditAddress } from "./pages/PagesToEdit/EditAddress";
+import { EditJobInformation } from "./pages/PagesToEdit/EditJobInformation";
+import { EditContact } from "./pages/PagesToEdit/EditContact";
+import { EditAccessPassword } from "./pages/PagesToEdit/EditAccessPassword";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +40,26 @@ const router = createBrowserRouter([
   {
     path: "editPersonalData",
     element: <EditPersonalData />,
+  },
+  {
+    path: "editDocuments",
+    element: <EditDocuments />,
+  },
+  {
+    path: "editAddress",
+    element: <EditAddress />,
+  },
+  {
+    path: "editJobInformation",
+    element: <EditJobInformation />,
+  },
+  {
+    path: "editContact",
+    element: <EditContact />,
+  },
+  {
+    path: "editAccessPassword",
+    element: <EditAccessPassword />,
   },
 ]);
 
