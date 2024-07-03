@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import styles from "./pagesToEdit.module.css";
 
 import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
@@ -11,6 +12,10 @@ import { useNavigate } from "react-router-dom";
 
 export const EditDocuments = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const UFRG = [
     { value: "acre", label: "AC" },
