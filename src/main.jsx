@@ -15,6 +15,7 @@ import { EditAddress } from "./pages/PagesToEdit/EditAddress";
 import { EditJobInformation } from "./pages/PagesToEdit/EditJobInformation";
 import { EditContact } from "./pages/PagesToEdit/EditContact";
 import { EditAccessPassword } from "./pages/PagesToEdit/EditAccessPassword";
+import { ForgotPassword } from "./pages/ForgotPassword/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: "editAccessPassword",
     element: <EditAccessPassword />,
+  },
+  {
+    path: "forgotPassword",
+    element: <ForgotPassword />,
   },
 ]);
 

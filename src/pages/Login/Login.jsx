@@ -162,7 +162,9 @@ export const Login = () => {
         )}
         <div className={styles.esqueceuSenha}>
           <p>
-            <a href="#">Esqueci minha senha</a>
+            <a onClick={() => navigate("/forgotPassword")}>
+              Esqueci minha senha
+            </a>
           </p>
         </div>
       </div>
