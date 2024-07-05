@@ -89,7 +89,7 @@ export const Login = () => {
             localStorage.setItem("userId", response.userId); // Salva o ID do usuário
             setTimeout(function () {
               localStorage.setItem("login", true);
-              navigate("/Teste");
+              navigate("/userInformation");
             }, 5000);
           }
         })

@@ -29,7 +29,7 @@ export const EditContact = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logoTitle}>
-        <img src={LogoCamara} onClick={() => navigate("/teste")} />
+        <img src={LogoCamara} onClick={() => navigate("/userInformation")} />
         <h1>Editar Contato</h1>
       </div>
       <div className={styles.informativeText}>

@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "teste",
+    path: "userInformation",
     element: <Protected Component={UserInformation} />,
   },
   {

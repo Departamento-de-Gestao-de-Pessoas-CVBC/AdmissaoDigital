@@ -121,7 +121,7 @@ export const EditJobInformation = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logoTitle}>
-        <img src={LogoCamara} onClick={() => navigate("/teste")} />
+        <img src={LogoCamara} onClick={() => navigate("/userInformation")} />
         <h1>Editar Informações de Trabalho</h1>
       </div>
       <div className={styles.informativeText}>
