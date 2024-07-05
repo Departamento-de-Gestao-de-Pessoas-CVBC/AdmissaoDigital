@@ -8,7 +8,7 @@ import { Register } from "./pages/Register/Register";
 import { Login } from "./pages/Login/Login";
 import { UserInformation } from "./pages/UserInformation/UserInformation";
 import { Protected } from "./pages/Protected/Protected";
-import { AdminAccess } from "./pages/AdminAccess/AdminAccess";
+import { AdminAccessLogin } from "./pages/AdminAccessLogin/AdminAccessLogin";
 import { EditPersonalData } from "./pages/PagesToEdit/EditPersonalData";
 import { EditDocuments } from "./pages/PagesToEdit/EditDocuments";
 import { EditAddress } from "./pages/PagesToEdit/EditAddress";
@@ -35,8 +35,8 @@ const router = createBrowserRouter([
     element: <Protected Component={UserInformation} />,
   },
   {
-    path: "adminAccess",
-    element: <AdminAccess />,
+    path: "adminAccessLogin",
+    element: <AdminAccessLogin />,
   },
   {
     path: "editPersonalData",

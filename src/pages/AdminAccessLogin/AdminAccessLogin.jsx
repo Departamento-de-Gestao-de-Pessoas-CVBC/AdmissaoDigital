@@ -1,4 +1,4 @@
-import styles from "./AdminAccess.module.css";
+import styles from "./AdminAccessLogin.module.css";
 import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
 
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Input } from "../../components/Input/Input";
 import { BasicButton } from "../../components/BasicButton/BasicButton";
 
-export const AdminAccess = () => {
+export const AdminAccessLogin = () => {
   const navigate = useNavigate();
 
   const handleKeyDown = (e) => {
