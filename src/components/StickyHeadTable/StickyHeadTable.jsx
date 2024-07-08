@@ -40,9 +40,9 @@ const columns = [
   },
 ];
 
-function createData(id, name, cpf, responsibility) {
+const createData = (id, name, cpf, responsibility) => {
   return { id, name, cpf, responsibility, options: "download" };
-}
+};
 
 const rows = [
   createData(
