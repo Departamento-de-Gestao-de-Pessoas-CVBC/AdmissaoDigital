@@ -15,6 +15,15 @@ export const AdminAccess = () => {
     setSearchTerm(e.target.value);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -37,6 +46,7 @@ export const AdminAccess = () => {
             id="search"
             value={searchTerm}
             onChange={handleSearchChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <button className={styles.reportButton}>
