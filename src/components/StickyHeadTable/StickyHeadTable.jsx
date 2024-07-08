@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -16,6 +16,7 @@ const bgColor = "#0051c2";
 const headerFontSize = "1.5rem";
 const bodyFontSize = "1.5rem";
 const buttonFontSize = "1.25rem";
+const paginationFontSize = "1.25rem"; // Novo tamanho de fonte para paginação
 
 const columns = [
   { id: "id", label: "ID", minWidth: 50 },
@@ -89,12 +90,50 @@ const theme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontSize: buttonFontSize,
+        },
+      },
+    },
+    MuiTablePagination: {
+      styleOverrides: {
+        root: {
+          fontSize: paginationFontSize,
+        },
+        selectIcon: {
+          fontSize: paginationFontSize,
+        },
+        select: {
+          fontSize: paginationFontSize,
+        },
+        displayedRows: {
+          fontSize: paginationFontSize,
+        },
+        actions: {
+          fontSize: paginationFontSize,
+        },
+      },
+    },
   },
 });
 
-export const StickyHeadTable = () => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+export const StickyHeadTable = ({ searchTerm }) => {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [filteredRows, setFilteredRows] = useState(rows);
+
+  useEffect(() => {
+    setFilteredRows(
+      rows.filter((row) =>
+        Object.values(row)
+          .join(" ")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -124,7 +163,7 @@ export const StickyHeadTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows
+              {filteredRows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
@@ -157,7 +196,7 @@ export const StickyHeadTable = () => {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={rows.length}
+          count={filteredRows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
