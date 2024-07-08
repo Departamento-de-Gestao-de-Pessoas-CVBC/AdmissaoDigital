@@ -83,7 +83,16 @@
   transition: all 0.3s ease;
 }
 
+.reportButton:hover {
+  cursor: pointer;
+  background: #0051c2de;
+}
+
 @media screen and (min-width: 745px) {
+  .container {
+    position: relative;
+  }
+
   .header {
     flex-direction: row;
   }
@@ -99,5 +108,11 @@
   .search {
     flex-direction: row;
     width: 50%;
+  }
+
+  .reportButton {
+    position: absolute;
+    top: 31rem;
+    left: 3rem;
   }
 }

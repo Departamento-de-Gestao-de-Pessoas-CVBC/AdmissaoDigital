@@ -39,11 +39,11 @@ export const AdminAccess = () => {
             onChange={handleSearchChange}
           />
         </div>
-        <StickyHeadTable searchTerm={searchTerm} />
-        {/* <button className={styles.reportButton}>
+        <button className={styles.reportButton}>
           <FaRegFileAlt />
           Relatório
-        </button> */}
+        </button>
+        <StickyHeadTable searchTerm={searchTerm} />
       </div>
     </div>
   );
