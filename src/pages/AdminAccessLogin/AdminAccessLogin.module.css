@@ -1,0 +1,72 @@
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 3rem;
+  margin: 0 1rem;
+}
+
+/* Wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo da Câmara */
+.logoEtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoEtitle img {
+  width: 30rem;
+}
+
+.logoEtitle h1 {
+  font-size: 3.5rem;
+  text-align: center;
+  color: var(--camaraAzul);
+}
+
+/* Login */
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 3rem;
+  width: 100%;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .logoEtitle img {
+    width: 40rem;
+  }
+
+  .logoEtitle h1 {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .logoEtitle img {
+    width: 50rem;
+  }
+
+  .logoEtitle h1 {
+    font-size: 5rem;
+  }
+}

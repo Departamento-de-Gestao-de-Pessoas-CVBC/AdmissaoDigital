@@ -57,11 +57,13 @@
 /* Esqueceu Senha */
 .esqueceuSenha p a {
   font-size: 1.8rem;
+  text-decoration: underline;
   color: var(--camaraAzul);
   transition: all 0.2s;
 }
 
 .esqueceuSenha p a:hover {
+  cursor: pointer;
   color: var(--camaraAmarelo);
 }
 

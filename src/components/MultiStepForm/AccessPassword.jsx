@@ -9,6 +9,8 @@ import { BasicButton } from "../BasicButton/BasicButton";
 import { Input } from "../Input/Input";
 import { useState } from "react";
 
+import { API_DIRECTORY } from "../../../config.js";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export const AccessPassword = ({ formData, setFormData, prevStep }) => {
@@ -67,8 +69,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
 
     try {
       const res = await axios.post(
-        //"http://localhost/ADMISSAODIGITAL/API/user.php", // Luiz Path
-         "http://localhost/teste/ADMISSAODIGITAL/api/user.php", // Gus Path
+        `${API_DIRECTORY}user.php`,
 
         formValue
       );
@@ -86,6 +87,20 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
       setErrorMessage("Erro ao enviar o formulário. Tente novamente.");
       setSuccessMessage(null);
     }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
+  const handlePrevStep = () => {
+    prevStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -114,6 +129,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
             label="Crie uma Senha"
             value={formData.password}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="password"
@@ -122,13 +138,14 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
             label="Confirme Senha"
             value={formData.confirmPassword}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className={styles.buttons}>
           <BasicButton
             title="Voltar"
             startIcon={<ArrowBackOutlinedIcon />}
-            onClick={prevStep}
+            onClick={handlePrevStep}
           />
           <BasicButton
             title="Finalizar"

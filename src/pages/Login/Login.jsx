@@ -13,6 +13,8 @@ import { Input } from "../../components/Input/Input";
 import { BasicButton } from "../../components/BasicButton/BasicButton";
 import { ReturnButton } from "../../components/ReturnButton/ReturnButton";
 
+import { API_DIRECTORY } from "../../../config.js";
+
 export const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
@@ -60,7 +62,8 @@ export const Login = () => {
 
   function loginSubmit() {
     if (user !== "" && pass !== "") {
-      var url = "http://localhost/teste/ADMISSAODIGITAL/api/login.php";
+      var url = `${API_DIRECTORY}login.php`;
+
       var headers = {
         Accept: "application/json",
         "Content-type": "application/json",
@@ -86,7 +89,7 @@ export const Login = () => {
             localStorage.setItem("userId", response.userId); // Salva o ID do usuário
             setTimeout(function () {
               localStorage.setItem("login", true);
-              navigate("/Teste");
+              navigate("/userInformation");
             }, 5000);
           }
         })
@@ -98,6 +101,15 @@ export const Login = () => {
       setError("Preencha todos os campos!");
     }
   }
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -120,12 +132,14 @@ export const Login = () => {
             mask="999.999.999-99"
             value={user}
             onChange={(e) => handleInputChange(e, "user")}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="password"
             id="password"
             value={pass}
             onChange={(e) => handleInputChange(e, "pass")}
+            onKeyDown={handleKeyDown}
             label="Senha"
           />
           <BasicButton
@@ -148,7 +162,9 @@ export const Login = () => {
         )}
         <div className={styles.esqueceuSenha}>
           <p>
-            <a href="#">Esqueci minha senha</a>
+            <a onClick={() => navigate("/forgotPassword")}>
+              Esqueci minha senha
+            </a>
           </p>
         </div>
       </div>

@@ -1,16 +1,21 @@
-import React from "react";
-import styles from "./Documents.module.css";
+import React, { useEffect } from "react";
+import styles from "./pagesToEdit.module.css";
 
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
 
-import { Input } from "../Input/Input";
-import { BasicSelect } from "../Select/Select";
-import { BasicButton } from "../BasicButton/BasicButton";
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
 
-export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
-  // const [UFRGSelect, setUFRGSelect] = React.useState("");
-  // const [expRg, setExpRg] = React.useState("");
+import { Input } from "../../components/Input/Input";
+import { BasicSelect } from "../../components/Select/Select";
+import { BasicButton } from "../../components/BasicButton/BasicButton";
+import { useNavigate } from "react-router-dom";
+
+export const EditDocuments = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const UFRG = [
     { value: "acre", label: "AC" },
@@ -43,12 +48,8 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
   ];
 
   const handleChange = (e) => {
-    const { name, value, id } = e.target;
-    if (name === "expRg") {
-      setFormData((prev) => ({ ...prev, [name]: value.toUpperCase() }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+    const { name, value } = e.target;
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleKeyDown = (e) => {
@@ -60,20 +61,14 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
     }
   };
 
-  const handlePrevStep = () => {
-    prevStep();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleNextStep = () => {
-    nextStep();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <div className={styles.documents}>
-      <div className={styles.title}>
-        <h1>DOCUMENTOS</h1>
+    <div className={styles.container}>
+      <div className={styles.logoTitle}>
+        <img src={LogoCamara} onClick={() => navigate("/userInformation")} />
+        <h1>Editar Documentos</h1>
+      </div>
+      <div className={styles.informativeText}>
+        <p>Utilize os campos abaixo para atualizar suas informações.</p>
       </div>
       <div className={styles.inputs}>
         <div className={styles.leftInputs}>
@@ -82,7 +77,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             name="cpf"
             label="CPF"
             mask="999.999.999-99"
-            value={formData.cpf}
+            // value={formData.cpf}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -91,7 +86,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             name="pis"
             label="PIS"
             mask="999.99999.99.9"
-            value={formData.pis}
+            // value={formData.pis}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -99,7 +94,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             type="number"
             name="rg"
             label="RG"
-            value={formData.rg}
+            // value={formData.rg}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -107,7 +102,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             type="text"
             name="expRg"
             label="Expedidor do RG"
-            value={formData.expRg}
+            // value={formData.expRg}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -116,7 +111,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             name="dateExpRg"
             label="Data de Expedição do RG"
             mask="99/99/9999"
-            value={formData.dateExpRg}
+            // value={formData.dateExpRg}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -126,7 +121,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             label="UF RG"
             name="ufRg"
             options={UFRG}
-            value={formData.ufRg}
+            // value={formData.ufRg}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -135,7 +130,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             name="reservist"
             label="Nº Reservista"
             mask="999999999999"
-            value={formData.reservist}
+            // value={formData.reservist}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -144,7 +139,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             name="voterRegistration"
             label="Título de Eleitor"
             mask="999999999999"
-            value={formData.voterRegistration}
+            // value={formData.voterRegistration}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -153,7 +148,7 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             name="electoralZone"
             label="Zona Eleitoral"
             mask="999"
-            value={formData.electoralZone}
+            // value={formData.electoralZone}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -162,23 +157,14 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
             name="pollingStation"
             label="Seção Eleitoral"
             mask="9999"
-            value={formData.pollingStation}
+            // value={formData.pollingStation}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
         </div>
       </div>
-      <div className={styles.buttons}>
-        <BasicButton
-          title="Voltar"
-          startIcon={<ArrowBackOutlinedIcon />}
-          onClick={handlePrevStep}
-        />
-        <BasicButton
-          title="Avançar"
-          startIcon={<ArrowForwardOutlinedIcon />}
-          onClick={handleNextStep}
-        />
+      <div className={styles.button}>
+        <BasicButton title="Salvar" startIcon={<SaveAltIcon />} />
       </div>
     </div>
   );

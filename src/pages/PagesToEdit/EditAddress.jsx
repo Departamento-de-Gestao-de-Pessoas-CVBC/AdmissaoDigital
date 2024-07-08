@@ -1,15 +1,21 @@
-import * as React from "react";
-import styles from "./Address.module.css";
+import React, { useEffect } from "react";
+import styles from "./pagesToEdit.module.css";
 
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
 
-import { Input } from "../Input/Input";
-import { BasicSelect } from "../Select/Select";
-import { BasicButton } from "../BasicButton/BasicButton";
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
 
-export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
-  const [logradouroSelect, setLogradouroSelect] = React.useState("");
+import { Input } from "../../components/Input/Input";
+import { BasicSelect } from "../../components/Select/Select";
+import { BasicButton } from "../../components/BasicButton/BasicButton";
+import { useNavigate } from "react-router-dom";
+
+export const EditAddress = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const logradouro = [
     { value: "R", label: "Rua" },
@@ -18,7 +24,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleKeyDown = (e) => {
@@ -29,27 +35,20 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
       form.elements[index + 1].focus();
     }
   };
-
-  const handlePrevStep = () => {
-    prevStep();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleNextStep = () => {
-    nextStep();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <div className={styles.address}>
-      <div className={styles.title}>
-        <h1>ENDEREÇO</h1>
+    <div className={styles.container}>
+      <div className={styles.logoTitle}>
+        <img src={LogoCamara} onClick={() => navigate("/userInformation")} />
+        <h1>Editar Endereço</h1>
+      </div>
+      <div className={styles.informativeText}>
+        <p>Utilize os campos abaixo para atualizar suas informações.</p>
       </div>
       <div className={styles.inputs}>
         <div className={styles.leftInputs}>
           <Input
             mask="99999-999"
-            value={formData.cep}
+            // value={formData.cep}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             id="cep"
@@ -61,7 +60,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             id="stateOfResidence"
             label="Estado de Residência"
             name="stateOfResidence"
-            value={formData.stateOfResidence}
+            // value={formData.stateOfResidence}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -70,7 +69,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             id="city"
             label="Cidade"
             name="city"
-            value={formData.city}
+            // value={formData.city}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -79,7 +78,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             id="neighborhood"
             label="Bairro"
             name="neighborhood"
-            value={formData.neighborhood}
+            // value={formData.neighborhood}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -88,7 +87,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
           <BasicSelect
             label="Logradouro"
             options={logradouro}
-            value={formData.logradouroSelect}
+            // value={formData.logradouroSelect}
             name="logradouroSelect"
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -98,7 +97,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             id="address"
             label="Endereço"
             name="address"
-            value={formData.address}
+            // value={formData.address}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -107,7 +106,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             id="residenceNumber"
             label="Número da Residência"
             name="residenceNumber"
-            value={formData.residenceNumber}
+            // value={formData.residenceNumber}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -116,23 +115,14 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             id="complement"
             label="Complemento"
             name="complement"
-            value={formData.complement}
+            // value={formData.complement}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
         </div>
       </div>
-      <div className={styles.buttons}>
-        <BasicButton
-          title="Voltar"
-          startIcon={<ArrowBackOutlinedIcon />}
-          onClick={handlePrevStep}
-        />
-        <BasicButton
-          title="Avançar"
-          startIcon={<ArrowForwardOutlinedIcon />}
-          onClick={handleNextStep}
-        />
+      <div className={styles.button}>
+        <BasicButton title="Salvar" startIcon={<SaveAltIcon />} />
       </div>
     </div>
   );
