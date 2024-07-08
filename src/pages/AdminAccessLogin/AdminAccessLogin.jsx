@@ -43,7 +43,11 @@ export const AdminAccessLogin = () => {
             label="Senha"
           />
           <div className={styles.buttons}>
-            <BasicButton title="Entrar" startIcon={<LoginIcon />} />
+            <BasicButton
+              title="Entrar"
+              startIcon={<LoginIcon />}
+              onClick={() => navigate("/adminAccess")}
+            />
             <BasicButton
               title="Sair"
               startIcon={<LogoutIcon />}
