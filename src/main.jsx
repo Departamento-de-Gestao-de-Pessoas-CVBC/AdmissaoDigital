@@ -4,18 +4,19 @@ import "./styles/global.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Access } from "./pages/Access/Access";
-import { Register } from "./pages/Register/Register";
-import { Login } from "./pages/Login/Login";
-import { UserInformation } from "./pages/UserInformation/UserInformation";
-import { Protected } from "./pages/Protected/Protected";
+import { AdminAccess } from "./pages/AdminAccess/AdminAccess";
 import { AdminAccessLogin } from "./pages/AdminAccessLogin/AdminAccessLogin";
-import { EditPersonalData } from "./pages/PagesToEdit/EditPersonalData";
-import { EditDocuments } from "./pages/PagesToEdit/EditDocuments";
-import { EditAddress } from "./pages/PagesToEdit/EditAddress";
-import { EditJobInformation } from "./pages/PagesToEdit/EditJobInformation";
-import { EditContact } from "./pages/PagesToEdit/EditContact";
-import { EditAccessPassword } from "./pages/PagesToEdit/EditAccessPassword";
 import { ForgotPassword } from "./pages/ForgotPassword/ForgotPassword";
+import { Login } from "./pages/Login/Login";
+import { EditAccessPassword } from "./pages/PagesToEdit/EditAccessPassword";
+import { EditAddress } from "./pages/PagesToEdit/EditAddress";
+import { EditContact } from "./pages/PagesToEdit/EditContact";
+import { EditDocuments } from "./pages/PagesToEdit/EditDocuments";
+import { EditJobInformation } from "./pages/PagesToEdit/EditJobInformation";
+import { EditPersonalData } from "./pages/PagesToEdit/EditPersonalData";
+import { Protected } from "./pages/Protected/Protected";
+import { Register } from "./pages/Register/Register";
+import { UserInformation } from "./pages/UserInformation/UserInformation";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
     path: "forgotPassword",
     element: <ForgotPassword />,
+  },
+  {
+    path: "adminAccess",
+    element: <AdminAccess />,
   },
 ]);
 
