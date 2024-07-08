@@ -69,4 +69,8 @@
   .logoEtitle h1 {
     font-size: 5rem;
   }
+
+  .login {
+    width: 60%;
+  }
 }

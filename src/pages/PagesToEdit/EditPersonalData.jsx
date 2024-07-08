@@ -21,7 +21,7 @@ export const EditPersonalData = () => {
     cityOfBirth: "",
     stateOfBirth: "",
     levelOfEducation: "",
-    breed: ""
+    breed: "",
   });
   const [loading, setLoading] = useState(true);
   const userId = localStorage.getItem("userId");
@@ -38,9 +38,9 @@ export const EditPersonalData = () => {
     fetch(`${API_DIRECTORY}getPersonalData.php`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userId })
+      body: JSON.stringify({ userId }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -59,7 +59,7 @@ export const EditPersonalData = () => {
             cityOfBirth: data.cityOfBirth || "",
             stateOfBirth: data.stateOfBirth || "",
             levelOfEducation: data.levelOfEducation || "",
-            breed: data.breed || ""
+            breed: data.breed || "",
           });
           setLoading(false);
         }
@@ -143,7 +143,11 @@ export const EditPersonalData = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logoTitle}>
-        <img src={LogoCamara} alt="Logo da Câmara" onClick={() => navigate("/userInformation")} />
+        <img
+          src={LogoCamara}
+          alt="Logo da Câmara"
+          onClick={() => navigate("/userInformation")}
+        />
         <h1>Editar Dados Pessoais</h1>
       </div>
       <div className={styles.informativeText}>
@@ -248,7 +252,11 @@ export const EditPersonalData = () => {
         />
       </div>
       <div className={styles.saveButton}>
-        <BasicButton text="Salvar Alterações" icon={<SaveAltIcon />} onClick={handleSave} />
+        <BasicButton
+          title="Salvar Alterações"
+          startIcon={<SaveAltIcon />}
+          onClick={handleSave}
+        />
       </div>
     </div>
   );

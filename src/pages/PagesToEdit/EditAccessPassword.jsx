@@ -28,7 +28,7 @@ export const EditAccessPassword = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logoTitle}>
-        <img src={LogoCamara} onClick={() => navigate("/teste")} />
+        <img src={LogoCamara} onClick={() => navigate("/userInformation")} />
         <h1>Editar Senha de Acesso</h1>
       </div>
       <div className={styles.informativeText}>
@@ -64,7 +64,7 @@ export const EditAccessPassword = () => {
         />
       </div>
       <div className={styles.button}>
-        <BasicButton title="Salvar" startIcon={<SaveAltIcon />} />
+        <BasicButton title="Salvar Alterações" startIcon={<SaveAltIcon />} />
       </div>
     </div>
   );

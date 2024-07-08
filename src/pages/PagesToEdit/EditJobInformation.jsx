@@ -208,7 +208,7 @@ export const EditJobInformation = () => {
         )} */}
       </div>
       <div className={styles.button}>
-        <BasicButton title="Salvar" startIcon={<SaveAltIcon />} />
+        <BasicButton title="Salvar Alterações" startIcon={<SaveAltIcon />} />
       </div>
     </div>
   );

@@ -121,7 +121,11 @@ export const EditContact = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logoTitle}>
-        <img src={LogoCamara} alt="Logo da Câmara" onClick={() => navigate("/userInformation")} />
+        <img
+          src={LogoCamara}
+          alt="Logo da Câmara"
+          onClick={() => navigate("/userInformation")}
+        />
         <h1>Editar Contato</h1>
       </div>
       <div className={styles.informativeText}>
@@ -172,7 +176,11 @@ export const EditContact = () => {
         </div>
       </div>
       <div className={styles.button}>
-        <BasicButton title="Salvar" startIcon={<SaveAltIcon />} onClick={handleSave} />
+        <BasicButton
+          title="Salvar Alterações"
+          startIcon={<SaveAltIcon />}
+          onClick={handleSave}
+        />
       </div>
     </div>
   );
