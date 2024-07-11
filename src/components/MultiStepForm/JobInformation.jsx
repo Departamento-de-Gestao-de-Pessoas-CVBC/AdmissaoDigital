@@ -147,7 +147,7 @@ export const JobInformation = ({
         </div>
         <div className={styles.rightInputs}>
           <BasicSelect
-            label="Dependentes"
+            label="Dependentes Declarados no Imposto de Renda"
             options={dependentsOptions}
             value={dependentsSelect}
             name="dependentsSelect"
