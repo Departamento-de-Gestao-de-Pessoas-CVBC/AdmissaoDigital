@@ -23,6 +23,7 @@ export const EditPersonalData = () => {
     levelOfEducation: "",
     breed: "",
   });
+  const [initialFormData, setInitialFormData] = useState({}); // Guarda os dados iniciais
   const [loading, setLoading] = useState(true);
   const userId = localStorage.getItem("userId");
 
@@ -61,6 +62,19 @@ export const EditPersonalData = () => {
             levelOfEducation: data.levelOfEducation || "",
             breed: data.breed || "",
           });
+          setInitialFormData({
+            name: data.name || "",
+            mothersName: data.mothersName || "",
+            fathersName: data.fathersName || "",
+            nationality: data.nationality || "",
+            gender: data.gender || "",
+            maritalStatus: data.maritalStatus || "",
+            dateOfBirth: data.dateOfBirth || "",
+            cityOfBirth: data.cityOfBirth || "",
+            stateOfBirth: data.stateOfBirth || "",
+            levelOfEducation: data.levelOfEducation || "",
+            breed: data.breed || "",
+          });
           setLoading(false);
         }
       })
@@ -85,8 +99,59 @@ export const EditPersonalData = () => {
   };
 
   const handleSave = () => {
-    // Implement your save logic here
-    alert("Implementar lógica de salvar aqui.");
+    const password = prompt("Por favor, insira sua senha para confirmar:");
+    if (password) {
+      // Verifica se os dados foram modificados
+      if (
+        formData.name !== initialFormData.name ||
+        formData.mothersName !== initialFormData.mothersName ||
+        formData.fathersName !== initialFormData.fathersName ||
+        formData.nationality !== initialFormData.nationality ||
+        formData.gender !== initialFormData.gender ||
+        formData.maritalStatus !== initialFormData.maritalStatus ||
+        formData.dateOfBirth !== initialFormData.dateOfBirth ||
+        formData.cityOfBirth !== initialFormData.cityOfBirth ||
+        formData.stateOfBirth !== initialFormData.stateOfBirth ||
+        formData.levelOfEducation !== initialFormData.levelOfEducation ||
+        formData.breed !== initialFormData.breed
+      ) {
+        // Prepara o objeto de dados para enviar ao backend
+        const dataToSend = {
+          userId: userId,
+          password: password,
+          formData: formData,
+        };
+
+        // Envia os dados para o backend
+        fetch(`${API_DIRECTORY}updatePersonalData.php`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              console.error("Erro ao atualizar dados:", data.error);
+              alert(
+                "Erro ao atualizar dados. Verifique sua conexão e tente novamente."
+              );
+            } else {
+              alert("Dados atualizados com sucesso!");
+              navigate("/userInformation"); // Redireciona para a página de informações do usuário
+            }
+          })
+          .catch((error) => {
+            console.error("Erro ao enviar requisição:", error);
+            alert(
+              "Erro ao enviar requisição. Verifique sua conexão e tente novamente."
+            );
+          });
+      } else {
+        alert("Nenhuma alteração detectada.");
+      }
+    }
   };
 
   if (loading) {
@@ -261,3 +326,5 @@ export const EditPersonalData = () => {
     </div>
   );
 };
+
+export default EditPersonalData;
