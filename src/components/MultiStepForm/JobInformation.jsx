@@ -217,23 +217,19 @@ export const JobInformation = ({
             </div>
           ))}
           <div className={styles.dependentButtons}>
-            {dependents.length > 1 && (
-              <BasicButton
-                title="Remover Dependente"
-                onClick={removeDependent}
-                className={styles.removeDependentButton}
-              >
-                Remover Dependente
-              </BasicButton>
-            )}
             {dependents.length < 5 && (
               <BasicButton
                 title="Adicionar Dependente"
                 onClick={addDependent}
                 className={styles.addDependentButton}
-              >
-                Adicionar Dependente
-              </BasicButton>
+              ></BasicButton>
+            )}
+            {dependents.length > 1 && (
+              <BasicButton
+                title="Remover Dependente"
+                onClick={removeDependent}
+                className={styles.removeDependentButton}
+              ></BasicButton>
             )}
           </div>
         </div>
