@@ -10,17 +10,18 @@ import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import DownloadIcon from "@mui/icons-material/Download";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { API_DIRECTORY } from "../../../config.js";
 
 const textColor = "#ffffff";
 const bgColor = "#0051c2";
 const headerFontSize = "1.5rem";
 const bodyFontSize = "1.5rem";
 const buttonFontSize = "1.25rem";
-const paginationFontSize = "1.25rem"; // Novo tamanho de fonte para paginação
+const paginationFontSize = "1.25rem";
 
 const columns = [
   { id: "id", label: "ID", minWidth: 50 },
-  { id: "name", label: "Nome", minWidth: 100 },
+  { id: "nome", label: "Nome", minWidth: 100 },
   {
     id: "cpf",
     label: "CPF",
@@ -28,7 +29,7 @@ const columns = [
     format: (value) => value.toLocaleString("pt-BR"),
   },
   {
-    id: "responsibility",
+    id: "cargo",
     label: "Cargo",
     minWidth: 100,
     format: (value) => value.toLocaleString("pt-BR"),
@@ -38,37 +39,6 @@ const columns = [
     label: "Opções",
     minWidth: 50,
   },
-];
-
-const createData = (id, name, cpf, responsibility) => {
-  return { id, name, cpf, responsibility, options: "download" };
-};
-
-const rows = [
-  createData(
-    1,
-    "Luiz Henrique Lima de Oliveira",
-    "114.378.259-31",
-    "Estagiário - Nível Superior"
-  ),
-  createData(
-    2,
-    "Fulano de Tal da Silva",
-    "003.895.742-93",
-    "Assessor Parlamentar"
-  ),
-  createData(
-    3,
-    "Filipino Rocha Cabral",
-    "449.625.872-63",
-    "Assessor Parlamentar"
-  ),
-  createData(
-    4,
-    "Marcos Kleber Pereira Machado",
-    "666.852.712-59",
-    "Diretor de Patrimônio"
-  ),
 ];
 
 const theme = createTheme({
@@ -119,10 +89,52 @@ const theme = createTheme({
   },
 });
 
+const convertToCSV = (objArray) => {
+  const array = typeof objArray !== "object" ? JSON.parse(objArray) : objArray;
+  let str = "";
+
+  array.forEach((obj) => {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        str += `${key},${obj[key]}\r\n`;
+      }
+    }
+  });
+
+  return str;
+};
+
+const downloadCSV = (data, filename) => {
+  const csv = convertToCSV(data);
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const link = document.createElement("a");
+
+  if (link.download !== undefined) {
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", filename);
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+};
+
 export const StickyHeadTable = ({ searchTerm }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [filteredRows, setFilteredRows] = useState(rows);
+  const [rows, setRows] = useState([]);
+  const [filteredRows, setFilteredRows] = useState([]);
+
+  useEffect(() => {
+    fetch(`${API_DIRECTORY}getADM.php`)
+      .then((response) => response.json())
+      .then((data) => {
+        setRows(data);
+        setFilteredRows(data);
+      })
+      .catch((error) => console.error("Erro ao buscar dados de admin:", error));
+  }, []);
 
   useEffect(() => {
     setFilteredRows(
@@ -133,7 +145,16 @@ export const StickyHeadTable = ({ searchTerm }) => {
           .includes(searchTerm.toLowerCase())
       )
     );
-  }, [searchTerm]);
+  }, [searchTerm, rows]);
+
+  const handleDownload = (id, nome) => {
+    fetch(`${API_DIRECTORY}getAdminById.php?id=${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        downloadCSV(data, `${nome}.csv`);
+      })
+      .catch((error) => console.error("Erro ao buscar dados de admin:", error));
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -178,6 +199,7 @@ export const StickyHeadTable = ({ searchTerm }) => {
                                 color="primary"
                                 startIcon={<DownloadIcon />}
                                 sx={{ fontSize: buttonFontSize }}
+                                onClick={() => handleDownload(row.id, row.nome)}
                               >
                                 Download
                               </Button>

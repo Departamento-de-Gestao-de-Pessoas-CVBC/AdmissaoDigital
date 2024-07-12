@@ -60,7 +60,6 @@ if (mysqli_connect_error()) {
                 "telefonista" => "Telefonista"
             );
 
-            // Verifica se o valor da responsabilidade existe no dicionário
             $positionLabel = isset($responsibility[$row['cargo']]) ? $responsibility[$row['cargo']] : "Desconhecido";
 
             $response = array(

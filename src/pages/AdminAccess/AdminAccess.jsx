@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AdminAccess.module.css";
 import { useNavigate } from "react-router-dom";
 import LogoCamara from "../../assets/CamaraSemFundoBranco.png";
@@ -7,9 +7,29 @@ import { StickyHeadTable } from "../../components/StickyHeadTable/StickyHeadTabl
 import { RxExit } from "react-icons/rx";
 import { FaRegFileAlt } from "react-icons/fa";
 
+import { API_DIRECTORY } from "../../../config.js";
+
 export const AdminAccess = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
+  const [adminData, setAdminData] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
+
+  useEffect(() => {
+    let login = localStorage.getItem("adminLogin");
+    if (!login) {
+      navigate("/");
+    } else {
+      fetchAdminData();
+    }
+  }, []);
+
+  const fetchAdminData = () => {
+    fetch(`${API_DIRECTORY}getADM.php`)
+      .then((response) => response.json())
+      .then((data) => setAdminData(data))
+      .catch((error) => console.error("Erro ao buscar dados de admin:", error));
+  };
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -24,16 +44,27 @@ export const AdminAccess = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.setItem("adminLogin", "");
+    localStorage.setItem("loginStatus", "Deslogado com sucesso!");
+    navigate("/");
+  };
+
+  const handleGenerateReport = () => {
+    const reportStartId = prompt("Informe o ID inicial para o relatório:");
+    if (reportStartId) {
+      window.open(`${API_DIRECTORY}generateReport.php?startId=${reportStartId}`);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <img src={LogoCamara} />
-        <a onClick={() => navigate("/")}>
-          <button className={styles.exitButton}>
-            <RxExit />
-            Sair
-          </button>
-        </a>
+        <img src={LogoCamara} alt="Logo" />
+        <button className={styles.exitButton} onClick={handleLogout}>
+          <RxExit />
+          Sair
+        </button>
       </div>
       <div className={styles.main}>
         <div className={styles.title}>
@@ -49,11 +80,15 @@ export const AdminAccess = () => {
             onKeyDown={handleKeyDown}
           />
         </div>
-        <button className={styles.reportButton}>
+        <button className={styles.reportButton} onClick={handleGenerateReport}>
           <FaRegFileAlt />
           Relatório
         </button>
-        <StickyHeadTable searchTerm={searchTerm} />
+        <StickyHeadTable
+          searchTerm={searchTerm}
+          data={adminData}
+          setSelectedId={setSelectedId}
+        />
       </div>
     </div>
   );
