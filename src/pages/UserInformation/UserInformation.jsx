@@ -52,77 +52,8 @@ export const UserInformation = () => {
     navigate("/");
   }
 
-  const handleFichaCadastralClick = () => {
-    fetch(`${API_DIRECTORY}FichaCadastral.php?id=${userId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // Open a new window to print the returned HTML
-        const newWindow = window.open("", "_blank");
-        newWindow.document.open();
-        newWindow.document.write(data.html);
-        newWindow.document.close();
-        newWindow.print();
-      })
-      .catch((error) => {
-        console.error("Error fetching or printing document:", error);
-        // Handle error as needed
-      });
-  };
-
-  const handleAptidaoClick = () => {
-    fetch(`${API_DIRECTORY}aptidao_legal.php?id=${userId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json(); // Retorna o JSON da resposta
-      })
-      .then((data) => {
-        // Verifica se há um erro na resposta
-        if (data.error) {
-          throw new Error(data.error);
-        }
-        // Abre uma nova janela para imprimir o HTML retornado
-        const newWindow = window.open("", "_blank");
-        newWindow.document.open();
-        newWindow.document.write(data.html); // Escreve o HTML na nova janela
-        newWindow.document.close();
-        newWindow.print();
-      })
-      .catch((error) => {
-        console.error("Error fetching or printing document:", error);
-        // Handle error as needed
-      });
-  };
-
-  const handleInexistenciaClick = () => {
-    fetch(`${API_DIRECTORY}inexistencia.php?id=${userId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json(); // Retorna o JSON da resposta
-      })
-      .then((data) => {
-        // Verifica se há um erro na resposta
-        if (data.error) {
-          throw new Error(data.error);
-        }
-        // Abre uma nova janela para imprimir o HTML retornado
-        const newWindow = window.open("", "_blank");
-        newWindow.document.open();
-        newWindow.document.write(data.html); // Escreve o HTML na nova janela
-        newWindow.document.close();
-        newWindow.print();
-      })
-      .catch((error) => {
-        console.error("Error fetching or printing document:", error);
-        // Handle error as needed
-      });
-  };
-
-  const handleLomClick = () => {
-    fetch(`${API_DIRECTORY}Lom.php?id=${userId}`)
+  const fetchAndPrintDocument = (endpoint) => {
+    fetch(`${API_DIRECTORY}${endpoint}?id=${userId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -193,10 +124,13 @@ export const UserInformation = () => {
           <p>Documentação</p>
         </div>
         <div className={styles.documentsCard}>
+          <div className={styles.documentsWarning}>
+            <p>Faça o download e imprima sua documentação por aqui!</p>
+          </div>
           <div className={styles.forms}>
             <button
               className={styles.option}
-              onClick={handleFichaCadastralClick}
+              onClick={() => fetchAndPrintDocument("FichaCadastral.php")}
             >
               <IoPrintOutline />
               Ficha Cadastral
@@ -205,15 +139,24 @@ export const UserInformation = () => {
               <IoPrintOutline />
               Declaração de Bens e Renda
             </button>
-            <button className={styles.option} onClick={handleAptidaoClick}>
+            <button
+              className={styles.option}
+              onClick={() => fetchAndPrintDocument("aptidao_legal.php")}
+            >
               <IoPrintOutline />
               Aptidão Legal
             </button>
-            <button className={styles.option} onClick={handleInexistenciaClick}>
+            <button
+              className={styles.option}
+              onClick={() => fetchAndPrintDocument("inexistencia.php")}
+            >
               <IoPrintOutline />
               Inexistência de Parentesco
             </button>
-            <button className={styles.option} onClick={handleLomClick}>
+            <button
+              className={styles.option}
+              onClick={() => fetchAndPrintDocument("Lom.php")}
+            >
               <IoPrintOutline />
               Declaração LOM (Apenas vereadores)
             </button>
@@ -238,29 +181,47 @@ export const UserInformation = () => {
         </div>
         <div className={styles.additionalSelections}>
           <div className={styles.leftSelections}>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editPersonalData")}
+            >
               <IoMdPerson />
               Editar Dados Pessoais
             </button>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editDocuments")}
+            >
               <FaFile />
               Editar Documentos
             </button>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editAddress")}
+            >
               <FaHouse />
               Editar Endereço
             </button>
           </div>
           <div className={styles.rightSelections}>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editJobInformation")}
+            >
               <FaSuitcase />
               Editar Informações de Trabalho
             </button>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editContact")}
+            >
               <FaPhoneFlip />
               Editar Contato
             </button>
-            <button className={styles.selection}>
+            <button
+              className={styles.selection}
+              onClick={() => navigate("/editAccessPassword")}
+            >
               <MdPassword />
               Editar Senha de Acesso
             </button>

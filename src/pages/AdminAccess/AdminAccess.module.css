@@ -3,45 +3,116 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-/* Login Card */
-.loginCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 2rem;
-  border: 1px solid rgba(0, 0, 0, 0.342);
-  border-radius: 0.8rem;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.342);
-  padding: 2rem;
 }
 
-/* Image & Title */
-.imgTitle {
+/* Header */
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  background: var(--camaraAzul);
+  padding: 1rem;
+  width: 100%;
 }
 
-.imgTitle img {
+.header img {
   width: 30rem;
 }
 
-.imgTitle h1 {
-  color: var(--camaraAzul);
-  font-size: 3.5rem;
+/* Exit Button */
+.exitButton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  transition: all 0.3s ease;
 }
 
-/* Inputs */
-.inputs {
+.exitButton:hover {
+  cursor: pointer;
+  background: rgba(255, 0, 0, 0.804);
+}
+
+/* Main */
+.main {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding: 0 3rem;
+  margin-bottom: 2rem;
   width: 100%;
+}
+
+/* Title */
+.title h1 {
+  text-align: center;
+  font-size: 4rem;
+  color: var(--camaraAzul);
+}
+
+/* Search */
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Report Button */
+.reportButton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--camaraAzul);
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+.reportButton:hover {
+  cursor: pointer;
+  background: #0051c2de;
+}
+
+@media screen and (min-width: 745px) {
+  .container {
+    position: relative;
+  }
+
+  .header {
+    flex-direction: row;
+  }
+
+  .header img {
+    width: 35rem;
+  }
+
+  .exitButton {
+    font-size: 2.5rem;
+  }
+
+  .search {
+    flex-direction: row;
+    width: 50%;
+  }
+
+  .reportButton {
+    position: absolute;
+    top: 31rem;
+    left: 3rem;
+  }
 }

@@ -25,7 +25,7 @@ export const Login = () => {
   useEffect(() => {
     let login = localStorage.getItem("login");
     if (login) {
-      navigate("teste");
+      navigate("userInformation");
     }
     let loginStatus = localStorage.getItem("loginStatus");
     if (login) {
@@ -89,7 +89,7 @@ export const Login = () => {
             localStorage.setItem("userId", response.userId); // Salva o ID do usuário
             setTimeout(function () {
               localStorage.setItem("login", true);
-              navigate("/Teste");
+              navigate("/userInformation");
             }, 5000);
           }
         })
@@ -101,6 +101,15 @@ export const Login = () => {
       setError("Preencha todos os campos!");
     }
   }
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -123,12 +132,14 @@ export const Login = () => {
             mask="999.999.999-99"
             value={user}
             onChange={(e) => handleInputChange(e, "user")}
+            onKeyDown={handleKeyDown}
           />
           <Input
             type="password"
             id="password"
             value={pass}
             onChange={(e) => handleInputChange(e, "pass")}
+            onKeyDown={handleKeyDown}
             label="Senha"
           />
           <BasicButton
@@ -151,7 +162,9 @@ export const Login = () => {
         )}
         <div className={styles.esqueceuSenha}>
           <p>
-            <a href="#">Esqueci minha senha</a>
+            <a onClick={() => navigate("/forgotPassword")}>
+              Esqueci minha senha
+            </a>
           </p>
         </div>
       </div>

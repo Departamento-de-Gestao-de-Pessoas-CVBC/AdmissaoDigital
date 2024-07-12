@@ -24,7 +24,14 @@ const theme = createTheme({
   },
 });
 
-export const BasicSelect = ({ label, options, value, onChange, ...rest }) => {
+export const BasicSelect = ({
+  label,
+  options,
+  value,
+  onChange,
+  onKeyDown,
+  ...rest
+}) => {
   return (
     <Box sx={{ width: "100%" }}>
       <FormControl fullWidth>
@@ -45,6 +52,7 @@ export const BasicSelect = ({ label, options, value, onChange, ...rest }) => {
           value={value}
           label={label}
           onChange={onChange}
+          onKeyDown={onKeyDown}
           sx={{
             color: theme.palette.gray.text,
             fontSize: "1.6rem",

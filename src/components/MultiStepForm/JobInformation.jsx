@@ -22,6 +22,8 @@ export const JobInformation = ({
   );
   const [dependents, setDependents] = React.useState(formData.dependents || []);
 
+  const dependentsRef = React.useRef([]);
+
   const responsibility = [
     { value: "analistaTI", label: "Analista de Tecnologia da Informação" },
     { value: "analistaLE", label: "Analista Legislativo" },
@@ -89,6 +91,13 @@ export const JobInformation = ({
         ...prev,
         { dependentName: "", dependentCpf: "", dependentDob: "" },
       ]);
+      setTimeout(() => {
+        const lastDependentIndex = dependents.length;
+        dependentsRef.current[lastDependentIndex].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 0);
     }
   };
 
@@ -110,6 +119,36 @@ export const JobInformation = ({
     }));
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      form.elements[index + 1].focus();
+    }
+  };
+
+  const handlePrevStep = () => {
+    prevStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleNextStep = () => {
+    nextStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  React.useEffect(() => {
+    if (dependentsSelect === "sim") {
+      setTimeout(() => {
+        dependentsRef.current[0].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 0);
+    }
+  }, [dependentsSelect]);
+
   return (
     <div className={styles.jobInformation}>
       <div className={styles.title}>
@@ -123,22 +162,28 @@ export const JobInformation = ({
             value={responsibilitySelect}
             name="responsibilitySelect"
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className={styles.rightInputs}>
           <BasicSelect
-            label="Dependentes"
+            label="Dependentes Declarados no Imposto de Renda"
             options={dependentsOptions}
             value={dependentsSelect}
             name="dependentsSelect"
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
       {dependentsSelect === "sim" && (
         <div className={styles.dependentFields}>
           {dependents.map((dependent, index) => (
-            <div key={index} className={styles.dependentSection}>
+            <div
+              key={index}
+              className={styles.dependentSection}
+              ref={(el) => (dependentsRef.current[index] = el)}
+            >
               <h3>{`${index + 1}º Dependente:`}</h3>
               <Input
                 type="text"
@@ -147,6 +192,7 @@ export const JobInformation = ({
                 label="Nome Completo"
                 value={dependent.dependentName}
                 onChange={(e) => handleDependentChange(index, e)}
+                onKeyDown={handleKeyDown}
               />
               <Input
                 type="text"
@@ -156,6 +202,7 @@ export const JobInformation = ({
                 value={dependent.dependentCpf}
                 mask="999.999.999-99"
                 onChange={(e) => handleDependentChange(index, e)}
+                onKeyDown={handleKeyDown}
               />
               <Input
                 type="text"
@@ -165,27 +212,24 @@ export const JobInformation = ({
                 value={dependent.dependentDob}
                 mask="99/99/9999"
                 onChange={(e) => handleDependentChange(index, e)}
+                onKeyDown={handleKeyDown}
               />
             </div>
           ))}
           <div className={styles.dependentButtons}>
-            {dependents.length > 1 && (
-              <BasicButton
-                title="Remover Dependente"
-                onClick={removeDependent}
-                className={styles.removeDependentButton}
-              >
-                Remover Dependente
-              </BasicButton>
-            )}
             {dependents.length < 5 && (
               <BasicButton
                 title="Adicionar Dependente"
                 onClick={addDependent}
                 className={styles.addDependentButton}
-              >
-                Adicionar Dependente
-              </BasicButton>
+              ></BasicButton>
+            )}
+            {dependents.length > 1 && (
+              <BasicButton
+                title="Remover Dependente"
+                onClick={removeDependent}
+                className={styles.removeDependentButton}
+              ></BasicButton>
             )}
           </div>
         </div>
@@ -194,12 +238,12 @@ export const JobInformation = ({
         <BasicButton
           title="Voltar"
           startIcon={<ArrowBackOutlinedIcon />}
-          onClick={prevStep}
+          onClick={handlePrevStep}
         />
         <BasicButton
           title="Avançar"
           startIcon={<ArrowForwardOutlinedIcon />}
-          onClick={nextStep}
+          onClick={handleNextStep}
         />
       </div>
     </div>

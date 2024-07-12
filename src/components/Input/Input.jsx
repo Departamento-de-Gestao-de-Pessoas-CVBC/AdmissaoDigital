@@ -3,6 +3,10 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import ReactInputMask from "react-input-mask";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const theme = createTheme({
   palette: {
@@ -21,7 +25,13 @@ const theme = createTheme({
   },
 });
 
-export const Input = ({ id, label, type, mask, ...rest }) => {
+export const Input = ({ id, label, type, mask, onKeyDown, ...rest }) => {
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
     <Box
       component="form"
@@ -36,6 +46,7 @@ export const Input = ({ id, label, type, mask, ...rest }) => {
               {...inputProps}
               id={id}
               label={label}
+              onKeyDown={onKeyDown}
               variant="outlined"
               type="text"
               sx={{
@@ -67,9 +78,10 @@ export const Input = ({ id, label, type, mask, ...rest }) => {
         </ReactInputMask>
       ) : (
         <TextField
-          type={type}
+          type={type === "password" && showPassword ? "text" : type}
           id={id}
           label={label}
+          onKeyDown={onKeyDown}
           variant="outlined"
           sx={{
             width: "100%",
@@ -89,6 +101,13 @@ export const Input = ({ id, label, type, mask, ...rest }) => {
             sx: {
               fontSize: "1.6rem",
             },
+            endAdornment: type === "password" && (
+              <InputAdornment position="end">
+                <IconButton onClick={handleTogglePasswordVisibility} edge="end">
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
           }}
           InputLabelProps={{
             sx: {
