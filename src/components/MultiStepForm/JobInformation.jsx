@@ -22,6 +22,8 @@ export const JobInformation = ({
   );
   const [dependents, setDependents] = React.useState(formData.dependents || []);
 
+  const dependentsRef = React.useRef([]);
+
   const responsibility = [
     { value: "analistaTI", label: "Analista de Tecnologia da Informação" },
     { value: "analistaLE", label: "Analista Legislativo" },
@@ -89,6 +91,13 @@ export const JobInformation = ({
         ...prev,
         { dependentName: "", dependentCpf: "", dependentDob: "" },
       ]);
+      setTimeout(() => {
+        const lastDependentIndex = dependents.length;
+        dependentsRef.current[lastDependentIndex].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 0);
     }
   };
 
@@ -129,6 +138,17 @@ export const JobInformation = ({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  React.useEffect(() => {
+    if (dependentsSelect === "sim") {
+      setTimeout(() => {
+        dependentsRef.current[0].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 0);
+    }
+  }, [dependentsSelect]);
+
   return (
     <div className={styles.jobInformation}>
       <div className={styles.title}>
@@ -159,7 +179,11 @@ export const JobInformation = ({
       {dependentsSelect === "sim" && (
         <div className={styles.dependentFields}>
           {dependents.map((dependent, index) => (
-            <div key={index} className={styles.dependentSection}>
+            <div
+              key={index}
+              className={styles.dependentSection}
+              ref={(el) => (dependentsRef.current[index] = el)}
+            >
               <h3>{`${index + 1}º Dependente:`}</h3>
               <Input
                 type="text"
