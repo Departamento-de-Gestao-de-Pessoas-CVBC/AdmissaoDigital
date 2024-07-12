@@ -3,7 +3,7 @@ DEMANDAS DO PROJETO
 Little Louiz
 
 Little Gus
- 
+ - Desenvolver validações para senhas
  - Autocomplete para as cidades no cadastro
 
 meu tutorial nao apaga nao
