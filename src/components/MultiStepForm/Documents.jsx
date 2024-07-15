@@ -67,7 +67,9 @@ export const Documents = ({ formData, setFormData, prevStep, nextStep }) => {
 
   const handleNextStep = () => {
     nextStep();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
   };
 
   return (

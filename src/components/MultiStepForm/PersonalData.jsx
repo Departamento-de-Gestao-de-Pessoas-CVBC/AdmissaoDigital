@@ -78,7 +78,9 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
 
   const handleNextStep = () => {
     nextStep();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
   };
 
   return (
