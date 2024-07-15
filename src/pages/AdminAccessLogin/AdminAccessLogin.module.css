@@ -51,6 +51,28 @@
   gap: 5rem;
 }
 
+/* Error Msg */
+.errorMsg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  color: var(--vermelhoDeAlerta);
+  font-size: 2rem;
+}
+
+/* Aprove Msg */
+.approveMsg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  color: var(--verdeDeAlerta);
+  font-size: 2rem;
+}
+
 @media screen and (min-width: 768px) {
   .logoEtitle img {
     width: 40rem;
@@ -58,6 +80,14 @@
 
   .logoEtitle h1 {
     font-size: 4rem;
+  }
+
+  .errorMsg {
+    font-size: 2.4rem;
+  }
+
+  .approveMsg {
+    font-size: 2.4rem;
   }
 }
 
@@ -72,5 +102,13 @@
 
   .login {
     width: 60%;
+  }
+
+  .errorMsg {
+    font-size: 2.6rem;
+  }
+
+  .approveMsg {
+    font-size: 2.6rem;
   }
 }
