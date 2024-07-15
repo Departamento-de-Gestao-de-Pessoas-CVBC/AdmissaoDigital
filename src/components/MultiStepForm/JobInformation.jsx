@@ -135,7 +135,9 @@ export const JobInformation = ({
 
   const handleNextStep = () => {
     nextStep();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
   };
 
   React.useEffect(() => {
