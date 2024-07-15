@@ -99,10 +99,8 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
   };
 
   const handlePrevStep = () => {
-    nextStep();
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 0);
+    prevStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
