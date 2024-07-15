@@ -49,6 +49,4 @@ if (mysqli_connect_error()) {
     $conn->close();
     echo json_encode($result);
 }
-//aaaaa
 ?>
-
