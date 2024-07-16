@@ -137,7 +137,7 @@ export const UserInformation = () => {
               onClick={() => fetchAndPrintDocument("FichaCadastral.php")}
             >
               <IoPrintOutline />
-              Ficha Cadastral
+              Ficha de Cadastro de Colaborador
             </button>
             <button className={styles.option}>
               <IoPrintOutline />
@@ -148,7 +148,7 @@ export const UserInformation = () => {
               onClick={() => fetchAndPrintDocument("aptidao_legal.php")}
             >
               <IoPrintOutline />
-              Aptidão Legal
+              Declaração de Aptidão Legal
             </button>
             <button
               className={styles.option}
