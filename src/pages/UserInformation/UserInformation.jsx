@@ -86,6 +86,10 @@ export const UserInformation = () => {
     return <div>Error loading user data.</div>;
   }
 
+  const openPDF = (pdfUrl) => {
+    window.open(pdfUrl, "_blank");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.userSummary}>
@@ -160,15 +164,30 @@ export const UserInformation = () => {
               <IoPrintOutline />
               Declaração LOM (Apenas vereadores)
             </button>
-            <button className={styles.option}>
+            <button
+              className={styles.option}
+              onClick={() =>
+                openPDF("/src/PDFs/Lista Documentação Comissionados.pdf")
+              }
+            >
               <IoPrintOutline />
               Lista de Documentação (Comissionados)
             </button>
-            <button className={styles.option}>
+            <button
+              className={styles.option}
+              onClick={() =>
+                openPDF("/src/PDFs/Lista Documentação Estagiários.pdf")
+              }
+            >
               <IoPrintOutline />
               Lista de Documentação (Estagiários)
             </button>
-            <button className={styles.option}>
+            <button
+              className={styles.option}
+              onClick={() =>
+                openPDF("/src/PDFs/Lista Documentação Vereadores.pdf")
+              }
+            >
               <IoPrintOutline />
               Lista de Documentação (Vereadores)
             </button>
