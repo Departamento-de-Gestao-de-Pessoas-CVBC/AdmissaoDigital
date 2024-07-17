@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../assets/favicon-camara.png"
+      type="image/x-icon"
+    />
+    <style>
+      /* Global Settings */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-size: 62.5%;
+        font-family: "Lato", sans-serif;
+      }
+
+      label {
+        font-size: 1.5rem;
+      }
+
+      input {
+        height: 3rem;
+        border: none;
+        border-radius: 0.6rem;
+        outline: 1px solid rgba(0, 0, 0, 0.596);
+        padding: 0 1rem;
+        font-size: 1.5rem;
+        background: white;
+      }
+
+      input:disabled {
+        color: rgba(0, 0, 0, 0.893);
+      }
+
+      .informations p,
+      .radioWrapper label,
+      .inputWrapper label,
+      .inputWrapper input,
+      .message p,
+      footer p,
+      p {
+        font-size: 1.36rem;
+      }
+
+      p {
+        text-align: justify;
+      }
+
+      /* hr {
+  margin-top: 4rem;
+} */
+
+      /* Body */
+      body {
+        padding: 0 1.5rem;
+      }
+
+      /* Header */
+      header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      header img {
+        width: 25rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      /* Main */
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      /* Informations */
+      .informations {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        border: 1px solid black;
+        border-radius: 0.6rem;
+        padding: 1rem;
+      }
+
+      .inputWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+      }
+
+      .inputWrapper input {
+        width: 100%;
+      }
+
+      .inputWrapper p {
+        padding-left: 8rem;
+      }
+
+      .sameRow {
+        display: flex;
+        gap: 1rem;
+      }
+
+      /* Section Wrapper */
+      .sectionWrapper {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .section {
+        font-size: 3rem;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      /* Table */
+
+      .titleWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: rgba(128, 128, 128, 0.499);
+      }
+
+      .lines {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      /* City Council Data */
+      .cityCouncilData {
+        font-size: 1rem;
+        text-align: right;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="/DeclaracaoDeBens/DeclaracaoDeBens.css" /> -->
+    <title>Declaração de Bens e Renda - DGP</title>
+  </head>
+  <body>
+    <header>
+      <img src="../assets/CamaraSemFundoAzul.png" alt="Logo Câmara Azul" />
+      <h1>DECLARAÇÃO DE BENS E RENDA</h1>
+    </header>
+    <main>
+      <div class="informations">
+        <div class="sameRow">
+          <div class="inputWrapper">
+            <label for="name">Nome Completo</label>
+            <input type="text" name="name" id="name" value="{nome}" disabled />
+          </div>
+          <div class="inputWrapper">
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" id="cpf" value="{cpf}" disabled />
+          </div>
+        </div>
+      </div>
+      <div class="message">
+        <p>Em cumprimento à Lei n° 8.730/93, declaro que:</p>
+      </div>
+      <div class="sectionWrapper">
+        <div class="section">1</div>
+        <div class="informations">
+          <div class="options">
+            <p>
+              (&nbsp;&nbsp;&nbsp;) Apresentei a Declaração de Ajuste Anual
+              (Imposto de Renda), Exercício __________, Ano-Calendário
+              __________ e anexo cópia com o recibo de entrega;
+            </p>
+            <p>
+              (&nbsp;&nbsp;&nbsp;) Estou isento da apresentação da Declaração de
+              Ajuste Anual (Imposto de Renda), Exercício __________,
+              Ano-Calendário __________.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="sectionWrapper">
+        <div class="section">2</div>
+        <div class="informations">
+          <div class="options">
+            <p>A situação atual dos meus bens é a seguinte:</p>
+            <p>(&nbsp;&nbsp;&nbsp;) Não possuo bens;</p>
+            <p>(&nbsp;&nbsp;&nbsp;) Possuo os bens relacionados abaixo;</p>
+            <p>
+              (&nbsp;&nbsp;&nbsp;) Permanecem os bens constantes da última
+              Declaração do Imposto de Renda;
+            </p>
+            <p>
+              (&nbsp;&nbsp;&nbsp;) Relaciono abaixo as alterações ocorridas em
+              meus bens constantes da última Declaração de Ajuste Anual do
+              Imposto de Renda:
+            </p>
+          </div>
+          <div class="table">
+            <div class="titleWrapper">
+              <div class="title">
+                <p><strong>Discriminação dos Bens</strong></p>
+              </div>
+              <div class="title">
+                <p><strong>Valor</strong></p>
+              </div>
+            </div>
+            <div class="lines">
+              <hr />
+              <hr />
+              <hr />
+              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sectionWrapper">
+        <div class="section">3</div>
+        <div class="informations">
+          <div class="options">
+            <p>Declaro ainda que:</p>
+            <p>(&nbsp;&nbsp;&nbsp;) Não recebo rendimentos;</p>
+            <p>
+              (&nbsp;&nbsp;&nbsp;) Recebi apenas os rendimentos da Câmara de
+              Vereadores de Bal. Camboriú;
+            </p>
+            <p>
+              (&nbsp;&nbsp;&nbsp;) Recebi os rendimentos mencionados na última
+              Declaração do Imposto de Renda;
+            </p>
+            <p>
+              (&nbsp;&nbsp;&nbsp;) Recebo os rendimentos abaixo discriminados
+              (não relacionar os rendimentos recebidos pela Câmara de Vereadores
+              de Bal. Camboriú):
+            </p>
+          </div>
+          <div class="table">
+            <div class="titleWrapper">
+              <div class="title">
+                <p><strong>Fonte Pagadora</strong></p>
+              </div>
+              <div class="title">
+                <p><strong>Total auferido no Ano-Base</strong></p>
+              </div>
+            </div>
+            <div class="lines">
+              <hr />
+              <hr />
+              <hr />
+              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sameRow">
+        <div class="inputWrapper">
+          <label for="date">Data</label>
+          <p>{data}</p>
+        </div>
+        <div class="inputWrapper">
+          <label for="signature">Assinatura</label>
+          <div
+            style="border-top: 1px solid black; width: 65%; margin-top: 2rem"
+          ></div>
+        </div>
+      </div>
+      <p class="cityCouncilData">
+        <strong>47 3263-7686</strong><br />
+        Av. das Flores, 675, Bairro dos Estados<br />
+        88339-130 - Balneário Camboriú/SC<br />
+        <strong>balneariocamboriu.sc.leg.br</strong>&nbsp;|
+        <strong>Balneário Camboriú:</strong> Capital Catarinense do Turismo
+      </p>
+    </main>
+  </body>
+</html>

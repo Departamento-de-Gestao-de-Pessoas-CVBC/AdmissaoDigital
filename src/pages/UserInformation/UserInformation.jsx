@@ -139,7 +139,10 @@ export const UserInformation = () => {
               <IoPrintOutline />
               Ficha de Cadastro de Colaborador
             </button>
-            <button className={styles.option}>
+            <button
+              className={styles.option}
+              onClick={() => fetchAndPrintDocument("DeclaracaoDeBens.php")}
+            >
               <IoPrintOutline />
               Declaração de Bens e Renda
             </button>
