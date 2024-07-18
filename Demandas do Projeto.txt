@@ -2,7 +2,6 @@ DEMANDAS DO PROJETO
 
 Little Louiz
  - Imagens base 64
- - Pagina 1 login
  - Dependentes
 
 Little Gus
