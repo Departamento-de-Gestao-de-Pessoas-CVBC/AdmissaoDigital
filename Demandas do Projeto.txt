@@ -1,8 +1,6 @@
 DEMANDAS DO PROJETO
 
 Little Louiz
- - Select estados
- - Select Cidades
  - Imagens base 64
  - Pagina 1 login
  - Dependentes
@@ -12,9 +10,3 @@ Little Gus
  - Autocomplete para as cidades no cadastro
  - Declaração de bens
  - Php primeiro Login
-
-
-meu tutorial nao apaga nao
-
-
------

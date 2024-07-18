@@ -1,5 +1,6 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Address.module.css";
+import citiesData from "../../../Cidades.json";
 
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
@@ -9,12 +10,56 @@ import { BasicSelect } from "../Select/Select";
 import { BasicButton } from "../BasicButton/BasicButton";
 
 export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
+  const [filteredCities, setFilteredCities] = useState([]);
+  const [citySelectDisabled, setCitySelectDisabled] = useState(true);
   const [logradouroSelect, setLogradouroSelect] = React.useState("");
 
   const logradouro = [
     { value: "R", label: "Rua" },
     { value: "AV", label: "Avenida" },
   ];
+
+  const stateOfResidence = [
+    { value: "AC", label: "AC" },
+    { value: "AL", label: "AL" },
+    { value: "AP", label: "AP" },
+    { value: "AM", label: "AM" },
+    { value: "BA", label: "BA" },
+    { value: "CE", label: "CE" },
+    { value: "DF", label: "DF" },
+    { value: "ES", label: "ES" },
+    { value: "GO", label: "GO" },
+    { value: "MA", label: "MA" },
+    { value: "MT", label: "MT" },
+    { value: "MS", label: "MS" },
+    { value: "MG", label: "MG" },
+    { value: "PA", label: "PA" },
+    { value: "PB", label: "PB" },
+    { value: "PR", label: "PR" },
+    { value: "PE", label: "PE" },
+    { value: "PI", label: "PI" },
+    { value: "RJ", label: "RJ" },
+    { value: "RN", label: "RN" },
+    { value: "RS", label: "RS" },
+    { value: "RO", label: "RO" },
+    { value: "RR", label: "RR" },
+    { value: "SC", label: "SC" },
+    { value: "SP", label: "SP" },
+    { value: "SE", label: "SE" },
+    { value: "TO", label: "TO" },
+  ];
+
+  useEffect(() => {
+    setCitySelectDisabled(!formData.stateOfResidence);
+    if (formData.stateOfResidence) {
+      const filtered = citiesData.filter(
+        (city) => city.Estado === formData.stateOfResidence
+      );
+      setFilteredCities(filtered);
+    } else {
+      setFilteredCities([]);
+    }
+  }, [formData.stateOfResidence]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,23 +103,25 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
             label="CEP"
             name="cep"
           />
-          <Input
-            type="text"
-            id="stateOfResidence"
+          <BasicSelect
             label="Estado de Residência"
             name="stateOfResidence"
+            options={stateOfResidence}
             value={formData.stateOfResidence}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
-          <Input
-            type="text"
-            id="city"
-            label="Cidade"
+          <BasicSelect
+            label="Cidade de Residência"
             name="city"
+            options={filteredCities.map((city) => ({
+              value: city.Cidade,
+              label: city.Nome,
+            }))}
             value={formData.city}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
+            disabled={citySelectDisabled}
           />
           <Input
             type="text"
