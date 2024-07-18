@@ -17,6 +17,7 @@ import { EditPersonalData } from "./pages/PagesToEdit/EditPersonalData";
 import { Protected } from "./pages/Protected/Protected";
 import { Register } from "./pages/Register/Register";
 import { UserInformation } from "./pages/UserInformation/UserInformation";
+import { FirstAccess } from "./pages/FirstAccess/FirstAccess";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
   {
     path: "adminAccess",
     element: <AdminAccess />,
+  },
+  {
+    path: "firstAccess",
+    element: <FirstAccess />,
   },
 ]);
 
