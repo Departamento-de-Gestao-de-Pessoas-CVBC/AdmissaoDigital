@@ -161,7 +161,7 @@ export const JobInformation = ({
           <BasicSelect
             label="Cargo"
             options={responsibility}
-            value={responsibilitySelect}
+            value={formData.responsibilitySelect}
             name="responsibilitySelect"
             onChange={handleChange}
             onKeyDown={handleKeyDown}

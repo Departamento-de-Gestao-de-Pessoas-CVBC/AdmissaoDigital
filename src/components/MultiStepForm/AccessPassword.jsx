@@ -61,7 +61,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
       telefone_2: formData.phoneNumber2,
       email_1: formData.email1,
       email_2: formData.email2,
-      cargo: formData.responsibility,
+      cargo: formData.responsibilitySelect,
       senha: formData.password,
       csenha: formData.confirmPassword,
       dependents: formData.dependents,

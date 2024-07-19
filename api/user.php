@@ -32,119 +32,127 @@ function validaCPF($cpf) {
     return true;
 }
 
+function formatPhoneNumber($phoneNumber) {
+    // Remove caracteres não numéricos
+    $phoneNumber = preg_replace('/\D/', '', $phoneNumber);
+    return $phoneNumber;
+}
+
+function extractDDDAndNumber($phoneNumberFormatted) {
+    // Remove caracteres não numéricos
+    $phoneNumberFormatted = preg_replace('/\D/', '', $phoneNumberFormatted);
+    $ddd = substr($phoneNumberFormatted, 0, 2);
+    $number = substr($phoneNumberFormatted, 2);
+    return ['ddd' => $ddd, 'number' => $number];
+}
+
 switch ($method) {
     case "GET":
         $alluser = mysqli_query($db_conn, "SELECT * FROM usuarios");
         if (mysqli_num_rows($alluser) > 0) {
-            $json_array = array(); // Inicializa o array fora do loop
+            $json_array = array();
             while ($row = mysqli_fetch_assoc($alluser)) {
-                // Adiciona cada linha como um array associativo ao $json_array
                 $json_array[] = $row;
             }
             echo json_encode($json_array);
-            return;
         } else {
-            echo json_encode(["result" => "Pleas check the Data"]);
-            return;
+            echo json_encode(["result" => "Please check the Data"]);
         }
         break;
 
     case "POST":
         $userpostdata = json_decode(file_get_contents("php://input"));
 
-        $nome = $userpostdata->nome;
-        $sexo = $userpostdata->sexo;
-        $estado_civil = isset($userpostdata->estado_civil) ? $userpostdata->estado_civil : '';
-        $cpf = $userpostdata->cpf;
-        $data_nascimento = $userpostdata->data_nascimento;
-        $cidade_nascimento = $userpostdata->cidade_nascimento;
-        $estado_nascimento = $userpostdata->estado_nascimento;
-        $nacionalidade = $userpostdata->nacionalidade;
-        $grau_instrucao = $userpostdata->grau_instrucao;
-        $raca_cor = $userpostdata->raca_cor;
-        $nome_pai = $userpostdata->nome_pai;
-        $nome_mae = $userpostdata->nome_mae;
-        $cep = $userpostdata->cep;
-        $cidade_residencia = $userpostdata->cidade_residencia;
-        $estado_residencia = $userpostdata->estado_residencia;
-        $bairro = $userpostdata->bairro;
-        $tipo_logradouro = $userpostdata->tipo_logradouro;
-        $logradouro_residencia = $userpostdata->logradouro_residencia;
-        $numero_residencia = $userpostdata->numero_residencia;
-        $complemento_residencia = $userpostdata->complemento_residencia;
-        $numero_pis = $userpostdata->numero_pis;
-        $numero_rg = $userpostdata->numero_rg;
-        $expedidor_rg = $userpostdata->expedidor_rg;
-        $data_expedicao_rg = $userpostdata->data_expedicao_rg;
-        $uf_expedicao_rg = $userpostdata->uf_expedicao_rg;
-        $titulo_eleitor = isset($userpostdata->titulo_eleitor) ? $userpostdata->titulo_eleitor : '';
-        $titulo_eleitor_zona = isset($userpostdata->titulo_eleitor_zona) ? $userpostdata->titulo_eleitor_zona : '';
-        $titulo_eleitor_secao = isset($userpostdata->titulo_eleitor_secao) ? $userpostdata->titulo_eleitor_secao : '';
-        $reservista = $userpostdata->reservista;
-        $ddd_telefone_1 = isset($userpostdata->ddd_telefone_1) ? substr($userpostdata->ddd_telefone_1, 1, 2) : '';
-        $telefone_1 = $userpostdata->telefone_1;
-        $ddd_telefone_2 = isset($userpostdata->ddd_telefone_2) ? substr($userpostdata->ddd_telefone_2, 1, 2) : '';
-        $telefone_2 = $userpostdata->telefone_2;
-        $email_1 = $userpostdata->email_1;
-        $email_2 = $userpostdata->email_2;
-        $cargo = $userpostdata->cargo;
-        $senha = $userpostdata->senha;
-        $csenha = $userpostdata->csenha;
-        $dependentes = isset($userpostdata->dependents) ? $userpostdata->dependents : [];
+        // Sanitização dos dados
+        $nome = mysqli_real_escape_string($db_conn, $userpostdata->nome ?? '');
+        $sexo = mysqli_real_escape_string($db_conn, $userpostdata->sexo ?? '');
+        $estado_civil = mysqli_real_escape_string($db_conn, $userpostdata->estado_civil ?? '');
+        $cpf = mysqli_real_escape_string($db_conn, $userpostdata->cpf ?? '');
+        $data_nascimento = mysqli_real_escape_string($db_conn, $userpostdata->data_nascimento ?? '');
+        $cidade_nascimento = mysqli_real_escape_string($db_conn, $userpostdata->cidade_nascimento ?? '');
+        $estado_nascimento = mysqli_real_escape_string($db_conn, $userpostdata->estado_nascimento ?? '');
+        $nacionalidade = mysqli_real_escape_string($db_conn, $userpostdata->nacionalidade ?? '');
+        $grau_instrucao = mysqli_real_escape_string($db_conn, $userpostdata->grau_instrucao ?? '');
+        $raca_cor = mysqli_real_escape_string($db_conn, $userpostdata->raca_cor ?? '');
+        $nome_pai = mysqli_real_escape_string($db_conn, $userpostdata->nome_pai ?? '');
+        $nome_mae = mysqli_real_escape_string($db_conn, $userpostdata->nome_mae ?? '');
+        $cep = mysqli_real_escape_string($db_conn, $userpostdata->cep ?? '');
+        $cidade_residencia = mysqli_real_escape_string($db_conn, $userpostdata->cidade_residencia ?? '');
+        $estado_residencia = mysqli_real_escape_string($db_conn, $userpostdata->estado_residencia ?? '');
+        $bairro = mysqli_real_escape_string($db_conn, $userpostdata->bairro ?? '');
+        $tipo_logradouro = mysqli_real_escape_string($db_conn, $userpostdata->tipo_logradouro ?? '');
+        $logradouro_residencia = mysqli_real_escape_string($db_conn, $userpostdata->logradouro_residencia ?? '');
+        $numero_residencia = mysqli_real_escape_string($db_conn, $userpostdata->numero_residencia ?? '');
+        $complemento_residencia = mysqli_real_escape_string($db_conn, $userpostdata->complemento_residencia ?? '');
+        $numero_pis = mysqli_real_escape_string($db_conn, $userpostdata->numero_pis ?? '');
+        $numero_rg = mysqli_real_escape_string($db_conn, $userpostdata->numero_rg ?? '');
+        $expedidor_rg = mysqli_real_escape_string($db_conn, $userpostdata->expedidor_rg ?? '');
+        $data_expedicao_rg = mysqli_real_escape_string($db_conn, $userpostdata->data_expedicao_rg ?? '');
+        $uf_expedicao_rg = mysqli_real_escape_string($db_conn, $userpostdata->uf_expedicao_rg ?? '');
+        $titulo_eleitor = mysqli_real_escape_string($db_conn, $userpostdata->titulo_eleitor ?? '');
+        $titulo_eleitor_zona = mysqli_real_escape_string($db_conn, $userpostdata->titulo_eleitor_zona ?? '');
+        $titulo_eleitor_secao = mysqli_real_escape_string($db_conn, $userpostdata->titulo_eleitor_secao ?? '');
+        $reservista = mysqli_real_escape_string($db_conn, $userpostdata->reservista ?? '');
+        
+        // Extraindo DDD e número dos telefones
+        $phoneData1 = extractDDDAndNumber($userpostdata->telefone_1 ?? '');
+        $phoneData2 = extractDDDAndNumber($userpostdata->telefone_2 ?? '');
+        
+        $ddd_telefone_1 = mysqli_real_escape_string($db_conn, $phoneData1['ddd']);
+        $telefone_1 = mysqli_real_escape_string($db_conn, $phoneData1['number']);
+        $ddd_telefone_2 = mysqli_real_escape_string($db_conn, $phoneData2['ddd']);
+        $telefone_2 = mysqli_real_escape_string($db_conn, $phoneData2['number']);
+        
+        $email_1 = mysqli_real_escape_string($db_conn, $userpostdata->email_1 ?? '');
+        $email_2 = mysqli_real_escape_string($db_conn, $userpostdata->email_2 ?? '');
+        $cargo = mysqli_real_escape_string($db_conn, $userpostdata->cargo ?? '');
+        $senha = mysqli_real_escape_string($db_conn, $userpostdata->senha ?? '');
+        $csenha = mysqli_real_escape_string($db_conn, $userpostdata->csenha ?? '');
 
-        // Verificar se as senhas são iguais
-        if ($senha !== $csenha) {
-            $response = ["success" => false, "message" => "As senhas não coincidem."];
-            echo json_encode($response);
-            return;
-        }
-
-        // Verificar se o CPF é válido
+        // Validação de CPF
         if (!validaCPF($cpf)) {
-            $response = ["success" => false, "message" => "CPF inválido."];
-            echo json_encode($response);
-            return;
+            echo json_encode(["success" => false, "message" => "CPF invalido ou já cadastrado. Tente novamente."]);
+            exit();
         }
-        $hashed_password = password_hash($senha, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO usuarios(nome, sexo, estado_civil, cpf, data_nascimento, cidade_nascimento, estado_nascimento, nacionalidade, grau_instrucao, raca_cor, nome_pai, nome_mae, cep, cidade_residencia, estado_residencia, bairro, tipo_logradouro, logradouro_residencia, numero_residencia, complemento_residencia, numero_pis, numero_rg, expedidor_rg, data_expedicao_rg, uf_expedicao_rg, titulo_eleitor, titulo_eleitor_zona, titulo_eleitor_secao, reservista, ddd_telefone_1, telefone_1, ddd_telefone_2, telefone_2, email_1,email_2, cargo, senha)
-                  VALUES ('$nome', '$sexo', '$estado_civil', '$cpf', '$data_nascimento', '$cidade_nascimento', '$estado_nascimento', '$nacionalidade', '$grau_instrucao', '$raca_cor', '$nome_pai', '$nome_mae', '$cep', '$cidade_residencia', '$estado_residencia', '$bairro', '$tipo_logradouro', '$logradouro_residencia', '$numero_residencia', '$complemento_residencia', '$numero_pis', '$numero_rg', '$expedidor_rg', '$data_expedicao_rg', '$uf_expedicao_rg', '$titulo_eleitor', '$titulo_eleitor_zona', '$titulo_eleitor_secao', '$reservista', '$ddd_telefone_1', '$telefone_1', '$ddd_telefone_2', '$telefone_2','$email_1','$email_2', '$cargo', '$hashed_password')";
+        // Verificar se a senha e a confirmação de senha são iguais
+        if ($senha !== $csenha) {
+            echo json_encode(["success" => false, "message" => "As senhas não correspondem."]);
+            exit();
+        }
 
-        $result = mysqli_query($db_conn, $query);
+        // Criptografar a senha antes de armazenar no banco de dados
+        $hashedPassword = password_hash($senha, PASSWORD_DEFAULT);
 
-        if ($result) {
-            $user_id = mysqli_insert_id($db_conn);
+        // Inserir dados do usuário na tabela 'usuarios'
+        $query = "INSERT INTO usuarios (nome, sexo, estado_civil, cpf, data_nascimento, cidade_nascimento, estado_nascimento, nacionalidade, grau_instrucao, raca_cor, nome_pai, nome_mae, cep, cidade_residencia, estado_residencia, bairro, tipo_logradouro, logradouro_residencia, numero_residencia, complemento_residencia, numero_pis, numero_rg, expedidor_rg, data_expedicao_rg, uf_expedicao_rg, titulo_eleitor, titulo_eleitor_zona, titulo_eleitor_secao, reservista, ddd_telefone_1, telefone_1, ddd_telefone_2, telefone_2, email_1, email_2, cargo, senha) VALUES ('$nome', '$sexo', '$estado_civil', '$cpf', '$data_nascimento', '$cidade_nascimento', '$estado_nascimento', '$nacionalidade', '$grau_instrucao', '$raca_cor', '$nome_pai', '$nome_mae', '$cep', '$cidade_residencia', '$estado_residencia', '$bairro', '$tipo_logradouro', '$logradouro_residencia', '$numero_residencia', '$complemento_residencia', '$numero_pis', '$numero_rg', '$expedidor_rg', '$data_expedicao_rg', '$uf_expedicao_rg', '$titulo_eleitor', '$titulo_eleitor_zona', '$titulo_eleitor_secao', '$reservista', '$ddd_telefone_1', '$telefone_1', '$ddd_telefone_2', '$telefone_2', '$email_1', '$email_2', '$cargo', '$hashedPassword')";
 
-            foreach ($dependentes as $dependente) {
-                $dependentName = $dependente->dependentName;
-                $dependentCpf = $dependente->dependentCpf;
-                $dependentDob = $dependente->dependentDob;
+        if (mysqli_query($db_conn, $query)) {
+            $userId = mysqli_insert_id($db_conn);
 
-                // Verificar se o CPF do dependente é válido
-                if (!validaCPF($dependentCpf)) {
-                    $response = ["success" => false, "message" => "CPF de dependente inválido."];
-                    echo json_encode($response);
-                    return;
-                }
+            // Inserir dados dos dependentes na tabela 'dependentes'
+            if (!empty($userpostdata->dependents)) {
+                foreach ($userpostdata->dependents as $dependent) {
+                    $dependentName = mysqli_real_escape_string($db_conn, $dependent->dependentName);
+                    $dependentCpf = mysqli_real_escape_string($db_conn, $dependent->dependentCpf);
+                    $dependentDob = mysqli_real_escape_string($db_conn, $dependent->dependentDob);
 
-                $query_dependent = "INSERT INTO usuario_dependentes(nome, cpf, data_nasc, id_usuario)
-                                    VALUES ('$dependentName', '$dependentCpf', '$dependentDob', '$user_id')";
+                    $dependentQuery = "INSERT INTO dependentes (user_id, nome, cpf, data_nascimento) VALUES ('$userId', '$dependentName', '$dependentCpf', '$dependentDob')";
 
-                $result_dependent = mysqli_query($db_conn, $query_dependent);
-
-                if (!$result_dependent) {
-                    $response = ["success" => false, "message" => "Erro ao inserir dependente: " . mysqli_error($db_conn)];
-                    echo json_encode($response);
-                    return;
+                    mysqli_query($db_conn, $dependentQuery);
                 }
             }
 
-            $response = ["success" => true, "message" => "Inserção realizada com sucesso."];
-            echo json_encode($response);
+            echo json_encode(["success" => true, "message" => "Usuário criado com sucesso."]);
         } else {
-            $response = ["success" => false, "message" => "Erro ao inserir os dados: " . mysqli_error($db_conn)];
-            echo json_encode($response);
+            echo json_encode(["success" => false, "message" => "Erro ao criar usuário."]);
         }
         break;
+
+    default:
+        echo json_encode(["result" => "Requisição inválida"]);
+        break;
 }
+
+mysqli_close($db_conn);
 ?>
