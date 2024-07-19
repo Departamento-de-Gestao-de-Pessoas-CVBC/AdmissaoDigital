@@ -5,5 +5,5 @@ Little Louiz
  - Dependentes
 
 Little Gus
- - Desenvolver validações para senhas (4/6)
- - Editar Endereço e Dados de trabalho
+ - Desenvolver validações para senhas (5/6)
+ - Editar Dados de trabalho

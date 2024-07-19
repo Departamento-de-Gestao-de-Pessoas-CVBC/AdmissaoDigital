@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: *");
 
 $conn = new mysqli("localhost", "root", "", "dgp");
 if (mysqli_connect_error()) {
-    echo mysqli_connect_error();
+    echo json_encode(array("error" => mysqli_connect_error()));
     exit();
 } else {
     if (isset($_GET['userId'])) {
@@ -13,13 +13,13 @@ if (mysqli_connect_error()) {
 
         $sql = "SELECT 
                     cep, 
-                    cidade_residencia, 
-                    estado_residencia, 
-                    bairro, 
-                    tipo_logradouro, 
-                    logradouro_residencia, 
-                    numero_residencia, 
-                    complemento_residencia 
+                    cidade_residencia AS city, 
+                    estado_residencia AS state, 
+                    bairro AS neighborhood, 
+                    tipo_logradouro AS streetType, 
+                    logradouro_residencia AS street, 
+                    numero_residencia AS number, 
+                    complemento_residencia AS complement 
                 FROM usuarios 
                 WHERE id='$userId';";
 
@@ -30,13 +30,13 @@ if (mysqli_connect_error()) {
 
             $response = array(
                 "cep" => $row['cep'],
-                "city" => $row['cidade_residencia'],
-                "state" => $row['estado_residencia'],
-                "neighborhood" => $row['bairro'],
-                "streetType" => $row['tipo_logradouro'],
-                "street" => $row['logradouro_residencia'],
-                "number" => $row['numero_residencia'],
-                "complement" => $row['complemento_residencia']
+                "city" => $row['city'],
+                "state" => $row['state'],
+                "neighborhood" => $row['neighborhood'],
+                "streetType" => $row['streetType'],
+                "street" => $row['street'],
+                "number" => $row['number'],
+                "complement" => $row['complement']
             );
 
             echo json_encode($response);
