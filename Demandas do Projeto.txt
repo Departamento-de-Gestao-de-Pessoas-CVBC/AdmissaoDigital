@@ -2,7 +2,6 @@ DEMANDAS DO PROJETO
 
 Little Louiz
  - Imagens base 64
- - Dependentes
 
 Little Gus
  - Desenvolver validações para senhas (5/6)

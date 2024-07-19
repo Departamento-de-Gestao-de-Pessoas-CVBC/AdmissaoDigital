@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./EditJobInformation.module.css";
-
 import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
-
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
-
 import { Input } from "../../components/Input/Input";
 import { BasicSelect } from "../../components/Select/Select";
 import { BasicButton } from "../../components/BasicButton/BasicButton";
 import { useNavigate } from "react-router-dom";
+import { API_DIRECTORY } from "../../../config.js";
 
 export const EditJobInformation = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    responsibilitySelect: "",
+    dependentsSelect: ""
+  });
+  const [initialFormData, setInitialFormData] = useState({
+    responsibilitySelect: "",
+    dependentsSelect: ""
+  });
+  const [dependents, setDependents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const userId = localStorage.getItem("userId");
 
   const responsibility = [
     { value: "analistaTI", label: "Analista de Tecnologia da Informação" },
@@ -42,28 +51,60 @@ export const EditJobInformation = () => {
     { value: "oficialMP", label: "Oficial de Manutenção Predial" },
     { value: "procurador", label: "Procurador" },
     { value: "procuradorGE", label: "Procurador Geral" },
-    {
-      value: "secretarioAF",
-      label: "Secretário(a) de Administração e Finanças",
-    },
+    { value: "secretarioAF", label: "Secretário(a) de Administração e Finanças" },
     { value: "secretarioP", label: "Secretário(a) Parlamentar" },
     { value: "tecnicoLE", label: "Técnico do Legislativo" },
     { value: "tecnicoAV", label: "Técnico em Audiovisual" },
     { value: "tecnicoCB", label: "Técnico em Contabilidade" },
     { value: "tecnicoIF", label: "Técnico em Informática" },
-    { value: "telefonista", label: "Telefonista" },
+    { value: "telefonista", label: "Telefonista" }
   ];
 
   const dependentsOptions = [
     { value: "sim", label: "Sim" },
-    { value: "nao", label: "Não" },
+    { value: "nao", label: "Não" }
   ];
+
+  useEffect(() => {
+    if (userId) {
+      fetchJobData(userId);
+    } else {
+      setLoading(false);
+    }
+  }, [userId]);
+
+  const fetchJobData = (userId) => {
+    fetch(`${API_DIRECTORY}job_dependents.php?userId=${userId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          console.error("Error fetching job data:", data.error);
+          setLoading(false);
+        } else {
+          const matchedResponsibility = responsibility.find(
+            (r) => r.value === data.cargo
+          )?.value || "";
+
+          const fetchedFormData = {
+            responsibilitySelect: matchedResponsibility,
+            dependentsSelect: data.dependents.length > 0 ? "sim" : "nao"
+          };
+
+          setFormData(fetchedFormData);
+          setInitialFormData(fetchedFormData);
+          setDependents(data.dependents || []);
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching job data:", error);
+        setLoading(false);
+      });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (name === "responsibilitySelect") setResponsibilitySelect(value);
-    if (name === "dependentsSelect") setDependentsSelect(value);
   };
 
   const handleKeyDown = (e) => {
@@ -75,10 +116,59 @@ export const EditJobInformation = () => {
     }
   };
 
+  const handleSave = () => {
+    const password = prompt("Por favor, insira sua senha para confirmar:");
+    if (password) {
+      // Verifica se os dados foram modificados
+      if (formData.responsibilitySelect !== initialFormData.responsibilitySelect ||
+          formData.dependentsSelect !== initialFormData.dependentsSelect) {
+        // Prepara o objeto de dados para enviar ao backend
+        const dataToSend = {
+          userId: userId,
+          password: password,
+          formData: formData
+        };
+
+        // Envia os dados para o backend
+        fetch(`${API_DIRECTORY}update_job_dependents.php`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dataToSend)
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              console.error("Erro ao atualizar dados:", data.error);
+              alert("Senha Incorreta.");
+            } else {
+              alert("Dados atualizados com sucesso!");
+              navigate("/userInformation"); // Redireciona para a página de informações do usuário
+            }
+          })
+          .catch((error) => {
+            console.error("Erro ao enviar requisição:", error);
+            alert("Senha Incorreta.");
+          });
+      } else {
+        alert("Nenhuma alteração detectada.");
+      }
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.logoTitle}>
-        <img src={LogoCamara} onClick={() => navigate("/userInformation")} />
+        <img
+          src={LogoCamara}
+          onClick={() => navigate("/userInformation")}
+          alt="Logo da Câmara"
+        />
         <h1>Editar Informações de Trabalho</h1>
       </div>
       <div className={styles.informativeText}>
@@ -89,7 +179,7 @@ export const EditJobInformation = () => {
           <BasicSelect
             label="Cargo"
             options={responsibility}
-            // value={responsibilitySelect}
+            value={formData.responsibilitySelect}
             name="responsibilitySelect"
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -99,7 +189,7 @@ export const EditJobInformation = () => {
           <BasicSelect
             label="Dependentes Declarados no Imposto de Renda"
             options={dependentsOptions}
-            // value={dependentsSelect}
+            value={formData.dependentsSelect}
             name="dependentsSelect"
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -108,123 +198,46 @@ export const EditJobInformation = () => {
       </div>
       <h2>Dependentes Cadastrados</h2>
       <div className={styles.dependentsSection}>
-        <div className={styles.dependentsWrapper}>
-          <div
-            // key={index}
-            className={styles.dependentInfos}
-            // ref={(el) => (dependentsRef.current[index] = el)}
-          >
-            <h3>{`Xº Dependente:`}</h3>
-            <Input
-              type="text"
-              // id={`dependentName-${index}`}
-              name="dependentName"
-              label="Nome Completo"
-              // value={dependent.dependentName}
-              // onChange={(e) => handleDependentChange(index, e)}
-              onKeyDown={handleKeyDown}
-            />
-            <Input
-              type="text"
-              // id={`dependentCPF-${index}`}
-              name="dependentCpf"
-              label="CPF"
-              // value={dependent.dependentCpf}
-              mask="999.999.999-99"
-              // onChange={(e) => handleDependentChange(index, e)}
-              onKeyDown={handleKeyDown}
-            />
-            <Input
-              type="text"
-              // id={`dependentDOB-${index}`}
-              name="dependentDob"
-              label="Data de Nascimento"
-              // value={dependent.dependentDob}
-              mask="99/99/9999"
-              // onChange={(e) => handleDependentChange(index, e)}
-              onKeyDown={handleKeyDown}
-            />
-          </div>
-        </div>
-        <div className={styles.dependentsWrapper}>
-          <div
-            // key={index}
-            className={styles.dependentInfos}
-            // ref={(el) => (dependentsRef.current[index] = el)}
-          >
-            <h3>{`Yº Dependente:`}</h3>
-            <Input
-              type="text"
-              // id={`dependentName-${index}`}
-              name="dependentName"
-              label="Nome Completo"
-              // value={dependent.dependentName}
-              // onChange={(e) => handleDependentChange(index, e)}
-              onKeyDown={handleKeyDown}
-            />
-            <Input
-              type="text"
-              // id={`dependentCPF-${index}`}
-              name="dependentCpf"
-              label="CPF"
-              // value={dependent.dependentCpf}
-              mask="999.999.999-99"
-              // onChange={(e) => handleDependentChange(index, e)}
-              onKeyDown={handleKeyDown}
-            />
-            <Input
-              type="text"
-              // id={`dependentDOB-${index}`}
-              name="dependentDob"
-              label="Data de Nascimento"
-              // value={dependent.dependentDob}
-              mask="99/99/9999"
-              // onChange={(e) => handleDependentChange(index, e)}
-              onKeyDown={handleKeyDown}
-            />
-          </div>
-        </div>
-        <div className={styles.dependentsWrapper}>
-          <div
-            // key={index}
-            className={styles.dependentInfos}
-            // ref={(el) => (dependentsRef.current[index] = el)}
-          >
-            <h3>{`Zº Dependente:`}</h3>
-            <Input
-              type="text"
-              // id={`dependentName-${index}`}
-              name="dependentName"
-              label="Nome Completo"
-              // value={dependent.dependentName}
-              // onChange={(e) => handleDependentChange(index, e)}
-              onKeyDown={handleKeyDown}
-            />
-            <Input
-              type="text"
-              // id={`dependentCPF-${index}`}
-              name="dependentCpf"
-              label="CPF"
-              // value={dependent.dependentCpf}
-              mask="999.999.999-99"
-              // onChange={(e) => handleDependentChange(index, e)}
-              onKeyDown={handleKeyDown}
-            />
-            <Input
-              type="text"
-              // id={`dependentDOB-${index}`}
-              name="dependentDob"
-              label="Data de Nascimento"
-              // value={dependent.dependentDob}
-              mask="99/99/9999"
-              // onChange={(e) => handleDependentChange(index, e)}
-              onKeyDown={handleKeyDown}
-            />
-          </div>
-        </div>
+        {dependents.length > 0 ? (
+          dependents.map((dependent, index) => (
+            <div key={index} className={styles.dependentsWrapper}>
+              <div className={styles.dependentInfos}>
+                <h3>{`${index + 1}º Dependente:`}</h3>
+                <Input
+                  type="text"
+                  name="dependentName"
+                  label="Nome Completo"
+                  value={dependent.name}
+                  onKeyDown={handleKeyDown}
+                  
+                />
+                <Input
+                  type="text"
+                  name="dependentCpf"
+                  label="CPF"
+                  value={dependent.cpf}
+                  mask="999.999.999-99"
+                  onKeyDown={handleKeyDown}
+                  
+                />
+                <Input
+                  type="text"
+                  name="dependentDob"
+                  label="Data de Nascimento"
+                  value={dependent.birthdate}
+                  mask="99/99/9999"
+                  onKeyDown={handleKeyDown}
+                  
+                />
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>Não há dependentes cadastrados.</p>
+        )}
       </div>
       <div className={styles.button}>
-        <BasicButton title="Salvar Alterações" startIcon={<SaveAltIcon />} />
+        <BasicButton title="Salvar Alterações" startIcon={<SaveAltIcon />} onClick={handleSave} />
       </div>
     </div>
   );
