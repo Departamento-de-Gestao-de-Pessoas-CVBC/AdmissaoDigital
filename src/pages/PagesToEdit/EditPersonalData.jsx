@@ -181,7 +181,7 @@ export const EditPersonalData = () => {
             if (data.error) {
               console.error("Erro ao atualizar dados:", data.error);
               alert(
-                "Erro ao atualizar dados. Verifique sua conexão e tente novamente."
+                "Senha Incorreta."
               );
             } else {
               alert("Dados atualizados com sucesso!");

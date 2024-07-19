@@ -150,7 +150,7 @@ export const EditDocuments = () => {
           })
           .catch((error) => {
             console.error("Erro ao enviar requisição:", error);
-            alert("Erro ao enviar requisição. Verifique sua conexão e tente novamente.");
+            alert("Senha Incorreta.");
           });
       } else {
         alert("Nenhuma alteração detectada.");

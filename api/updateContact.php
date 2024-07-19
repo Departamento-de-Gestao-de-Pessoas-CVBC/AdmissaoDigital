@@ -70,10 +70,10 @@ $phoneNumber2Formatted = separateDDDAndPhone($formData['phoneNumber2']);
 
 // Prepara a consulta SQL para atualizar os dados do usuário
 $sql = "UPDATE usuarios SET 
-        ddd_telefone_1 = '" . $conn->real_escape_string(substr($formData['phoneNumber1'], 1, 2)) . "',
-        telefone_1 = '" . $conn->real_escape_string(substr($formData['phoneNumber1'], 5)) . "',
-        ddd_telefone_2 = '" . $conn->real_escape_string(substr($formData['phoneNumber2'], 1, 2)) . "',
-        telefone_2 = '" . $conn->real_escape_string(substr($formData['phoneNumber2'], 5)) . "',
+        ddd_telefone_1 = '" . $conn->real_escape_string(substr($phoneNumber1Formatted, 1, 2)) . "',
+        telefone_1 = '" . $conn->real_escape_string(substr($phoneNumber1Formatted, 5)) . "',
+        ddd_telefone_2 = '" . $conn->real_escape_string(substr($phoneNumber2Formatted, 1, 2)) . "',
+        telefone_2 = '" . $conn->real_escape_string(substr($phoneNumber2Formatted, 5)) . "',
         email_1 = '" . $conn->real_escape_string($formData['email1']) . "',
         email_2 = '" . $conn->real_escape_string($formData['email2']) . "'
         WHERE id = " . $conn->real_escape_string($data['userId']);
