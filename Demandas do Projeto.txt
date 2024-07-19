@@ -7,4 +7,3 @@ Little Louiz
 Little Gus
  - Desenvolver validações para senhas (4/6)
  - Editar Endereço e Dados de trabalho
- - Declaração de bens
