@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./pagesToEdit.module.css";
+import styles from "./EditJobInformation.module.css";
 
 import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
 
@@ -105,13 +105,92 @@ export const EditJobInformation = () => {
             onKeyDown={handleKeyDown}
           />
         </div>
+      </div>
+      <h2>Dependentes Cadastrados</h2>
+      <div className={styles.dependentsSection}>
         <div className={styles.dependentsWrapper}>
           <div
             // key={index}
-            className={styles.dependentSection}
+            className={styles.dependentInfos}
             // ref={(el) => (dependentsRef.current[index] = el)}
           >
             <h3>{`Xº Dependente:`}</h3>
+            <Input
+              type="text"
+              // id={`dependentName-${index}`}
+              name="dependentName"
+              label="Nome Completo"
+              // value={dependent.dependentName}
+              // onChange={(e) => handleDependentChange(index, e)}
+              onKeyDown={handleKeyDown}
+            />
+            <Input
+              type="text"
+              // id={`dependentCPF-${index}`}
+              name="dependentCpf"
+              label="CPF"
+              // value={dependent.dependentCpf}
+              mask="999.999.999-99"
+              // onChange={(e) => handleDependentChange(index, e)}
+              onKeyDown={handleKeyDown}
+            />
+            <Input
+              type="text"
+              // id={`dependentDOB-${index}`}
+              name="dependentDob"
+              label="Data de Nascimento"
+              // value={dependent.dependentDob}
+              mask="99/99/9999"
+              // onChange={(e) => handleDependentChange(index, e)}
+              onKeyDown={handleKeyDown}
+            />
+          </div>
+        </div>
+        <div className={styles.dependentsWrapper}>
+          <div
+            // key={index}
+            className={styles.dependentInfos}
+            // ref={(el) => (dependentsRef.current[index] = el)}
+          >
+            <h3>{`Yº Dependente:`}</h3>
+            <Input
+              type="text"
+              // id={`dependentName-${index}`}
+              name="dependentName"
+              label="Nome Completo"
+              // value={dependent.dependentName}
+              // onChange={(e) => handleDependentChange(index, e)}
+              onKeyDown={handleKeyDown}
+            />
+            <Input
+              type="text"
+              // id={`dependentCPF-${index}`}
+              name="dependentCpf"
+              label="CPF"
+              // value={dependent.dependentCpf}
+              mask="999.999.999-99"
+              // onChange={(e) => handleDependentChange(index, e)}
+              onKeyDown={handleKeyDown}
+            />
+            <Input
+              type="text"
+              // id={`dependentDOB-${index}`}
+              name="dependentDob"
+              label="Data de Nascimento"
+              // value={dependent.dependentDob}
+              mask="99/99/9999"
+              // onChange={(e) => handleDependentChange(index, e)}
+              onKeyDown={handleKeyDown}
+            />
+          </div>
+        </div>
+        <div className={styles.dependentsWrapper}>
+          <div
+            // key={index}
+            className={styles.dependentInfos}
+            // ref={(el) => (dependentsRef.current[index] = el)}
+          >
+            <h3>{`Zº Dependente:`}</h3>
             <Input
               type="text"
               // id={`dependentName-${index}`}
