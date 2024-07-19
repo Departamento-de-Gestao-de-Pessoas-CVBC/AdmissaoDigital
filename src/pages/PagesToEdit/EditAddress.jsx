@@ -16,6 +16,17 @@ export const EditAddress = () => {
   const [filteredCities, setFilteredCities] = useState([]);
   const [citySelectDisabled, setCitySelectDisabled] = useState(true);
 
+  const [formData, setFormData] = useState({
+    cep: "",
+    stateOfResidence: "",
+    city: "",
+    neighborhood: "",
+    logradouroSelect: "",
+    address: "",
+    residenceNumber: "",
+    complement: "",
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -93,7 +104,7 @@ export const EditAddress = () => {
         <div className={styles.leftInputs}>
           <Input
             mask="99999-999"
-            // value={formData.cep}
+            value={formData.cep}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             id="cep"
@@ -125,7 +136,7 @@ export const EditAddress = () => {
             id="neighborhood"
             label="Bairro"
             name="neighborhood"
-            // value={formData.neighborhood}
+            value={formData.neighborhood}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -134,7 +145,7 @@ export const EditAddress = () => {
           <BasicSelect
             label="Logradouro"
             options={logradouro}
-            // value={formData.logradouroSelect}
+            value={formData.logradouroSelect}
             name="logradouroSelect"
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -144,7 +155,7 @@ export const EditAddress = () => {
             id="address"
             label="Endereço"
             name="address"
-            // value={formData.address}
+            value={formData.address}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -153,7 +164,7 @@ export const EditAddress = () => {
             id="residenceNumber"
             label="Número da Residência"
             name="residenceNumber"
-            // value={formData.residenceNumber}
+            value={formData.residenceNumber}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
@@ -162,7 +173,7 @@ export const EditAddress = () => {
             id="complement"
             label="Complemento"
             name="complement"
-            // value={formData.complement}
+            value={formData.complement}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />

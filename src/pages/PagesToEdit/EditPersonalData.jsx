@@ -27,6 +27,7 @@ export const EditPersonalData = () => {
     levelOfEducation: "",
     breed: "",
   });
+  
   const [initialFormData, setInitialFormData] = useState({});
   const [loading, setLoading] = useState(true);
   const userId = localStorage.getItem("userId");
