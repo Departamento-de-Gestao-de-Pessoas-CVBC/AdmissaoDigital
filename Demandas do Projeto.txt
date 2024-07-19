@@ -6,5 +6,4 @@ Little Louiz
 
 Little Gus
  - Desenvolver validações para senhas (4/6)
- - Autocomplete para as cidades no cadastro
  - Declaração de bens
