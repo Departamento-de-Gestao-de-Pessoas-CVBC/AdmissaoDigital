@@ -8,7 +8,6 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import { Input } from "../Input/Input";
 import { BasicSelect } from "../Select/Select";
 import { BasicButton } from "../BasicButton/BasicButton";
-// import Autosuggest from "react-autosuggest";
 
 export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
   const [filteredCities, setFilteredCities] = useState([]);

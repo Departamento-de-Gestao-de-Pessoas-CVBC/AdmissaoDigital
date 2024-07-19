@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./pagesToEdit.module.css";
+import citiesData from "../../../Cidades.json";
+
 import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import { Input } from "../../components/Input/Input";
@@ -10,6 +12,8 @@ import { API_DIRECTORY } from "../../../config.js";
 
 export const EditPersonalData = () => {
   const navigate = useNavigate();
+  const [filteredCities, setFilteredCities] = useState([]);
+  const [citySelectDisabled, setCitySelectDisabled] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     mothersName: "",
@@ -23,7 +27,7 @@ export const EditPersonalData = () => {
     levelOfEducation: "",
     breed: "",
   });
-  const [initialFormData, setInitialFormData] = useState({}); // Guarda os dados iniciais
+  const [initialFormData, setInitialFormData] = useState({});
   const [loading, setLoading] = useState(true);
   const userId = localStorage.getItem("userId");
 
@@ -34,6 +38,48 @@ export const EditPersonalData = () => {
       setLoading(false);
     }
   }, [userId]);
+
+  const stateOfBirthOptions = [
+    { value: "AC", label: "AC" },
+    { value: "AL", label: "AL" },
+    { value: "AP", label: "AP" },
+    { value: "AM", label: "AM" },
+    { value: "BA", label: "BA" },
+    { value: "CE", label: "CE" },
+    { value: "DF", label: "DF" },
+    { value: "ES", label: "ES" },
+    { value: "GO", label: "GO" },
+    { value: "MA", label: "MA" },
+    { value: "MT", label: "MT" },
+    { value: "MS", label: "MS" },
+    { value: "MG", label: "MG" },
+    { value: "PA", label: "PA" },
+    { value: "PB", label: "PB" },
+    { value: "PR", label: "PR" },
+    { value: "PE", label: "PE" },
+    { value: "PI", label: "PI" },
+    { value: "RJ", label: "RJ" },
+    { value: "RN", label: "RN" },
+    { value: "RS", label: "RS" },
+    { value: "RO", label: "RO" },
+    { value: "RR", label: "RR" },
+    { value: "SC", label: "SC" },
+    { value: "SP", label: "SP" },
+    { value: "SE", label: "SE" },
+    { value: "TO", label: "TO" },
+  ];
+
+  useEffect(() => {
+    setCitySelectDisabled(!formData.stateOfBirth);
+    if (formData.stateOfBirth) {
+      const filtered = citiesData.filter(
+        (city) => city.Estado === formData.stateOfBirth
+      );
+      setFilteredCities(filtered);
+    } else {
+      setFilteredCities([]);
+    }
+  }, [formData.stateOfBirth]);
 
   const fetchPersonalData = (userId) => {
     fetch(`${API_DIRECTORY}getPersonalData.php`, {
@@ -279,22 +325,25 @@ export const EditPersonalData = () => {
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
-          <Input
-            type="text"
-            name="cityOfBirth"
-            label="Cidade de Nascimento"
-            value={formData.cityOfBirth}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-          />
-          <Input
-            type="text"
-            name="stateOfBirth"
+          <BasicSelect
             label="Estado de Nascimento"
+            name="stateOfBirth"
+            options={stateOfBirthOptions}
             value={formData.stateOfBirth}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
-            disabled
+          />
+          <BasicSelect
+            label="Cidade de Nascimento"
+            name="cityOfBirth"
+            options={filteredCities.map((city) => ({
+              value: city.Cidade,
+              label: city.Nome,
+            }))}
+            value={formData.cityOfBirth}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            disabled={citySelectDisabled}
           />
           <BasicSelect
             label="Grau de Instrução"
@@ -326,5 +375,3 @@ export const EditPersonalData = () => {
     </div>
   );
 };
-
-export default EditPersonalData;

@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./pagesToEdit.module.css";
+import citiesData from "../../../Cidades.json";
 
 import LogoCamara from "../../assets/CamaraSemFundoAzul.png";
 
@@ -12,10 +13,54 @@ import { useNavigate } from "react-router-dom";
 
 export const EditAddress = () => {
   const navigate = useNavigate();
+  const [filteredCities, setFilteredCities] = useState([]);
+  const [citySelectDisabled, setCitySelectDisabled] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const stateOfResidenceOptions = [
+    { value: "AC", label: "AC" },
+    { value: "AL", label: "AL" },
+    { value: "AP", label: "AP" },
+    { value: "AM", label: "AM" },
+    { value: "BA", label: "BA" },
+    { value: "CE", label: "CE" },
+    { value: "DF", label: "DF" },
+    { value: "ES", label: "ES" },
+    { value: "GO", label: "GO" },
+    { value: "MA", label: "MA" },
+    { value: "MT", label: "MT" },
+    { value: "MS", label: "MS" },
+    { value: "MG", label: "MG" },
+    { value: "PA", label: "PA" },
+    { value: "PB", label: "PB" },
+    { value: "PR", label: "PR" },
+    { value: "PE", label: "PE" },
+    { value: "PI", label: "PI" },
+    { value: "RJ", label: "RJ" },
+    { value: "RN", label: "RN" },
+    { value: "RS", label: "RS" },
+    { value: "RO", label: "RO" },
+    { value: "RR", label: "RR" },
+    { value: "SC", label: "SC" },
+    { value: "SP", label: "SP" },
+    { value: "SE", label: "SE" },
+    { value: "TO", label: "TO" },
+  ];
+
+  useEffect(() => {
+    setCitySelectDisabled(!formData.stateOfResidence);
+    if (formData.stateOfResidence) {
+      const filtered = citiesData.filter(
+        (city) => city.Estado === formData.stateOfResidence
+      );
+      setFilteredCities(filtered);
+    } else {
+      setFilteredCities([]);
+    }
+  }, [formData.stateOfResidence]);
 
   const logradouro = [
     { value: "R", label: "Rua" },
@@ -55,23 +100,25 @@ export const EditAddress = () => {
             label="CEP"
             name="cep"
           />
-          <Input
-            type="text"
-            id="stateOfResidence"
+          <BasicSelect
             label="Estado de Residência"
             name="stateOfResidence"
-            // value={formData.stateOfResidence}
+            options={stateOfResidenceOptions}
+            value={formData.stateOfResidence}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
-          <Input
-            type="text"
-            id="city"
-            label="Cidade"
+          <BasicSelect
+            label="Cidade de Residência"
             name="city"
-            // value={formData.city}
+            options={filteredCities.map((city) => ({
+              value: city.Cidade,
+              label: city.Nome,
+            }))}
+            value={formData.city}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
+            disabled={citySelectDisabled}
           />
           <Input
             type="text"
