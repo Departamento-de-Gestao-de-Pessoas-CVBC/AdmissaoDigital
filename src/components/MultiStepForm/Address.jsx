@@ -145,7 +145,7 @@ export const Address = ({ formData, setFormData, prevStep, nextStep }) => {
           <Input
             type="text"
             id="address"
-            label="Endereço"
+            label="Nome da Rua ou Avenida"
             name="address"
             value={formData.address}
             onChange={handleChange}
