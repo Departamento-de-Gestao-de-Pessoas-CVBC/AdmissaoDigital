@@ -28,7 +28,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
     const formValue = {
       nome: formData.name,
       sexo: formData.gender,
-      estado_civil: formData.maritialStatus,
+      estado_civil: formData.maritalStatus,
       cpf: formData.cpf,
       data_nascimento: formData.dateOfBirth,
       cidade_nascimento: formData.cityOfBirth,
