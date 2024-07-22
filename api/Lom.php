@@ -39,14 +39,15 @@ if ($result->num_rows > 0) {
   // Dados do usuário
   $nome = $row['nome'];
   $cpf = $row['cpf'];
+  $data = date("d/m/Y");
 
   // Carrega o conteúdo HTML da Declaração LOM
   $lomHTML = file_get_contents('C:\xampp\htdocs\Teste\AdmissaoDigital\src\DocumentacaoHTML\DeclaracaoLom.html');
 
   // Substitui os marcadores pelos dados do usuário
   $lomHTML = str_replace(
-    array('{nome}', '{cpf}'),
-    array($nome, $cpf),
+    array('{nome}', '{cpf}', '{data}'),
+    array($nome, $cpf, $data),
     $lomHTML
   );
 
