@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 }
 
 // Prepara a consulta SQL para obter os dados do usuário
-$sql_usuario = "SELECT * FROM usuarios WHERE id = $userId";
+$sql_usuario = "SELECT *, CONCAT('(', SUBSTRING(ddd_telefone_1, 1, 2), ') ', SUBSTRING(telefone_1, 1, 1), ' ', SUBSTRING(telefone_1, 2, 4),'-', SUBSTRING(telefone_1, 6)) AS phone,CONCAT('(', SUBSTRING(ddd_telefone_2, 1, 2), ') ', SUBSTRING(telefone_2, 1, 1), ' ', SUBSTRING(telefone_2, 2, 4),'-', SUBSTRING(telefone_2, 6)) AS phone2 FROM usuarios WHERE id = $userId";
 
 // Executa a consulta para obter os dados do usuário principal
 $result_usuario = $conn->query($sql_usuario);
@@ -33,8 +33,8 @@ if ($result_usuario->num_rows > 0) {
 
   // Dados do usuário principal
   $nome = $row_usuario['nome'];
-  $telefone = $row_usuario['telefone_1'];
-  $celular = $row_usuario['telefone_2'];
+  $telefone = $row_usuario['phone'];
+  $celular = $row_usuario['phone2'];
   $email1 = $row_usuario['email_1'];
   $email2 = $row_usuario['email_2'];
   $cargo_funcao = $row_usuario['cargo'];
