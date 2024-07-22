@@ -42,7 +42,7 @@ export const AccessPassword = ({ formData, setFormData, prevStep }) => {
       cidade_residencia: formData.city,
       estado_residencia: formData.stateOfResidence,
       bairro: formData.neighborhood,
-      tipo_logradouro: formData.logradouro,
+      tipo_logradouro: formData.logradouroSelect,
       logradouro_residencia: formData.address,
       numero_residencia: formData.residenceNumber,
       complemento_residencia: formData.complement,
