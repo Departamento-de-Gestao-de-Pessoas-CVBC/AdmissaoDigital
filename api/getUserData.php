@@ -12,7 +12,7 @@ if (mysqli_connect_error()) {
         $userId = $_GET['userId'];
         
         $sql = "SELECT nome, data_nascimento, cpf, numero_pis, cargo, 
-                       CONCAT('(', SUBSTRING(ddd_telefone_1, 1, 2), ') ', SUBSTRING(telefone_1, 1, 1), ' ', SUBSTRING(telefone_1, 2, 4), SUBSTRING(telefone_1, 6)) AS phone,
+                       CONCAT('(', SUBSTRING(ddd_telefone_1, 1, 2), ') ', SUBSTRING(telefone_1, 1, 1), ' ', SUBSTRING(telefone_1, 2, 4),'-', SUBSTRING(telefone_1, 6)) AS phone,
                        email_1 
                 FROM usuarios 
                 WHERE id='$userId';";

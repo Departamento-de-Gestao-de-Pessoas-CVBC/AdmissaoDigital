@@ -134,10 +134,13 @@ switch ($method) {
             if (!empty($userpostdata->dependents)) {
                 foreach ($userpostdata->dependents as $dependent) {
                     $dependentName = mysqli_real_escape_string($db_conn, $dependent->dependentName);
-                    $dependentCpf = mysqli_real_escape_string($db_conn, $dependent->dependentCpf);
+                    $dependentCpf = $dependent->dependentCpf;
+                    $dependentCpf = str_replace(['.', '-'], '', $dependentCpf); // Remove pontos e traços
+                    $dependentCpf = mysqli_real_escape_string($db_conn, $dependentCpf); // Escapa a string
+
                     $dependentDob = mysqli_real_escape_string($db_conn, $dependent->dependentDob);
 
-                    $dependentQuery = "INSERT INTO dependentes (user_id, nome, cpf, data_nascimento) VALUES ('$userId', '$dependentName', '$dependentCpf', '$dependentDob')";
+                    $dependentQuery = "INSERT INTO usuario_dependentes (id_usuario, nome, cpf, data_nasc) VALUES ('$userId', '$dependentName', '$dependentCpf', '$dependentDob')";
 
                     mysqli_query($db_conn, $dependentQuery);
                 }

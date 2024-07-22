@@ -85,7 +85,7 @@ if ($result->num_rows > 0) {
 
   // Substitui os marcadores pelos dados do usuário
   $aptidaoLegalHTML = str_replace(
-    array('{nome}', '{cpf}', '{cargo}'),
+    array('{nome}', '{cpf}', '{cargo_funcao}'),
     array($nome, $cpf, $cargo_funcao_label),
     $aptidaoLegalHTML
   );
