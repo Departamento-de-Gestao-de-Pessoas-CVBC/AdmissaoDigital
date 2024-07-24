@@ -30,14 +30,18 @@ export const EditAccessPassword = () => {
   };
 
   const handleSave = () => {
+    if (formData.newPassword !== formData.confirmNewPassword) {
+      alert("As novas senhas não coincidem!");
+      return;
+    }
+
     const password = prompt("Por favor, insira sua senha atual para confirmar:");
     if (password) {
       const dataToSend = {
         userId: localStorage.getItem("userId"),
-        oldPassword: formData.oldPassword,
+        oldPassword: password, // Senha atual para verificar
         newPassword: formData.newPassword,
         confirmPassword: formData.confirmNewPassword,
-        currentPassword: password
       };
 
       fetch(`${API_DIRECTORY}updatePassword.php`, {
@@ -65,12 +69,6 @@ export const EditAccessPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (formData.newPassword !== formData.confirmNewPassword) {
-      alert("As novas senhas não coincidem!");
-      return;
-    }
-
     handleSave();
   };
 
@@ -103,12 +101,12 @@ export const EditAccessPassword = () => {
           onKeyDown={handleKeyDown}
         />
         <div className={styles.button}>
-        <BasicButton
-          title="Salvar Alterações"
-          startIcon={<SaveAltIcon />}
-          onClick={handleSave}
-        />
-      </div>
+          <BasicButton
+            title="Salvar Alterações"
+            startIcon={<SaveAltIcon />}
+            onClick={handleSave}
+          />
+        </div>
       </form>
     </div>
   );

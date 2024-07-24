@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./PersonalData.module.css";
 import citiesData from "../../../Cidades.json";
 
@@ -8,9 +8,11 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import { Input } from "../Input/Input";
 import { BasicSelect } from "../Select/Select";
 import { BasicButton } from "../BasicButton/BasicButton";
-import Autosuggest from "react-autosuggest";
 
 export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
+  const [filteredCities, setFilteredCities] = useState([]);
+  const [citySelectDisabled, setCitySelectDisabled] = useState(true);
+
   const nationality = [
     { value: 10, label: "Brasileiro" },
     { value: 20, label: "Brasileiro Naturalizado" },
@@ -31,6 +33,36 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
     { value: "7", label: "União Estável" },
     { value: "5", label: "Concubinato" },
     { value: "9", label: "Outros" },
+  ];
+
+  const stateOfBirth = [
+    { value: "AC", label: "AC" },
+    { value: "AL", label: "AL" },
+    { value: "AP", label: "AP" },
+    { value: "AM", label: "AM" },
+    { value: "BA", label: "BA" },
+    { value: "CE", label: "CE" },
+    { value: "DF", label: "DF" },
+    { value: "ES", label: "ES" },
+    { value: "GO", label: "GO" },
+    { value: "MA", label: "MA" },
+    { value: "MT", label: "MT" },
+    { value: "MS", label: "MS" },
+    { value: "MG", label: "MG" },
+    { value: "PA", label: "PA" },
+    { value: "PB", label: "PB" },
+    { value: "PR", label: "PR" },
+    { value: "PE", label: "PE" },
+    { value: "PI", label: "PI" },
+    { value: "RJ", label: "RJ" },
+    { value: "RN", label: "RN" },
+    { value: "RS", label: "RS" },
+    { value: "RO", label: "RO" },
+    { value: "RR", label: "RR" },
+    { value: "SC", label: "SC" },
+    { value: "SP", label: "SP" },
+    { value: "SE", label: "SE" },
+    { value: "TO", label: "TO" },
   ];
 
   const levelOfEducation = [
@@ -57,6 +89,18 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
     { value: "07", label: "Mulato" },
     { value: "08", label: "Cafuzo" },
   ];
+
+  useEffect(() => {
+    setCitySelectDisabled(!formData.stateOfBirth);
+    if (formData.stateOfBirth) {
+      const filtered = citiesData.filter(
+        (city) => city.Estado === formData.stateOfBirth
+      );
+      setFilteredCities(filtered);
+    } else {
+      setFilteredCities([]);
+    }
+  }, [formData.stateOfBirth]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -150,22 +194,25 @@ export const PersonalData = ({ formData, setFormData, nextStep, prevStep }) => {
               onChange={handleChange}
               onKeyDown={handleKeyDown}
             />
-            <Input
-              type="text"
-              name="cityOfBirth"
-              label="Cidade de Nascimento"
-              value={formData.cityOfBirth}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-            />
-            <Input
-              type="text"
-              name="stateOfBirth"
+            <BasicSelect
               label="Estado de Nascimento"
+              name="stateOfBirth"
+              options={stateOfBirth}
               value={formData.stateOfBirth}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
-              disabled
+            />
+            <BasicSelect
+              label="Cidade de Nascimento"
+              name="cityOfBirth"
+              options={filteredCities.map((city) => ({
+                value: city.Cidade,
+                label: city.Nome,
+              }))}
+              value={formData.cityOfBirth}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+              disabled={citySelectDisabled}
             />
             <BasicSelect
               label="Grau de Instrução"

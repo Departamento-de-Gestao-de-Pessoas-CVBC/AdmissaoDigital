@@ -89,7 +89,7 @@ export const AdminAccessLogin = () => {
             setTimeout(() => {
               localStorage.setItem("adminLogin", true);
               if (response.token === "0") {
-                navigate("/firstLogin"); // página ainda não criada
+                navigate("/firstAccess");
               } else if (response.token === "1") {
                 navigate("/adminAccess");
               }

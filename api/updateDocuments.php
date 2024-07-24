@@ -43,7 +43,6 @@ if (!$storedPassword || !password_verify($data['password'], $storedPassword)) {
     exit();
 }
 
-
 // Dados do formulário recebidos
 $formData = $data['formData'];
 

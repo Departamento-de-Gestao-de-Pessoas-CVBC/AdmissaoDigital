@@ -46,36 +46,16 @@ if (!$storedPassword || !password_verify($data['password'], $storedPassword)) {
 // Dados do formulário recebidos
 $formData = $data['formData'];
 
-// Função para separar DDD e telefone e formatar conforme (xx) x xxxx-xxxx
-function separateDDDAndPhone($phone) {
-    // Remove todos os caracteres não numéricos
-    $phone = preg_replace("/[^0-9]/", "", $phone);
-
-    // Formatação do telefone para (xx) x xxxx-xxxx
-    if (strlen($phone) >= 10) {
-        $ddd = substr($phone, 0, 2);
-        $telefone = substr($phone, 2);
-        $telefoneFormatted = "(" . $ddd . ") " . substr($telefone, 0, 4) . "-" . substr($telefone, 4);
-        return $telefoneFormatted;
-    } else {
-        return null;
-    }
-}
-
-// Separa DDD e telefone para phoneNumber1
-$phoneNumber1Formatted = separateDDDAndPhone($formData['phoneNumber1']);
-
-// Separa DDD e telefone para phoneNumber2
-$phoneNumber2Formatted = separateDDDAndPhone($formData['phoneNumber2']);
-
-// Prepara a consulta SQL para atualizar os dados do usuário
+// Prepara a consulta SQL para atualizar os dados de endereço do usuário
 $sql = "UPDATE usuarios SET 
-        ddd_telefone_1 = '" . $conn->real_escape_string(substr($phoneNumber1Formatted, 1, 2)) . "',
-        telefone_1 = '" . $conn->real_escape_string(substr($phoneNumber1Formatted, 5)) . "',
-        ddd_telefone_2 = '" . $conn->real_escape_string(substr($phoneNumber2Formatted, 1, 2)) . "',
-        telefone_2 = '" . $conn->real_escape_string(substr($phoneNumber2Formatted, 5)) . "',
-        email_1 = '" . $conn->real_escape_string($formData['email1']) . "',
-        email_2 = '" . $conn->real_escape_string($formData['email2']) . "'
+        cep = '" . $conn->real_escape_string($formData['cep']) . "',
+        cidade_residencia = '" . $conn->real_escape_string($formData['city']) . "',
+        estado_residencia = '" . $conn->real_escape_string($formData['stateOfResidence']) . "',
+        bairro = '" . $conn->real_escape_string($formData['neighborhood']) . "',
+        tipo_logradouro = '" . $conn->real_escape_string($formData['logradouroSelect']) . "',
+        logradouro_residencia = '" . $conn->real_escape_string($formData['address']) . "',
+        numero_residencia = '" . $conn->real_escape_string($formData['residenceNumber']) . "',
+        complemento_residencia = '" . $conn->real_escape_string($formData['complement']) . "'
         WHERE id = " . $conn->real_escape_string($data['userId']);
 
 // Executa a consulta

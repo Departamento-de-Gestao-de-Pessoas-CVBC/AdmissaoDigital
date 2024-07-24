@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 }
 
 // Prepara a consulta SQL para obter os dados do usuário
-$sql_usuario = "SELECT * FROM usuarios WHERE id = $userId";
+$sql_usuario = "SELECT *, CONCAT('(', SUBSTRING(ddd_telefone_1, 1, 2), ') ', SUBSTRING(telefone_1, 1, 1), ' ', SUBSTRING(telefone_1, 2, 4),'-', SUBSTRING(telefone_1, 6)) AS phone,CONCAT('(', SUBSTRING(ddd_telefone_2, 1, 2), ') ', SUBSTRING(telefone_2, 1, 1), ' ', SUBSTRING(telefone_2, 2, 4),'-', SUBSTRING(telefone_2, 6)) AS phone2 FROM usuarios WHERE id = $userId";
 
 // Executa a consulta para obter os dados do usuário principal
 $result_usuario = $conn->query($sql_usuario);
@@ -33,8 +33,8 @@ if ($result_usuario->num_rows > 0) {
 
   // Dados do usuário principal
   $nome = $row_usuario['nome'];
-  $telefone = $row_usuario['telefone_1'];
-  $celular = $row_usuario['telefone_2'];
+  $telefone = $row_usuario['phone'];
+  $celular = $row_usuario['phone2'];
   $email1 = $row_usuario['email_1'];
   $email2 = $row_usuario['email_2'];
   $cargo_funcao = $row_usuario['cargo'];
@@ -89,42 +89,42 @@ if ($result_usuario->num_rows > 0) {
 
   // Dicionário de responsabilidades
   $responsibility = array(
-    "analistaTI" => "Analista de Tecnologia da Informação",
-    "analistaLE" => "Analista Legislativo",
-    "assessorPA" => "Assessor(a) Parlamentar",
-    "auxiliarAU" => "Auxiliar de Almoxarifado",
-    "auxiliarSE" => "Auxiliar de Secretaria",
-    "contador" => "Contador(a)",
-    "controladorGE" => "Controlador(a) Geral",
-    "controladorIN" => "Controlador(a) Interno",
-    "copeira" => "Copeira(o)",
-    "diretorAP" => "Diretor(a) de Administração e Planejamento",
-    "diretorCM" => "Diretor(a) de Câmara Mirim",
-    "diretorCO" => "Diretor(a) de Compras",
-    "diretorCS" => "Diretor(a) de Comunicação Social e TV",
-    "diretorFI" => "Diretor(a) de Finanças",
-    "diretorGP" => "Diretor(a) de Gabinete da Presidência",
-    "diretorDGP" => "Diretor(a) de Gestão de Pessoas",
-    "diretorP" => "Diretor(a) de Patrimônio",
-    "diretorPL" => "Diretor(a) de Plenário",
-    "diretorPJ" => "Diretor(a) de Projetos",
-    "diretorTO" => "Diretor(a) de Transparência e Ouvidoria",
-    "estagiarioES" => "Estagiário(a) - Educação Especial",
+    "0052" => "Analista de Tecnologia da Informação",
+    "0051" => "Analista Legislativo",
+    "0117" => "Assessor(a) Parlamentar",
+    "0062" => "Auxiliar de Almoxarifado",
+    "0001" => "Auxiliar de Secretaria",
+    "0054" => "Contador(a)",
+    "0122" => "Controlador(a) Geral",
+    "0118" => "Controlador(a) Interno",
+    "0063" => "Copeira(o)",
+    "0106" => "Diretor(a) de Administração e Planejamento",
+    "0107" => "Diretor(a) de Câmara Mirim",
+    "0108" => "Diretor(a) de Compras",
+    "0109" => "Diretor(a) de Comunicação Social e TV",
+    "0124" => "Diretor(a) de Finanças",
+    "0116" => "Diretor(a) de Gabinete da Presidência",
+    "0110" => "Diretor(a) de Gestão de Pessoas",
+    "0111" => "Diretor(a) de Patrimônio",
+    "0112" => "Diretor(a) de Plenário",
+    "0113" => "Diretor(a) de Projetos",
+    "0123" => "Diretor(a) de Transparência e Ouvidoria",
+    "0121" => "Estagiário(a) - Educação Especial",
     "0036" => "Estagiário(a) - Nível Superior",
-    "guardaPM" => "Guarda Patrimonial",
-    "jornalista" => "Jornalista",
-    "motorista" => "Motorista",
-    "oficialMP" => "Oficial de Manutenção Predial",
-    "procurador" => "Procurador",
-    "procuradorGE" => "Procurador Geral",
-    "secretarioAF" => "Secretário(a) de Administração e Finanças",
-    "secretarioP" => "Secretário(a) Parlamentar",
-    "tecnicoLE" => "Técnico do Legislativo",
-    "tecnicoAV" => "Técnico em Audiovisual",
-    "tecnicoCB" => "Técnico em Contabilidade",
-    "tecnicoIF" => "Técnico em Informática",
-    "telefonista" => "Telefonista"
-  );
+    "0064" => "Guarda Patrimonial",
+    "0053" => "Jornalista",
+    "0059" => "Motorista",
+    "0120" => "Oficial de Manutenção Predial",
+    "0050" => "Procurador",
+    "0104" => "Procurador Geral",
+    "0125" => "Secretário(a) de Administração e Finanças",
+    "0103" => "Secretário(a) Parlamentar",
+    "0056" => "Técnico do Legislativo",
+    "0119" => "Técnico em Audiovisual",
+    "0058" => "Técnico em Contabilidade",
+    "0057" => "Técnico em Informática",
+    "0061" => "Telefonista"
+);
 
   // Verifica se a responsabilidade existe no dicionário
   if (array_key_exists($cargo_funcao, $responsibility)) {

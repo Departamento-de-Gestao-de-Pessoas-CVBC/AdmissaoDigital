@@ -1,5 +1,4 @@
 <?php
-
 // Permitir solicitações CORS de qualquer origem
 header("Access-Control-Allow-Origin: *");
 // Permitir os métodos GET, POST, OPTIONS
@@ -8,12 +7,6 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 // Permitir que o navegador envie cookies na solicitação CORS
 header("Access-Control-Allow-Credentials: true");
-
-// Verifica se o ID do usuário foi enviado via GET
-if (!isset($_GET['id'])) {
-  echo json_encode(array("error" => "ID do usuário não especificado."));
-  exit;
-}
 
 // Recupera o ID do usuário da URL
 $userId = $_GET['id'];
@@ -39,26 +32,27 @@ if ($result->num_rows > 0) {
   // Dados do usuário
   $nome = $row['nome'];
   $cpf = $row['cpf'];
+
+  // Data atual
   $data = date("d/m/Y");
 
-  // Carrega o conteúdo HTML da Declaração LOM
-  $lomHTML = file_get_contents('C:\xampp\htdocs\Teste\AdmissaoDigital\src\DocumentacaoHTML\DeclaracaoLom.html');
+  // Carrega o conteúdo HTML da DeclaracaoDeBens.html
+  $declaracaoBensHTML = file_get_contents('C:\xampp\htdocs\Teste\AdmissaoDigital\src\DocumentacaoHTML\DeclaracaoDeBens.html');
 
   // Substitui os marcadores pelos dados do usuário
-  $lomHTML = str_replace(
+  $declaracaoBensHTML = str_replace(
     array('{nome}', '{cpf}', '{data}'),
     array($nome, $cpf, $data),
-    $lomHTML
+    $declaracaoBensHTML
   );
 
   // Fecha a conexão com o banco de dados
   $conn->close();
 
   // Retorna o HTML como JSON
-  echo json_encode(array("html" => $lomHTML));
+  echo json_encode(array("html" => $declaracaoBensHTML));
 
 } else {
   echo json_encode(array("error" => "Usuário não encontrado."));
 }
-
 ?>

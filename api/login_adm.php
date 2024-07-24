@@ -4,6 +4,7 @@ header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: *");
 
 // Dados de conexão do Railway
+/* 
 $host = "viaduct.proxy.rlwy.net";
 $user = "root";
 $password = "SNmpcPoRunXApXaQEuosXNaOYqGOAfyc";
@@ -11,6 +12,13 @@ $database = "railway";
 $port = 58726;
 
 $conn = new mysqli($host, $user, $password, $database, $port);
+if (mysqli_connect_error()) {
+    echo mysqli_connect_error();
+    exit();
+}
+*/
+
+$conn = new mysqli("localhost", "root", "", "dgp");
 if (mysqli_connect_error()) {
     echo mysqli_connect_error();
     exit();
